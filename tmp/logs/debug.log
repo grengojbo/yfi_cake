@@ -1,0 +1,2 @@
+2010-06-22 11:27:55 Notice: Notice (8): Undefined variable: html in [CORE/cake/libs/view/layouts/default.ctp, line 27]
+2010-06-22 11:29:45 Notice: Notice (8): Undefined variable: form in [APP/views/users/login.ctp, line 3]

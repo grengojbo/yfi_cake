@@ -1,0 +1,122 @@
+<?php
+
+class VoucherCleanupShell extends Shell {
+
+    //-----------Call this shell like so:---------------------------------
+    //"/var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake voucher_cleanup"; (specify -full to force those marked as 'depleted' to re-check
+    // Run it as www-data because of the temp files belonging to www-data
+    //---------------------------------------------------------------------
+
+
+    //==========================================================================
+    //--We run this script at different intervals with different switches----
+    //--The following switches exists for this shell:------------------------
+    // -check_for_used      => This checks the accounting records starting form a last recorded ID until the last one and see if there is vouchers with the username, and updates the status
+    // -check_for_depleted  => This queries the vouchers table and filter on 'used' status to see if the voucher is not already depleted by doing a radius auth query
+    // STATUS: `status` enum('new','used','depleted','expired') default 'new'
+    // (-check_for_used will run more reqularly than -check_for_depleted)
+    //==========================================================================
+
+
+    //--------------------------------------------------------
+    //---PREDEFINED VARIABLES---------------------------------
+    //--------------------------------------------------------
+    //Models that we will be using
+    var $uses       = array('Voucher','Radacct','Check');
+
+    //For debug info
+    var $debug_flag = true;
+    var $radtest_script;
+    //=============END OF SECTION ========================
+
+
+    //--------------------------------------------------------
+    //---Load models at the start-----------------------------
+    //--------------------------------------------------------
+    function initialize()
+    {
+        $this->_loadModels();
+
+        //-----------------------------------------------------------
+        //--Load configuration variables ----
+        Configure::load('yfi');
+        //-----------------------------------------
+
+        $this->radtest_script = Configure::read('freeradius.radtest_script');
+        //----------------------------------------
+    }
+    //==============END OF SECTION =======================
+
+    
+
+    function main(){
+
+        //---Initialization code------------------------------
+        App::import('Core', array('View', 'Controller'));
+        App::import('Controller', array('Vouchers'));
+        $this->VouchersController = new VouchersController();
+        $this->VouchersController->constructClasses();
+
+        $conditions = array("Voucher.status <>" => "depleted");
+        if(array_key_exists('full',$this->params)){
+            $conditions = array();
+        }
+        $qr = $this->Voucher->find('all',array('conditions' => $conditions));
+
+        foreach($qr as $item){
+            $id       = $item['Voucher']['id'];
+            $username = $item['Radcheck']['username'];
+            $password = $item['Radcheck']['value'];
+            $this->_check_voucher($username,$password,$id);
+        }
+      //  print_r($qr);
+    }
+
+
+    function _check_voucher($username,$password,$id){
+
+        print ("Testing the status for $username $password\n");
+        $radscenario = $this->radtest_script;
+        $output = array();
+        exec("perl $radscenario $username $password",$output);
+       // print_r($output);
+
+        $answer_record = false;
+        foreach($output as $line){
+            $line = rtrim($line);
+            $line = ltrim($line);
+
+            if(preg_match('/^Received/',$line)){
+
+                if(preg_match('/^Received Access-Reject/',$line)){
+                    $this->_update_voucher_status($id,'depleted');  //Check only for expired ones
+                }
+
+                if(preg_match('/^Received Access-Accept/',$line)){
+                    $this->_check_if_used($username,$id);  //Check if the account was used already
+                }
+
+                $answer_record = true;
+            }
+        }
+    }
+
+    function _update_voucher_status($voucher_id,$status){
+
+        $this->Voucher->id = $voucher_id;
+        $this->Voucher->saveField('status',$status);
+
+    }
+
+    function _check_if_used($username,$id){
+
+        $count = $this->Radacct->find('count',array('conditions' => array('Radacct.username' => $username)));
+        if($count > 0){
+            $this->_update_voucher_status($id,'used');  //Check only for expired ones
+        }
+
+    }
+
+}
+
+?>

@@ -1,0 +1,10 @@
+*/5 * * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake nasmonitor >> /dev/null 2>&1
+*/5 * * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake voucher_cleanup -check_for_used >> /dev/null 2>&1
+0 */3 * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake voucher_cleanup -check_for_depleted >> /dev/null 2>&1
+*/5 * * * * root /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake restart_checker >> /dev/null 2>&1
+*/5 * * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake notify_checker >> /dev/null 2>&1
+1 0 * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake month_end -start >> /dev/null 2>&1
+50 23 * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake month_end -end >> /dev/null 2>&1
+#This is a Work In Progress
+#*/5 * * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake client_check >> /dev/null 2>&1
+#0 */6 * * * www-data /var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake rogue_check >> /dev/null 2>&1
