@@ -82,7 +82,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES ('4bcffb4b-b3c8-45eb-a578-6f52a509ff00','Thai','th_TH','2010-04-22 09:31:23','2010-04-22 09:31:23'),('4c99e65a-d014-4dd1-984d-1bb3a509ff00','Portugues','pt_BR','2010-09-22 13:19:54','2010-09-22 13:19:54'),('4e3eca1a-8af0-4791-89c8-3ddaa509ff00','German','de_DE','2011-08-07 19:23:38','2011-08-07 19:23:38');
+INSERT INTO `languages` VALUES ('4bcffb4b-b3c8-45eb-a578-6f52a509ff00','Thai','th_TH','2010-04-22 09:31:23','2010-04-22 09:31:23'),('4c99e65a-d014-4dd1-984d-1bb3a509ff00','Portugues','pt_BR','2010-09-22 13:19:54','2010-09-22 13:19:54'),('4e3eca1a-8af0-4791-89c8-3ddaa509ff00','German','de_DE','2011-08-07 19:23:38','2011-08-07 19:23:38'),('4e47d171-6a24-4ab7-b491-6582a509ff00','Danish','da_DK','2011-08-14 15:45:21','2011-08-14 15:45:21');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
