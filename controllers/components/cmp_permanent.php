@@ -42,6 +42,7 @@ class CmpPermanentComponent extends Object {
         $username       = $permanent_info['username'];
         $password       = $permanent_info['password'];
         $profile_name   = $permanent_info['profile_name'];
+  
 
         $full_user  = $username.'@'.$permanent_info['realm_name'];
 
@@ -60,6 +61,16 @@ class CmpPermanentComponent extends Object {
         $d['User']['cap']           = $permanent_info['cap'];
         //User enabled by default
         $d['User']['active']        = 1; 
+
+        //Optional fields
+        $optional_fields = array("name","surname","email","phone");
+        foreach($optional_fields as $field){
+            if(array_key_exists($field,$permanent_info)){
+                $d['User'][$field]      = $permanent_info[$field];
+            }
+        }
+
+
         $this->controller->User->save($d);
         $user_id = $this->controller->User->id;
     }

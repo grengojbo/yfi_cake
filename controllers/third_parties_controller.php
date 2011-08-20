@@ -95,6 +95,7 @@ class ThirdPartiesController extends AppController {
         //_____ Third Party Hook-up to create permanent users ___________________
         //A sample call will look like this:
         //http://127.0.0.1/c2/yfi_cake/third_parties/json_create_permanent/?key=123456789&callback=completed&username=koosie&password=koos&profile=Permanent+250M+CAP&realm=Residence+Inn&cap=hard
+        //----- Optional extra fields that can be added: name; surname; email; phone;
         //________________________________________________________________
 
 
@@ -104,7 +105,7 @@ class ThirdPartiesController extends AppController {
         $key_master     = '123456789';
         $access_provider= '3rd_sms';    //The name of the Access Provider that this will be made the creator of
 
-        //Added Security!
+        //Added Security!e
         $request_from   = $_SERVER["REMOTE_ADDR"];      //Only allow request to come from specified server
         if($request_from != '127.0.0.1'){
             $this->set('json_return',$this->Json->permFail());
@@ -217,6 +218,14 @@ class ThirdPartiesController extends AppController {
         $permanent_info['username']     = $this->params['url']['username'];
         $permanent_info['password']     = $this->params['url']['password'];
         $permanent_info['cap']          = $this->params['url']['cap'];
+
+        //Optional add-ons
+        $optional_fields = array("name","surname","email","phone");
+        foreach($optional_fields as $field){
+            if(array_key_exists($field,$this->params['url'])){
+                $permanent_info[$field]          = $this->params['url'][$field];
+            }
+        }
 
        // print_r($permanent_info);
 
