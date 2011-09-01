@@ -1,8 +1,8 @@
--- MySQL dump 10.11
+-- MySQL dump 10.13  Distrib 5.1.41, for debian-linux-gnu (i486)
 --
 -- Host: localhost    Database: yfi
 -- ------------------------------------------------------
--- Server version	5.0.51a-3ubuntu5.5
+-- Server version	5.1.41-3ubuntu12.10
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,17 +20,17 @@
 --
 
 DROP TABLE IF EXISTS `auto_contacts`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auto_contacts` (
   `id` char(36) NOT NULL,
-  `auto_mac_id` char(36) NOT NULL default '',
+  `auto_mac_id` char(36) NOT NULL DEFAULT '',
   `ip_address` varchar(15) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `auto_contacts`
@@ -46,16 +46,16 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `auto_groups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auto_groups` (
   `id` char(36) NOT NULL,
   `name` varchar(80) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `auto_groups`
@@ -72,17 +72,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `auto_macs`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auto_macs` (
   `id` char(36) NOT NULL,
   `name` varchar(17) NOT NULL,
-  `contact_ip` varchar(17) NOT NULL default '',
+  `contact_ip` varchar(17) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `auto_macs`
@@ -98,19 +98,19 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `auto_setups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auto_setups` (
   `id` char(36) NOT NULL,
-  `auto_group_id` char(36) NOT NULL default '',
-  `auto_mac_id` char(36) NOT NULL default '',
+  `auto_group_id` char(36) NOT NULL DEFAULT '',
+  `auto_mac_id` char(36) NOT NULL DEFAULT '',
   `description` varchar(80) NOT NULL,
   `value` varchar(2000) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `auto_setups`
@@ -126,17 +126,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `batches`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `batches` (
   `id` char(36) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `realm_id` char(36) NOT NULL default '',
+  `realm_id` char(36) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `batches`
@@ -152,13 +152,13 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `batches_vouchers`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `batches_vouchers` (
   `batch_id` char(36) NOT NULL,
   `voucher_id` char(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `batches_vouchers`
@@ -174,17 +174,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `billing_plan_realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `billing_plan_realms` (
   `id` char(36) NOT NULL,
   `billing_plan_id` char(36) NOT NULL,
   `realm_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `billing_plan_realms`
@@ -201,26 +201,26 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `billing_plans`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `billing_plans` (
   `id` char(36) NOT NULL,
   `name` varchar(40) NOT NULL,
   `currency` varchar(20) NOT NULL,
-  `subscription` decimal(9,2) default '0.00',
-  `time_unit` decimal(10,9) default '0.000000000',
-  `data_unit` decimal(10,9) default '0.000000000',
-  `free_data` int(12) default '0',
-  `free_time` int(12) default '0',
-  `discount` decimal(5,2) default '0.00',
-  `tax` decimal(5,2) default '0.00',
-  `extra_time` decimal(3,2) default '1.00',
-  `extra_data` decimal(3,2) default '1.00',
+  `subscription` decimal(9,2) DEFAULT '0.00',
+  `time_unit` decimal(10,9) DEFAULT '0.000000000',
+  `data_unit` decimal(10,9) DEFAULT '0.000000000',
+  `free_data` int(12) DEFAULT '0',
+  `free_time` int(12) DEFAULT '0',
+  `discount` decimal(5,2) DEFAULT '0.00',
+  `tax` decimal(5,2) DEFAULT '0.00',
+  `extra_time` decimal(3,2) DEFAULT '1.00',
+  `extra_data` decimal(3,2) DEFAULT '1.00',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `billing_plans`
@@ -237,17 +237,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `checks`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `checks` (
   `id` char(36) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `value` varchar(40) NOT NULL default '',
+  `value` varchar(40) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `checks`
@@ -264,21 +264,21 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `credits`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `credits` (
   `id` char(36) NOT NULL,
-  `user_id` char(36) NOT NULL default '',
-  `realm_id` char(36) NOT NULL default '',
-  `used_by_id` char(36) default NULL,
-  `expires` datetime default NULL,
-  `time` bigint(20) default NULL,
-  `data` bigint(20) default NULL,
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `user_id` char(36) NOT NULL DEFAULT '',
+  `realm_id` char(36) NOT NULL DEFAULT '',
+  `used_by_id` char(36) DEFAULT NULL,
+  `expires` datetime DEFAULT NULL,
+  `time` bigint(20) DEFAULT NULL,
+  `data` bigint(20) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `credits`
@@ -294,18 +294,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `devices`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `devices` (
   `id` char(36) NOT NULL,
   `name` varchar(17) NOT NULL,
   `description` varchar(40) NOT NULL,
-  `user_id` char(36) NOT NULL default '',
+  `user_id` char(36) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `devices`
@@ -321,20 +321,20 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `extra_services`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `extra_services` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
-  `title` varchar(50) NOT NULL default '',
+  `title` varchar(50) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `amount` decimal(9,2) default '0.00',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `amount` decimal(9,2) DEFAULT '0.00',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `extra_services`
@@ -350,18 +350,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `extras`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `extras` (
   `id` char(36) NOT NULL,
-  `type` enum('data','time') default 'data',
-  `value` varchar(40) NOT NULL default '',
+  `type` enum('data','time') DEFAULT 'data',
+  `value` varchar(40) NOT NULL DEFAULT '',
   `user_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `extras`
@@ -377,18 +377,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `group_rights`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `group_rights` (
   `id` char(36) NOT NULL,
   `group_id` char(36) NOT NULL,
   `right_id` char(36) NOT NULL,
-  `state` tinyint(1) NOT NULL default '0',
+  `state` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `group_rights`
@@ -396,7 +396,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `group_rights` WRITE;
 /*!40000 ALTER TABLE `group_rights` DISABLE KEYS */;
-INSERT INTO `group_rights` VALUES ('499ef51e-7b80-4819-a85c-2f51a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','499ef500-c76c-4897-9bde-190da509ff00',1,'2009-02-20 20:23:26','2009-02-20 20:23:26'),('499effd9-93c4-49b2-81c8-7acfa509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','499ef500-c76c-4897-9bde-190da509ff00',1,'2009-02-20 21:09:13','2009-02-20 21:09:30'),('49ab94fc-129c-4d25-94e4-19dba509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ab946c-78cc-4b3f-ad02-2755a509ff00',1,'2009-03-02 10:12:44','2009-03-02 10:12:44'),('49ab9512-75c8-400b-96ec-19dba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ab946c-78cc-4b3f-ad02-2755a509ff00',1,'2009-03-02 10:13:06','2009-03-02 10:13:06'),('49ae2c01-2b20-4a0b-ad41-1972a509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ae2bc4-ccd8-4660-81af-2ce7a509ff00',1,'2009-03-04 09:21:37','2009-03-04 09:21:37'),('49ae4ea5-3eb8-460e-905e-7146a509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ae4e7f-73b8-46c7-864c-7146a509ff00',1,'2009-03-04 11:49:25','2009-03-04 11:49:25'),('49ba5393-9e14-4a3d-a266-1609a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba51f9-26a0-4365-bf83-6ed1a509ff00',1,'2009-03-13 14:37:39','2009-03-13 14:37:39'),('49ba539f-ad78-4d4f-8ae2-1609a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5218-ddbc-47eb-8711-661ea509ff00',1,'2009-03-13 14:37:51','2009-03-13 14:37:51'),('49ba53b5-23bc-40bd-ad80-6ed1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba522f-0ff8-4ee3-b044-1854a509ff00',1,'2009-03-13 14:38:13','2009-03-13 14:38:13'),('49ba53c7-6a98-4ae3-a236-661ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5245-2ba4-49d9-b806-1854a509ff00',0,'2009-03-13 14:38:31','2009-03-13 14:38:31'),('49ba53e8-d9dc-4caa-a32e-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba525b-c0ec-43ab-a149-6edea509ff00',1,'2009-03-13 14:39:04','2009-03-13 14:39:04'),('49ba53f5-ee8c-4500-83f9-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba527b-1f3c-4490-ab05-6edea509ff00',1,'2009-03-13 14:39:17','2009-03-13 14:39:17'),('49ba5410-8a34-4d75-8555-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5293-ab1c-420e-a5d3-6edea509ff00',1,'2009-03-13 14:39:44','2009-03-13 14:39:44'),('49ba541b-048c-48fc-8357-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba52b6-01b8-4905-ac5d-66b6a509ff00',1,'2009-03-13 14:39:55','2009-03-13 14:39:55'),('49be4018-5810-40f2-aa91-3926a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49be4003-6570-4746-a8d3-3926a509ff00',1,'2009-03-16 14:03:36','2009-03-16 14:03:36'),('49bf5fff-1498-4bca-ad0b-285aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf5fe6-b858-42e6-b6f9-51e1a509ff00',1,'2009-03-17 10:31:59','2009-03-17 10:31:59'),('49bf60ba-d828-41c8-b4e1-3491a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf60a9-1c58-49f3-83c3-3491a509ff00',1,'2009-03-17 10:35:06','2009-03-17 10:35:06'),('49bf6288-8250-4f3d-8cf6-2073a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf6239-a734-4082-a33b-51e2a509ff00',1,'2009-03-17 10:42:48','2009-03-17 10:42:48'),('49bf6706-0070-48ec-93ba-3a21a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf66f9-e324-404f-a9f0-3a21a509ff00',0,'2009-03-17 11:01:58','2009-03-17 11:03:14'),('49bf68d8-0b48-4764-be66-2073a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf68a7-60d4-41e8-b2bb-2073a509ff00',1,'2009-03-17 11:09:44','2009-03-17 11:09:44'),('49bf7dc3-fc2c-4d39-b246-51e1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf7d31-f050-42ae-b2fe-339ba509ff00',1,'2009-03-17 12:38:59','2009-03-17 12:38:59'),('49bf7dd2-decc-4491-b16d-51e1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf7d4d-5990-46c6-b22a-3491a509ff00',1,'2009-03-17 12:39:14','2009-03-17 12:39:14'),('49bfafe4-bca4-4f25-8dde-7acca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bfafd8-fcb4-4f9b-85c8-7acca509ff00',1,'2009-03-17 16:12:52','2009-03-17 16:12:52'),('49c1012f-79cc-448e-b42a-5a75a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49c10118-d8e0-4483-a2fd-69fba509ff00',1,'2009-03-18 16:11:59','2009-03-18 16:11:59'),('49cfb771-f4bc-49a0-830f-21e2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb1ab-6bf0-4bc2-9f5a-21e2a509ff00',1,'2009-03-29 20:01:21','2009-03-29 20:01:21'),('49cfb781-1b88-458b-a719-21e2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb1d1-39ec-4b14-908e-21f0a509ff00',1,'2009-03-29 20:01:37','2009-03-29 20:01:37'),('49cfb8c8-cfd8-478c-b9e0-563ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb442-d66c-4861-aeed-150ea509ff00',1,'2009-03-29 20:07:04','2009-03-29 20:07:04'),('49cfbd11-ab24-4cad-b54c-6b04a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb4c0-8418-46c2-9d9b-21e2a509ff00',1,'2009-03-29 20:25:21','2009-03-29 20:25:21'),('49cfbd66-e724-4fd0-88f3-171fa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb4e2-fa7c-4103-a509-21f0a509ff00',1,'2009-03-29 20:26:46','2009-03-29 20:26:46'),('49cfbd76-e8e4-481f-8613-171fa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb500-7d84-4d51-adac-21a0a509ff00',1,'2009-03-29 20:27:02','2009-03-29 20:27:02'),('49cfc13a-7d18-45d3-a8c5-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb5ce-01bc-4559-9690-5642a509ff00',1,'2009-03-29 20:43:06','2009-03-29 20:43:06'),('49cfc148-cb64-4572-8447-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb5e5-ce94-4442-a3e3-6b04a509ff00',1,'2009-03-29 20:43:20','2009-03-29 20:43:20'),('49cfc155-262c-4e58-8f81-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb616-0560-477f-b07d-563fa509ff00',1,'2009-03-29 20:43:33','2009-03-29 20:43:33'),('49cfc163-1b94-43d5-bdf9-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb636-b1c4-4f72-b360-171fa509ff00',1,'2009-03-29 20:43:47','2009-03-29 20:43:47'),('49cfc1da-57ac-4f0b-a58e-563ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb40a-1144-42de-947d-171fa509ff00',1,'2009-03-29 20:45:46','2009-03-29 20:45:46'),('49e1d90b-a838-48f4-a698-6545a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e1d876-9718-4ba0-816f-75eba509ff00',1,'2009-04-12 14:05:31','2009-04-12 14:05:31'),('49e1d918-eebc-4c91-9b4e-6545a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e1d8aa-152c-40c9-8571-35f4a509ff00',1,'2009-04-12 14:05:44','2009-04-12 14:05:44'),('49e29fc2-f4a4-4b3d-a553-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29ed9-d918-4650-ae41-6541a509ff00',1,'2009-04-13 04:13:22','2009-04-13 04:13:22'),('49e29fd3-51f8-443a-be0b-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f0f-70c0-4c73-bd2b-6541a509ff00',1,'2009-04-13 04:13:39','2009-04-13 04:13:39'),('49e29ff0-df08-46d4-abf6-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f4c-2e3c-4e2e-ae52-6541a509ff00',1,'2009-04-13 04:14:08','2009-04-13 04:14:08'),('49e29ffd-9dc8-465d-a4ec-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f69-ecc8-4bc1-92d8-6541a509ff00',1,'2009-04-13 04:14:21','2009-04-13 04:14:21'),('49e2a00b-e334-4b4d-88c4-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f90-f0b8-411e-ad74-6541a509ff00',1,'2009-04-13 04:14:35','2009-04-13 04:14:35'),('4a1806a8-edec-4de8-a221-3239a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18066d-d360-402c-8164-2f8aa509ff00',1,'2009-05-23 16:22:32','2009-05-23 16:22:32'),('4a18cf91-64b4-4361-a686-1995a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18cf79-fa60-44a3-a555-1995a509ff00',1,'2009-05-24 06:39:45','2009-05-24 06:39:45'),('4a18d001-bf9c-4594-8ba2-2f88a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18cff3-822c-4b78-bca9-2f88a509ff00',1,'2009-05-24 06:41:37','2009-05-24 06:41:37'),('4a18d26a-eb60-496c-a304-1992a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d25f-9cfc-427f-b04f-1992a509ff00',1,'2009-05-24 06:51:54','2009-05-24 06:51:54'),('4a18d4f8-77f8-44e9-8b40-3239a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d4e9-ada8-4ef5-b3ed-3239a509ff00',1,'2009-05-24 07:02:48','2009-05-24 07:02:48'),('4a18d5a8-2174-4ffa-9bab-1994a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d595-e5c4-45cc-9e90-1994a509ff00',1,'2009-05-24 07:05:44','2009-05-24 07:05:44'),('4a18d768-e874-43a9-ba61-1994a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d75c-85e8-4bce-80c6-1994a509ff00',1,'2009-05-24 07:13:12','2009-05-24 07:13:12'),('4a18eea4-6198-4fb6-a4fc-26f2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18ee98-f6d4-4d93-bcaa-26f2a509ff00',1,'2009-05-24 08:52:20','2009-05-24 08:52:20'),('4a18ef2e-4f68-48a2-b91b-1241a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d071-d67c-4079-8d28-1993a509ff00',1,'2009-05-24 08:54:38','2009-05-24 08:54:38'),('4a18f14a-3f4c-4693-b5f8-26f1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f0ba-ff80-40d6-818a-12b1a509ff00',1,'2009-05-24 09:03:38','2009-05-24 09:03:38'),('4a18f2d9-2f14-4110-8739-26f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f26d-49dc-4553-bf68-26f2a509ff00',1,'2009-05-24 09:10:17','2009-05-24 09:10:17'),('4a18f2e4-8fe0-422a-82a0-26f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f285-3980-4359-acb9-26f4a509ff00',1,'2009-05-24 09:10:28','2009-05-24 09:10:28'),('4a18f3a1-1bcc-43f1-bedc-12a4a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f395-97a8-4d3a-b761-12a4a509ff00',1,'2009-05-24 09:13:37','2009-05-24 09:13:37'),('4a18f422-ee80-4169-af9e-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f3cf-60f8-4cec-8a09-26f1a509ff00',1,'2009-05-24 09:15:46','2009-05-24 09:15:46'),('4a18f42c-54cc-43ad-a567-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f3f7-0584-40d3-b170-1241a509ff00',1,'2009-05-24 09:15:56','2009-05-24 09:15:56'),('4a18f438-83e4-49a8-a2b0-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f415-3eb0-4bb6-85c8-1291a509ff00',1,'2009-05-24 09:16:08','2009-05-24 09:16:08'),('4a1932bc-7ce4-43ef-8663-129aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a1932a9-e81c-4058-bb37-129aa509ff00',1,'2009-05-24 13:42:52','2009-05-24 13:42:52'),('4a617cbe-4cb4-4526-9dcb-19caa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a617c04-a940-4f3e-a020-19c9a509ff00',1,'2009-07-18 09:41:50','2009-07-18 09:41:50'),('4a618bcb-4c38-47de-ba8b-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618ae9-3acc-44d5-aecf-4324a509ff00',1,'2009-07-18 10:46:03','2009-07-18 10:46:03'),('4a618bdd-d1bc-4b21-b7eb-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b0e-a9bc-45c5-bb2e-431aa509ff00',1,'2009-07-18 10:46:21','2009-07-18 10:46:21'),('4a618bec-744c-4f82-a70e-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b3e-76b8-4fff-b772-19c7a509ff00',1,'2009-07-18 10:46:36','2009-07-18 10:46:36'),('4a618c0e-9fe0-4f60-a9f4-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b63-c3ac-4140-a4c6-19c9a509ff00',1,'2009-07-18 10:47:10','2009-07-18 10:47:10'),('4a618c23-38f0-4f9d-abaa-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b80-22c4-498a-ac5e-0a07a509ff00',1,'2009-07-18 10:47:31','2009-07-18 10:47:31'),('4a619586-04e8-403f-847a-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a619486-6aa8-4511-9b27-19caa509ff00',1,'2009-07-18 11:27:34','2009-07-18 11:27:34'),('4a619597-5bd4-4f74-ad29-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6194ab-c9cc-45b4-976a-4298a509ff00',1,'2009-07-18 11:27:51','2009-07-18 11:27:51'),('4a6195a5-6114-49ea-845d-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6194db-920c-4e1b-9470-4324a509ff00',1,'2009-07-18 11:28:05','2009-07-18 11:28:05'),('4a6195b3-df14-463d-8252-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a619505-3378-4b35-b642-19c7a509ff00',1,'2009-07-18 11:28:19','2009-07-18 11:28:19'),('4a6195c2-1b9c-429f-845d-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a61952c-5220-41a0-a2e7-19c9a509ff00',1,'2009-07-18 11:28:34','2009-07-18 11:28:34'),('4a6195ce-3dd4-455f-9f45-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a61954f-e000-402b-9018-0a07a509ff00',1,'2009-07-18 11:28:46','2009-07-18 11:28:46'),('4a6217d2-dc4c-4a97-9534-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a62177d-84a8-40d4-94bf-09fda509ff00',1,'2009-07-18 20:43:30','2009-07-18 20:43:30'),('4a6217df-7a1c-4689-be8f-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6217a2-2608-484a-be64-0a07a509ff00',1,'2009-07-18 20:43:43','2009-07-18 20:43:43'),('4a6217eb-bd64-4c83-bcef-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6217b8-fed8-4ac4-ba3e-4298a509ff00',1,'2009-07-18 20:43:55','2009-07-18 20:43:55'),('4a6f7873-6174-447c-ba1c-60b5a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6f7860-42ec-4f61-b946-60b5a509ff00',1,'2009-07-29 00:15:15','2009-07-29 00:15:15'),('4b29dd87-8e3c-43cc-bacf-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d6aa-9afc-4568-a64a-1a02a509ff00',1,'2009-12-17 09:28:07','2009-12-17 09:28:07'),('4b29ddad-2894-4bc8-b62c-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d6cc-41c4-4341-b71d-1a04a509ff00',1,'2009-12-17 09:28:45','2009-12-17 09:28:45'),('4b29ddbf-4300-4cff-a4fb-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d71b-eb28-47ca-9bb9-4cb0a509ff00',1,'2009-12-17 09:29:03','2009-12-17 09:29:03'),('4b29dddc-0f1c-4268-a2b4-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d73e-a938-4d73-8641-593ca509ff00',1,'2009-12-17 09:29:32','2009-12-17 09:29:32'),('4b29ddf3-ca78-4c88-93dc-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d77b-5c00-4862-a683-1a00a509ff00',1,'2009-12-17 09:29:55','2009-12-17 09:29:55'),('4b29de05-dcb8-4c60-9745-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d797-9e5c-401b-bffa-1a01a509ff00',1,'2009-12-17 09:30:13','2009-12-17 09:30:13'),('4b29de50-22d8-42d1-a48b-1a00a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d7f4-3600-41b5-a20d-4d55a509ff00',1,'2009-12-17 09:31:28','2009-12-17 09:31:28'),('4b5de52a-cc54-48da-9d26-53f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b5de501-b0b4-4ee2-9b09-53e9a509ff00',1,'2010-01-25 20:38:34','2010-01-25 20:38:34');
+INSERT INTO `group_rights` VALUES ('499ef51e-7b80-4819-a85c-2f51a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','499ef500-c76c-4897-9bde-190da509ff00',1,'2009-02-20 20:23:26','2009-02-20 20:23:26'),('499effd9-93c4-49b2-81c8-7acfa509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','499ef500-c76c-4897-9bde-190da509ff00',1,'2009-02-20 21:09:13','2009-02-20 21:09:30'),('49ab94fc-129c-4d25-94e4-19dba509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ab946c-78cc-4b3f-ad02-2755a509ff00',1,'2009-03-02 10:12:44','2009-03-02 10:12:44'),('49ab9512-75c8-400b-96ec-19dba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ab946c-78cc-4b3f-ad02-2755a509ff00',1,'2009-03-02 10:13:06','2009-03-02 10:13:06'),('49ae2c01-2b20-4a0b-ad41-1972a509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ae2bc4-ccd8-4660-81af-2ce7a509ff00',1,'2009-03-04 09:21:37','2009-03-04 09:21:37'),('49ae4ea5-3eb8-460e-905e-7146a509ff00','499ef44e-42e8-4615-8d51-2f51a509ff00','49ae4e7f-73b8-46c7-864c-7146a509ff00',1,'2009-03-04 11:49:25','2009-03-04 11:49:25'),('49ba5393-9e14-4a3d-a266-1609a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba51f9-26a0-4365-bf83-6ed1a509ff00',1,'2009-03-13 14:37:39','2009-03-13 14:37:39'),('49ba539f-ad78-4d4f-8ae2-1609a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5218-ddbc-47eb-8711-661ea509ff00',1,'2009-03-13 14:37:51','2009-03-13 14:37:51'),('49ba53b5-23bc-40bd-ad80-6ed1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba522f-0ff8-4ee3-b044-1854a509ff00',1,'2009-03-13 14:38:13','2009-03-13 14:38:13'),('49ba53c7-6a98-4ae3-a236-661ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5245-2ba4-49d9-b806-1854a509ff00',0,'2009-03-13 14:38:31','2009-03-13 14:38:31'),('49ba53e8-d9dc-4caa-a32e-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba525b-c0ec-43ab-a149-6edea509ff00',1,'2009-03-13 14:39:04','2009-03-13 14:39:04'),('49ba53f5-ee8c-4500-83f9-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba527b-1f3c-4490-ab05-6edea509ff00',1,'2009-03-13 14:39:17','2009-03-13 14:39:17'),('49ba5410-8a34-4d75-8555-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba5293-ab1c-420e-a5d3-6edea509ff00',1,'2009-03-13 14:39:44','2009-03-13 14:39:44'),('49ba541b-048c-48fc-8357-1854a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ba52b6-01b8-4905-ac5d-66b6a509ff00',1,'2009-03-13 14:39:55','2009-03-13 14:39:55'),('49be4018-5810-40f2-aa91-3926a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49be4003-6570-4746-a8d3-3926a509ff00',1,'2009-03-16 14:03:36','2009-03-16 14:03:36'),('49bf5fff-1498-4bca-ad0b-285aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf5fe6-b858-42e6-b6f9-51e1a509ff00',1,'2009-03-17 10:31:59','2009-03-17 10:31:59'),('49bf60ba-d828-41c8-b4e1-3491a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf60a9-1c58-49f3-83c3-3491a509ff00',1,'2009-03-17 10:35:06','2009-03-17 10:35:06'),('49bf6288-8250-4f3d-8cf6-2073a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf6239-a734-4082-a33b-51e2a509ff00',1,'2009-03-17 10:42:48','2009-03-17 10:42:48'),('49bf6706-0070-48ec-93ba-3a21a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf66f9-e324-404f-a9f0-3a21a509ff00',0,'2009-03-17 11:01:58','2009-03-17 11:03:14'),('49bf68d8-0b48-4764-be66-2073a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf68a7-60d4-41e8-b2bb-2073a509ff00',1,'2009-03-17 11:09:44','2009-03-17 11:09:44'),('49bf7dc3-fc2c-4d39-b246-51e1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf7d31-f050-42ae-b2fe-339ba509ff00',1,'2009-03-17 12:38:59','2009-03-17 12:38:59'),('49bf7dd2-decc-4491-b16d-51e1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bf7d4d-5990-46c6-b22a-3491a509ff00',1,'2009-03-17 12:39:14','2009-03-17 12:39:14'),('49bfafe4-bca4-4f25-8dde-7acca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49bfafd8-fcb4-4f9b-85c8-7acca509ff00',1,'2009-03-17 16:12:52','2009-03-17 16:12:52'),('49c1012f-79cc-448e-b42a-5a75a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49c10118-d8e0-4483-a2fd-69fba509ff00',1,'2009-03-18 16:11:59','2009-03-18 16:11:59'),('49cfb771-f4bc-49a0-830f-21e2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb1ab-6bf0-4bc2-9f5a-21e2a509ff00',1,'2009-03-29 20:01:21','2009-03-29 20:01:21'),('49cfb781-1b88-458b-a719-21e2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb1d1-39ec-4b14-908e-21f0a509ff00',1,'2009-03-29 20:01:37','2009-03-29 20:01:37'),('49cfb8c8-cfd8-478c-b9e0-563ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb442-d66c-4861-aeed-150ea509ff00',1,'2009-03-29 20:07:04','2009-03-29 20:07:04'),('49cfbd11-ab24-4cad-b54c-6b04a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb4c0-8418-46c2-9d9b-21e2a509ff00',1,'2009-03-29 20:25:21','2009-03-29 20:25:21'),('49cfbd66-e724-4fd0-88f3-171fa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb4e2-fa7c-4103-a509-21f0a509ff00',1,'2009-03-29 20:26:46','2009-03-29 20:26:46'),('49cfbd76-e8e4-481f-8613-171fa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb500-7d84-4d51-adac-21a0a509ff00',1,'2009-03-29 20:27:02','2009-03-29 20:27:02'),('49cfc13a-7d18-45d3-a8c5-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb5ce-01bc-4559-9690-5642a509ff00',1,'2009-03-29 20:43:06','2009-03-29 20:43:06'),('49cfc148-cb64-4572-8447-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb5e5-ce94-4442-a3e3-6b04a509ff00',1,'2009-03-29 20:43:20','2009-03-29 20:43:20'),('49cfc155-262c-4e58-8f81-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb616-0560-477f-b07d-563fa509ff00',1,'2009-03-29 20:43:33','2009-03-29 20:43:33'),('49cfc163-1b94-43d5-bdf9-5641a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb636-b1c4-4f72-b360-171fa509ff00',1,'2009-03-29 20:43:47','2009-03-29 20:43:47'),('49cfc1da-57ac-4f0b-a58e-563ea509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49cfb40a-1144-42de-947d-171fa509ff00',1,'2009-03-29 20:45:46','2009-03-29 20:45:46'),('49e1d90b-a838-48f4-a698-6545a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e1d876-9718-4ba0-816f-75eba509ff00',1,'2009-04-12 14:05:31','2009-04-12 14:05:31'),('49e1d918-eebc-4c91-9b4e-6545a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e1d8aa-152c-40c9-8571-35f4a509ff00',1,'2009-04-12 14:05:44','2009-04-12 14:05:44'),('49e29fc2-f4a4-4b3d-a553-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29ed9-d918-4650-ae41-6541a509ff00',1,'2009-04-13 04:13:22','2009-04-13 04:13:22'),('49e29fd3-51f8-443a-be0b-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f0f-70c0-4c73-bd2b-6541a509ff00',1,'2009-04-13 04:13:39','2009-04-13 04:13:39'),('49e29ff0-df08-46d4-abf6-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f4c-2e3c-4e2e-ae52-6541a509ff00',1,'2009-04-13 04:14:08','2009-04-13 04:14:08'),('49e29ffd-9dc8-465d-a4ec-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f69-ecc8-4bc1-92d8-6541a509ff00',1,'2009-04-13 04:14:21','2009-04-13 04:14:21'),('49e2a00b-e334-4b4d-88c4-75eba509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49e29f90-f0b8-411e-ad74-6541a509ff00',1,'2009-04-13 04:14:35','2009-04-13 04:14:35'),('4a1806a8-edec-4de8-a221-3239a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18066d-d360-402c-8164-2f8aa509ff00',1,'2009-05-23 16:22:32','2009-05-23 16:22:32'),('4a18cf91-64b4-4361-a686-1995a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18cf79-fa60-44a3-a555-1995a509ff00',1,'2009-05-24 06:39:45','2009-05-24 06:39:45'),('4a18d001-bf9c-4594-8ba2-2f88a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18cff3-822c-4b78-bca9-2f88a509ff00',1,'2009-05-24 06:41:37','2009-05-24 06:41:37'),('4a18d26a-eb60-496c-a304-1992a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d25f-9cfc-427f-b04f-1992a509ff00',1,'2009-05-24 06:51:54','2009-05-24 06:51:54'),('4a18d4f8-77f8-44e9-8b40-3239a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d4e9-ada8-4ef5-b3ed-3239a509ff00',1,'2009-05-24 07:02:48','2009-05-24 07:02:48'),('4a18d5a8-2174-4ffa-9bab-1994a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d595-e5c4-45cc-9e90-1994a509ff00',1,'2009-05-24 07:05:44','2009-05-24 07:05:44'),('4a18d768-e874-43a9-ba61-1994a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d75c-85e8-4bce-80c6-1994a509ff00',1,'2009-05-24 07:13:12','2009-05-24 07:13:12'),('4a18eea4-6198-4fb6-a4fc-26f2a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18ee98-f6d4-4d93-bcaa-26f2a509ff00',1,'2009-05-24 08:52:20','2009-05-24 08:52:20'),('4a18ef2e-4f68-48a2-b91b-1241a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18d071-d67c-4079-8d28-1993a509ff00',1,'2009-05-24 08:54:38','2009-05-24 08:54:38'),('4a18f14a-3f4c-4693-b5f8-26f1a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f0ba-ff80-40d6-818a-12b1a509ff00',1,'2009-05-24 09:03:38','2009-05-24 09:03:38'),('4a18f2d9-2f14-4110-8739-26f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f26d-49dc-4553-bf68-26f2a509ff00',1,'2009-05-24 09:10:17','2009-05-24 09:10:17'),('4a18f2e4-8fe0-422a-82a0-26f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f285-3980-4359-acb9-26f4a509ff00',1,'2009-05-24 09:10:28','2009-05-24 09:10:28'),('4a18f3a1-1bcc-43f1-bedc-12a4a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f395-97a8-4d3a-b761-12a4a509ff00',1,'2009-05-24 09:13:37','2009-05-24 09:13:37'),('4a18f422-ee80-4169-af9e-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f3cf-60f8-4cec-8a09-26f1a509ff00',1,'2009-05-24 09:15:46','2009-05-24 09:15:46'),('4a18f42c-54cc-43ad-a567-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f3f7-0584-40d3-b170-1241a509ff00',1,'2009-05-24 09:15:56','2009-05-24 09:15:56'),('4a18f438-83e4-49a8-a2b0-1291a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a18f415-3eb0-4bb6-85c8-1291a509ff00',1,'2009-05-24 09:16:08','2009-05-24 09:16:08'),('4a1932bc-7ce4-43ef-8663-129aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a1932a9-e81c-4058-bb37-129aa509ff00',1,'2009-05-24 13:42:52','2009-05-24 13:42:52'),('4a617cbe-4cb4-4526-9dcb-19caa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a617c04-a940-4f3e-a020-19c9a509ff00',1,'2009-07-18 09:41:50','2009-07-18 09:41:50'),('4a618bcb-4c38-47de-ba8b-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618ae9-3acc-44d5-aecf-4324a509ff00',1,'2009-07-18 10:46:03','2009-07-18 10:46:03'),('4a618bdd-d1bc-4b21-b7eb-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b0e-a9bc-45c5-bb2e-431aa509ff00',1,'2009-07-18 10:46:21','2009-07-18 10:46:21'),('4a618bec-744c-4f82-a70e-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b3e-76b8-4fff-b772-19c7a509ff00',1,'2009-07-18 10:46:36','2009-07-18 10:46:36'),('4a618c0e-9fe0-4f60-a9f4-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b63-c3ac-4140-a4c6-19c9a509ff00',1,'2009-07-18 10:47:10','2009-07-18 10:47:10'),('4a618c23-38f0-4f9d-abaa-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a618b80-22c4-498a-ac5e-0a07a509ff00',1,'2009-07-18 10:47:31','2009-07-18 10:47:31'),('4a619586-04e8-403f-847a-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a619486-6aa8-4511-9b27-19caa509ff00',1,'2009-07-18 11:27:34','2009-07-18 11:27:34'),('4a619597-5bd4-4f74-ad29-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6194ab-c9cc-45b4-976a-4298a509ff00',1,'2009-07-18 11:27:51','2009-07-18 11:27:51'),('4a6195a5-6114-49ea-845d-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6194db-920c-4e1b-9470-4324a509ff00',1,'2009-07-18 11:28:05','2009-07-18 11:28:05'),('4a6195b3-df14-463d-8252-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a619505-3378-4b35-b642-19c7a509ff00',1,'2009-07-18 11:28:19','2009-07-18 11:28:19'),('4a6195c2-1b9c-429f-845d-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a61952c-5220-41a0-a2e7-19c9a509ff00',1,'2009-07-18 11:28:34','2009-07-18 11:28:34'),('4a6195ce-3dd4-455f-9f45-09fda509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a61954f-e000-402b-9018-0a07a509ff00',1,'2009-07-18 11:28:46','2009-07-18 11:28:46'),('4a6217d2-dc4c-4a97-9534-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a62177d-84a8-40d4-94bf-09fda509ff00',1,'2009-07-18 20:43:30','2009-07-18 20:43:30'),('4a6217df-7a1c-4689-be8f-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6217a2-2608-484a-be64-0a07a509ff00',1,'2009-07-18 20:43:43','2009-07-18 20:43:43'),('4a6217eb-bd64-4c83-bcef-431aa509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6217b8-fed8-4ac4-ba3e-4298a509ff00',1,'2009-07-18 20:43:55','2009-07-18 20:43:55'),('4a6f7873-6174-447c-ba1c-60b5a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a6f7860-42ec-4f61-b946-60b5a509ff00',1,'2009-07-29 00:15:15','2009-07-29 00:15:15'),('4b29dd87-8e3c-43cc-bacf-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d6aa-9afc-4568-a64a-1a02a509ff00',1,'2009-12-17 09:28:07','2009-12-17 09:28:07'),('4b29ddad-2894-4bc8-b62c-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d6cc-41c4-4341-b71d-1a04a509ff00',1,'2009-12-17 09:28:45','2009-12-17 09:28:45'),('4b29ddbf-4300-4cff-a4fb-4cb0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d71b-eb28-47ca-9bb9-4cb0a509ff00',1,'2009-12-17 09:29:03','2009-12-17 09:29:03'),('4b29dddc-0f1c-4268-a2b4-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d73e-a938-4d73-8641-593ca509ff00',1,'2009-12-17 09:29:32','2009-12-17 09:29:32'),('4b29ddf3-ca78-4c88-93dc-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d77b-5c00-4862-a683-1a00a509ff00',1,'2009-12-17 09:29:55','2009-12-17 09:29:55'),('4b29de05-dcb8-4c60-9745-593ca509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d797-9e5c-401b-bffa-1a01a509ff00',1,'2009-12-17 09:30:13','2009-12-17 09:30:13'),('4b29de50-22d8-42d1-a48b-1a00a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b29d7f4-3600-41b5-a20d-4d55a509ff00',1,'2009-12-17 09:31:28','2009-12-17 09:31:28'),('4b5de52a-cc54-48da-9d26-53f3a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4b5de501-b0b4-4ee2-9b09-53e9a509ff00',1,'2010-01-25 20:38:34','2010-01-25 20:38:34'),('4b91d65b-49c4-47c6-9157-13a4a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ab942c-f9bc-46ad-b119-19dea509ff00',0,'2010-03-06 06:13:15','2010-03-06 06:13:15'),('4b91d68e-9fb8-4ab6-8fcf-1989a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ae2bc4-ccd8-4660-81af-2ce7a509ff00',0,'2010-03-06 06:14:06','2010-03-06 06:14:06'),('4b91d6ea-0fcc-4858-b529-15e0a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4a193830-1b54-4b9b-8858-542ea509ff00',0,'2010-03-06 06:15:38','2010-03-06 06:15:38'),('4b91d70b-772c-47c0-a263-1986a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','49ae4e7f-73b8-46c7-864c-7146a509ff00',0,'2010-03-06 06:16:11','2010-03-06 06:16:11'),('4b91f163-ac3c-47e8-9063-52a9a509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b91e84b-64c4-48fb-b58b-13a4a509ff00',0,'2010-03-06 08:08:35','2010-03-06 08:08:35'),('4b91f173-408c-4652-839d-52a9a509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b91e887-eb50-4858-8dfb-1987a509ff00',0,'2010-03-06 08:08:51','2010-03-06 08:08:51'),('4b96a075-3b64-45d2-8a20-308fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b969fb2-29ec-4158-9c9d-1999a509ff00',0,'2010-03-09 21:24:37','2010-03-09 21:24:37'),('4b96a08d-03d0-4332-ad5c-199aa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b969fd6-c014-4b70-bf18-199ca509ff00',1,'2010-03-09 21:25:01','2010-03-09 21:25:01'),('4b96a09f-a260-4e7f-9bca-199aa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b969ff8-14c0-40ea-b198-308da509ff00',1,'2010-03-09 21:25:19','2010-03-09 21:25:19'),('4b96a108-1c70-4477-986b-199ba509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b96a01a-d620-423a-95a2-308ea509ff00',1,'2010-03-09 21:27:04','2010-03-09 21:27:04'),('4b96a115-6c68-4cdf-be57-199ba509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b96a036-2900-43e8-9c7b-3090a509ff00',1,'2010-03-09 21:27:17','2010-03-09 21:27:17'),('4b96a121-1b24-4245-96bb-199ba509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b96a052-fe60-4c9a-81cb-308fa509ff00',1,'2010-03-09 21:27:29','2010-03-09 21:27:29'),('4b97e1bb-6d24-41d3-9b2b-198fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b97e0ca-1594-4a40-8625-5202a509ff00',1,'2010-03-10 20:15:23','2010-03-10 20:15:23'),('4b97e1cb-74ec-40ca-96f3-198fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b97e10c-492c-43f3-8a8b-198ba509ff00',1,'2010-03-10 20:15:39','2010-03-10 20:15:39'),('4b97e1db-7d08-4329-a5be-198fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b97e12e-7eb8-432a-98fa-19aca509ff00',1,'2010-03-10 20:15:55','2010-03-10 20:15:55'),('4b97e1ee-bff8-4385-8a84-198fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b97e16a-0444-4c5c-9bd0-1943a509ff00',1,'2010-03-10 20:16:14','2010-03-10 20:16:14'),('4b97e1fb-6f28-4656-a5bc-198fa509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b97e1a5-21ec-475e-a013-198fa509ff00',1,'2010-03-10 20:16:27','2010-03-10 20:16:27'),('4b9857e5-fda8-4f99-a755-5202a509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b985797-4e3c-48a8-9faf-5201a509ff00',0,'2010-03-11 04:39:33','2010-03-11 04:41:23'),('4b9857f7-d730-49d1-8963-5202a509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b9857b9-66dc-4dbe-ae4a-5c7da509ff00',0,'2010-03-11 04:39:51','2010-03-11 04:41:35'),('4b994567-e814-436d-810a-6c90a509ff00','499ef45a-dc24-42b1-8d99-2f51a509ff00','4b994552-4640-4c95-a747-6c90a509ff00',0,'2010-03-11 21:32:55','2010-03-11 21:32:55'),('4c5863ce-8020-4e51-b810-0545a509ff00','499ef455-acf4-469e-991b-2f51a509ff00','4c5863ae-3984-48e3-adde-0544a509ff00',1,'2010-08-03 20:45:34','2010-08-03 20:45:34');
 /*!40000 ALTER TABLE `group_rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,16 +405,16 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `groups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groups` (
   `id` char(36) NOT NULL,
   `name` varchar(127) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `groups`
@@ -431,19 +431,19 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `invoices`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoices` (
-  `id` int(10) NOT NULL auto_increment,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
   `billing_plan_id` char(36) NOT NULL,
-  `start_date` datetime default NULL,
-  `end_date` datetime default NULL,
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `invoices`
@@ -460,21 +460,21 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `iptable_rules`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `iptable_rules` (
   `id` char(36) NOT NULL,
   `profile_id` char(36) NOT NULL,
-  `priority` int(3) NOT NULL default '100',
-  `action` enum('allow','block') NOT NULL default 'allow',
+  `priority` int(3) NOT NULL DEFAULT '100',
+  `action` enum('allow','block') NOT NULL DEFAULT 'allow',
   `destination` varchar(100) NOT NULL,
   `protocol` varchar(10) NOT NULL,
   `port` int(7) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `iptable_rules`
@@ -490,17 +490,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `languages`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `languages` (
   `id` char(36) NOT NULL,
   `name` varchar(100) NOT NULL,
   `iso_name` varchar(50) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `languages`
@@ -508,7 +508,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES ('4a80e849-5300-46b5-9b64-4ba1a509ff00','English','en','2009-08-11 05:40:57','2009-08-11 05:40:57'),('4a80e867-24d4-4824-8270-3e74a509ff00','Afrikaans','af_ZA','2009-08-11 05:41:27','2009-08-11 05:41:27'),('4a84671d-ced8-4417-a836-18a9a509ff00','French','fr_FR','2009-08-13 21:18:53','2009-08-13 21:18:53'),('4ad2fec7-17b8-4aec-aa88-06e0a509ff00','Malay','ms_MY','2009-10-12 12:02:47','2009-10-12 12:02:47'),('4ad31379-b198-4cf8-88af-54b5a509ff00','Indonesian','id_ID','2009-10-12 13:31:05','2009-10-12 13:31:05'),('4ae8063f-c08c-42f4-9adc-19eba509ff00','Nederlands','nl_NL','2009-10-28 10:52:15','2009-10-28 10:52:15'),('4b374060-7c78-4fcf-935e-2322a509ff00','Spanish','es_ES','2009-12-27 13:09:20','2009-12-27 13:09:20');
+INSERT INTO `languages` VALUES ('4a80e849-5300-46b5-9b64-4ba1a509ff00','English','en','2009-08-11 05:40:57','2009-08-11 05:40:57'),('4a80e867-24d4-4824-8270-3e74a509ff00','Afrikaans','af_ZA','2009-08-11 05:41:27','2009-08-11 05:41:27'),('4a84671d-ced8-4417-a836-18a9a509ff00','French','fr_FR','2009-08-13 21:18:53','2009-08-13 21:18:53'),('4ad2fec7-17b8-4aec-aa88-06e0a509ff00','Malay','ms_MY','2009-10-12 12:02:47','2009-10-12 12:02:47'),('4ad31379-b198-4cf8-88af-54b5a509ff00','Indonesian','id_ID','2009-10-12 13:31:05','2009-10-12 13:31:05'),('4ae8063f-c08c-42f4-9adc-19eba509ff00','Nederlands','nl_NL','2009-10-28 10:52:15','2009-10-28 10:52:15'),('4b374060-7c78-4fcf-935e-2322a509ff00','Spanish','es_ES','2009-12-27 13:09:20','2009-12-27 13:09:20'),('4bcffb4b-b3c8-45eb-a578-6f52a509ff00','Thai','th_TH','2010-04-22 09:31:23','2010-04-22 09:31:23'),('4c99e65a-d014-4dd1-984d-1bb3a509ff00','Portugues','pt_BR','2010-09-22 13:19:54','2010-09-22 13:19:54'),('4e3eca1a-8af0-4791-89c8-3ddaa509ff00','German','de_DE','2011-08-07 19:23:38','2011-08-07 19:23:38'),('4e47d171-6a24-4ab7-b491-6582a509ff00','Danish','da_DK','2011-08-14 15:45:21','2011-08-14 15:45:21');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -517,18 +517,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `maps`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `maps` (
   `id` char(36) NOT NULL,
   `name` varchar(40) NOT NULL,
   `value` varchar(40) NOT NULL,
-  `user_id` char(36) NOT NULL default '',
+  `user_id` char(36) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `maps`
@@ -545,17 +545,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `na_realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `na_realms` (
   `id` char(36) NOT NULL,
   `na_id` char(36) NOT NULL,
   `realm_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `na_realms`
@@ -571,17 +571,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `na_states`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `na_states` (
   `id` char(36) NOT NULL,
   `na_id` char(36) NOT NULL,
-  `state` tinyint(1) NOT NULL default '0',
+  `state` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `na_states`
@@ -598,28 +598,28 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `nas`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nas` (
-  `id` int(10) NOT NULL auto_increment,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `nasname` varchar(128) NOT NULL,
-  `shortname` varchar(32) default NULL,
-  `type` varchar(30) default 'other',
-  `ports` int(5) default NULL,
-  `secret` varchar(60) NOT NULL default 'secret',
-  `community` varchar(50) default NULL,
-  `description` varchar(200) default 'RADIUS Client',
-  `monitor` tinyint(1) NOT NULL default '1',
+  `shortname` varchar(32) DEFAULT NULL,
+  `type` varchar(30) DEFAULT 'other',
+  `ports` int(5) DEFAULT NULL,
+  `secret` varchar(60) NOT NULL DEFAULT 'secret',
+  `community` varchar(50) DEFAULT NULL,
+  `description` varchar(200) DEFAULT 'RADIUS Client',
+  `monitor` tinyint(1) NOT NULL DEFAULT '1',
   `user_id` char(36) NOT NULL,
-  `lat` double default NULL,
-  `lon` double default NULL,
-  `photo_file_name` varchar(128) NOT NULL default 'logo.jpg',
+  `lat` double DEFAULT NULL,
+  `lon` double DEFAULT NULL,
+  `photo_file_name` varchar(128) NOT NULL DEFAULT 'logo.jpg',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `nasname` (`nasname`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `nas`
@@ -632,25 +632,52 @@ INSERT INTO `nas` VALUES (1,'127.0.0.1','localhost','CoovaChilli',3799,'testing1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `notes`
+--
+
+DROP TABLE IF EXISTS `notes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notes` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL DEFAULT '',
+  `section_id` char(36) NOT NULL DEFAULT '',
+  `value` varchar(500) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notes`
+--
+
+LOCK TABLES `notes` WRITE;
+/*!40000 ALTER TABLE `notes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `notification_details`
 --
 
 DROP TABLE IF EXISTS `notification_details`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notification_details` (
-  `id` int(10) NOT NULL auto_increment,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
-  `type` enum('disabled','email','sms') default 'disabled',
+  `type` enum('disabled','email','sms') DEFAULT 'disabled',
   `address1` varchar(128) NOT NULL,
   `address2` varchar(128) NOT NULL,
-  `start` int(5) default '80',
-  `increment` int(5) default '10',
+  `start` int(5) DEFAULT '80',
+  `increment` int(5) DEFAULT '10',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `notification_details`
@@ -667,17 +694,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `notifications`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notifications` (
-  `id` int(10) NOT NULL auto_increment,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
-  `value` int(5) default NULL,
+  `value` int(5) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `notifications`
@@ -693,17 +720,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `payments`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payments` (
-  `id` int(10) NOT NULL auto_increment,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
-  `amount` decimal(9,2) NOT NULL default '0.00',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `amount` decimal(9,2) NOT NULL DEFAULT '0.00',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `payments`
@@ -720,17 +747,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `profile_realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `profile_realms` (
   `id` char(36) NOT NULL,
   `profile_id` char(36) NOT NULL,
   `realm_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `profile_realms`
@@ -746,18 +773,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `profiles`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `profiles` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `template_id` varchar(128) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `template_id` varchar(128) NOT NULL DEFAULT '',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `profiles`
@@ -774,36 +801,36 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radacct`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radacct` (
-  `radacctid` bigint(21) NOT NULL auto_increment,
-  `acctsessionid` varchar(64) NOT NULL default '',
-  `acctuniqueid` varchar(32) NOT NULL default '',
-  `username` varchar(64) NOT NULL default '',
-  `groupname` varchar(64) NOT NULL default '',
-  `realm` varchar(64) default '',
-  `nasipaddress` varchar(15) NOT NULL default '',
-  `nasportid` varchar(15) default NULL,
-  `nasporttype` varchar(32) default NULL,
-  `acctstarttime` datetime default NULL,
-  `acctstoptime` datetime default NULL,
-  `acctsessiontime` int(12) default NULL,
-  `acctauthentic` varchar(32) default NULL,
-  `connectinfo_start` varchar(50) default NULL,
-  `connectinfo_stop` varchar(50) default NULL,
-  `acctinputoctets` bigint(20) default NULL,
-  `acctoutputoctets` bigint(20) default NULL,
-  `calledstationid` varchar(50) NOT NULL default '',
-  `callingstationid` varchar(50) NOT NULL default '',
-  `acctterminatecause` varchar(32) NOT NULL default '',
-  `servicetype` varchar(32) default NULL,
-  `framedprotocol` varchar(32) default NULL,
-  `framedipaddress` varchar(15) NOT NULL default '',
-  `acctstartdelay` int(12) default NULL,
-  `acctstopdelay` int(12) default NULL,
-  `xascendsessionsvrkey` varchar(10) default NULL,
-  PRIMARY KEY  (`radacctid`),
+  `radacctid` bigint(21) NOT NULL AUTO_INCREMENT,
+  `acctsessionid` varchar(64) NOT NULL DEFAULT '',
+  `acctuniqueid` varchar(32) NOT NULL DEFAULT '',
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `groupname` varchar(64) NOT NULL DEFAULT '',
+  `realm` varchar(64) DEFAULT '',
+  `nasipaddress` varchar(15) NOT NULL DEFAULT '',
+  `nasportid` varchar(15) DEFAULT NULL,
+  `nasporttype` varchar(32) DEFAULT NULL,
+  `acctstarttime` datetime DEFAULT NULL,
+  `acctstoptime` datetime DEFAULT NULL,
+  `acctsessiontime` int(12) DEFAULT NULL,
+  `acctauthentic` varchar(32) DEFAULT NULL,
+  `connectinfo_start` varchar(50) DEFAULT NULL,
+  `connectinfo_stop` varchar(50) DEFAULT NULL,
+  `acctinputoctets` bigint(20) DEFAULT NULL,
+  `acctoutputoctets` bigint(20) DEFAULT NULL,
+  `calledstationid` varchar(50) NOT NULL DEFAULT '',
+  `callingstationid` varchar(50) NOT NULL DEFAULT '',
+  `acctterminatecause` varchar(32) NOT NULL DEFAULT '',
+  `servicetype` varchar(32) DEFAULT NULL,
+  `framedprotocol` varchar(32) DEFAULT NULL,
+  `framedipaddress` varchar(15) NOT NULL DEFAULT '',
+  `acctstartdelay` int(12) DEFAULT NULL,
+  `acctstopdelay` int(12) DEFAULT NULL,
+  `xascendsessionsvrkey` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`radacctid`),
   KEY `username` (`username`),
   KEY `framedipaddress` (`framedipaddress`),
   KEY `acctsessionid` (`acctsessionid`),
@@ -813,7 +840,7 @@ CREATE TABLE `radacct` (
   KEY `acctstoptime` (`acctstoptime`),
   KEY `nasipaddress` (`nasipaddress`)
 ) ENGINE=MyISAM AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radacct`
@@ -830,18 +857,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radcheck`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radcheck` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `username` varchar(64) NOT NULL default '',
-  `attribute` varchar(32) NOT NULL default '',
-  `op` char(2) NOT NULL default '==',
-  `value` varchar(253) NOT NULL default '',
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `attribute` varchar(32) NOT NULL DEFAULT '',
+  `op` char(2) NOT NULL DEFAULT '==',
+  `value` varchar(253) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   KEY `username` (`username`(32))
 ) ENGINE=MyISAM AUTO_INCREMENT=15029 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radcheck`
@@ -858,18 +885,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radgroupcheck`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radgroupcheck` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `groupname` varchar(64) NOT NULL default '',
-  `attribute` varchar(32) NOT NULL default '',
-  `op` char(2) NOT NULL default '==',
-  `value` varchar(253) NOT NULL default '',
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `groupname` varchar(64) NOT NULL DEFAULT '',
+  `attribute` varchar(32) NOT NULL DEFAULT '',
+  `op` char(2) NOT NULL DEFAULT '==',
+  `value` varchar(253) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   KEY `groupname` (`groupname`(32))
 ) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radgroupcheck`
@@ -886,18 +913,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radgroupreply`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radgroupreply` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `groupname` varchar(64) NOT NULL default '',
-  `attribute` varchar(32) NOT NULL default '',
-  `op` char(2) NOT NULL default '=',
-  `value` varchar(253) NOT NULL default '',
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `groupname` varchar(64) NOT NULL DEFAULT '',
+  `attribute` varchar(32) NOT NULL DEFAULT '',
+  `op` char(2) NOT NULL DEFAULT '=',
+  `value` varchar(253) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   KEY `groupname` (`groupname`(32))
 ) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radgroupreply`
@@ -914,17 +941,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radpostauth`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radpostauth` (
-  `id` int(11) NOT NULL auto_increment,
-  `username` varchar(64) NOT NULL default '',
-  `pass` varchar(64) NOT NULL default '',
-  `reply` varchar(32) NOT NULL default '',
-  `authdate` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `pass` varchar(64) NOT NULL DEFAULT '',
+  `reply` varchar(32) NOT NULL DEFAULT '',
+  `authdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radpostauth`
@@ -940,18 +967,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radreply`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radreply` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `username` varchar(64) NOT NULL default '',
-  `attribute` varchar(32) NOT NULL default '',
-  `op` char(2) NOT NULL default '=',
-  `value` varchar(253) NOT NULL default '',
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `attribute` varchar(32) NOT NULL DEFAULT '',
+  `op` char(2) NOT NULL DEFAULT '=',
+  `value` varchar(253) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   KEY `username` (`username`(32))
 ) ENGINE=MyISAM AUTO_INCREMENT=1127 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radreply`
@@ -968,15 +995,15 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `radusergroup`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radusergroup` (
-  `username` varchar(64) NOT NULL default '',
-  `groupname` varchar(64) NOT NULL default '',
-  `priority` int(11) NOT NULL default '1',
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `groupname` varchar(64) NOT NULL DEFAULT '',
+  `priority` int(11) NOT NULL DEFAULT '1',
   KEY `username` (`username`(32))
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `radusergroup`
@@ -993,25 +1020,25 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realms` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `append_string_to_user` varchar(128) NOT NULL default '',
-  `icon_file_name` varchar(128) NOT NULL default 'logo.jpg',
-  `phone` varchar(14) NOT NULL default '',
-  `fax` varchar(14) NOT NULL default '',
-  `cell` varchar(14) NOT NULL default '',
-  `email` varchar(128) NOT NULL default '',
-  `url` varchar(128) NOT NULL default '',
-  `address` varchar(250) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `append_string_to_user` varchar(128) NOT NULL DEFAULT '',
+  `icon_file_name` varchar(128) NOT NULL DEFAULT 'logo.jpg',
+  `phone` varchar(14) NOT NULL DEFAULT '',
+  `fax` varchar(14) NOT NULL DEFAULT '',
+  `cell` varchar(14) NOT NULL DEFAULT '',
+  `email` varchar(128) NOT NULL DEFAULT '',
+  `url` varchar(128) NOT NULL DEFAULT '',
+  `address` varchar(250) NOT NULL DEFAULT '',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `realms`
@@ -1028,17 +1055,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `right_categories`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `right_categories` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `right_categories`
@@ -1046,7 +1073,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `right_categories` WRITE;
 /*!40000 ALTER TABLE `right_categories` DISABLE KEYS */;
-INSERT INTO `right_categories` VALUES ('499ef4e3-ff68-4f25-ac59-190ea509ff00','Realms','2009-02-20 20:22:27','2009-02-20 20:22:27'),('49ab9486-879c-4e7b-bffc-19daa509ff00','Vouchers','2009-03-02 10:10:46','2009-03-02 10:10:46'),('49ae4e89-6518-4ccb-8b81-7146a509ff00','Permanent Users','2009-03-04 11:48:57','2009-05-23 16:20:18'),('49ba51de-e808-423f-a3f5-1609a509ff00','Profiles','2009-03-13 14:30:22','2009-03-13 14:30:22'),('49e1d707-154c-4181-8026-6543a509ff00','Activity','2009-04-12 13:56:55','2009-04-12 13:56:55'),('49e1dfb7-9d4c-4eae-b494-75eba509ff00','NAS Devices','2009-04-12 14:33:59','2009-04-12 14:33:59'),('4a6187d2-264c-412e-9d5f-4298a509ff00','Accounting','2009-07-18 10:29:06','2009-07-18 10:29:06'),('4b29d624-39d0-4a76-a5b4-4d55a509ff00','Internet Credits','2009-12-17 08:56:36','2009-12-17 08:56:36');
+INSERT INTO `right_categories` VALUES ('499ef4e3-ff68-4f25-ac59-190ea509ff00','Realms','2009-02-20 20:22:27','2009-02-20 20:22:27'),('49ab9486-879c-4e7b-bffc-19daa509ff00','Vouchers','2009-03-02 10:10:46','2009-03-02 10:10:46'),('49ae4e89-6518-4ccb-8b81-7146a509ff00','Permanent Users','2009-03-04 11:48:57','2009-05-23 16:20:18'),('49ba51de-e808-423f-a3f5-1609a509ff00','Profiles','2009-03-13 14:30:22','2009-03-13 14:30:22'),('49e1d707-154c-4181-8026-6543a509ff00','Activity','2009-04-12 13:56:55','2009-04-12 13:56:55'),('49e1dfb7-9d4c-4eae-b494-75eba509ff00','NAS Devices','2009-04-12 14:33:59','2009-04-12 14:33:59'),('4a6187d2-264c-412e-9d5f-4298a509ff00','Accounting','2009-07-18 10:29:06','2009-07-18 10:29:06'),('4b29d624-39d0-4a76-a5b4-4d55a509ff00','Internet Credits','2009-12-17 08:56:36','2009-12-17 08:56:36'),('4b91e5b7-2d80-4e9b-bde6-7047a509ff00','User Portal Tabs','2010-03-06 07:18:47','2010-03-06 07:18:47'),('4b969f70-2ebc-4cfc-b30f-3078a509ff00','User Portal -> User Detail','2010-03-09 21:20:16','2010-03-09 21:20:16'),('4b97e031-6e68-4a5b-84ff-51f7a509ff00','User Portal -> Notification','2010-03-10 20:08:49','2010-03-10 20:08:49'),('4b985731-2f68-41c3-bfe8-1943a509ff00','User Portal -> Usage','2010-03-11 04:36:33','2010-03-11 04:36:33');
 /*!40000 ALTER TABLE `right_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1055,17 +1082,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `right_groups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `right_groups` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `right_groups`
@@ -1081,19 +1108,19 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `rights`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rights` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `description` varchar(128) NOT NULL default '',
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `description` varchar(128) NOT NULL DEFAULT '',
   `right_category_id` char(36) NOT NULL,
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `rights`
@@ -1101,7 +1128,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `rights` WRITE;
 /*!40000 ALTER TABLE `rights` DISABLE KEYS */;
-INSERT INTO `rights` VALUES ('499ef500-c76c-4897-9bde-190da509ff00','realms/json_index','List Realms','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-02-20 20:22:56','2009-02-27 15:03:05'),('49ab942c-f9bc-46ad-b119-19dea509ff00','realms/json_add','Add Realm','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-02 10:09:16','2009-03-02 10:09:16'),('49ab946c-78cc-4b3f-ad02-2755a509ff00','vouchers/json_index','List Vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-02 10:10:20','2009-03-02 10:11:02'),('49ae2bc4-ccd8-4660-81af-2ce7a509ff00','users/json_ap_index','List Users - Access Poroviders','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-04 09:20:36','2009-03-04 09:20:36'),('49ae4e7f-73b8-46c7-864c-7146a509ff00','users/json_ap_add','Add Access Poviders','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-03-04 11:48:47','2009-03-04 11:49:07'),('49ba51f9-26a0-4365-bf83-6ed1a509ff00','templates/json_index','List available templates (for grid)','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:30:49','2009-03-16 15:04:21'),('49ba5218-ddbc-47eb-8711-661ea509ff00','templates/json_index_list','List availabe templates (for select)','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:31:20','2009-03-16 14:54:08'),('49ba522f-0ff8-4ee3-b044-1854a509ff00','templates/json_add','Add templates','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:31:43','2009-03-16 14:54:16'),('49ba5245-2ba4-49d9-b806-1854a509ff00','templates/json_del','Delete templates','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:05','2009-03-16 14:54:28'),('49ba525b-c0ec-43ab-a149-6edea509ff00','templates/json_edit','View template and edit it','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:27','2009-03-17 11:09:11'),('49ba527b-1f3c-4490-ab05-6edea509ff00','templates/json_attr_add','Add attribute to template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:59','2009-03-16 14:55:00'),('49ba5293-ab1c-420e-a5d3-6edea509ff00','templates/json_attr_edit','Edit attribute of template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:33:23','2009-03-16 14:55:07'),('49ba52b6-01b8-4905-ac5d-66b6a509ff00','templates/json_attr_delete','Delete attribute from template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:33:58','2009-03-16 14:55:14'),('49be4003-6570-4746-a8d3-3926a509ff00','realms/json_index_list','Form Controll Select [All AP\'s Need This]','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-16 14:03:15','2009-03-16 14:03:15'),('49bf5fe6-b858-42e6-b6f9-51e1a509ff00','profiles/json_index','List available profiles (for grid) ','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:31:34','2009-03-17 10:31:34'),('49bf60a9-1c58-49f3-83c3-3491a509ff00','profiles/json_add','Add profiles','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:34:49','2009-03-17 10:34:49'),('49bf6239-a734-4082-a33b-51e2a509ff00','profiles/json_del','Delete profiles','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:41:29','2009-03-17 10:41:29'),('49bf66f9-e324-404f-a9f0-3a21a509ff00','profiles/json_attribute_delete','Delete profile attributes','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 11:01:45','2009-03-17 11:01:45'),('49bf68a7-60d4-41e8-b2bb-2073a509ff00','profiles/json_edit','View profile and edit it','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 11:08:55','2009-03-17 11:17:30'),('49cfb442-d66c-4861-aeed-150ea509ff00','vouchers/json_change_profile','Change a voucher\'s profile','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:47:46','2009-03-29 19:48:53'),('49cfb40a-1144-42de-947d-171fa509ff00','vouchers/json_add_batch','Add a voucher batch','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:46:50','2009-03-29 20:45:21'),('49bf7d31-f050-42ae-b2fe-339ba509ff00','vouchers/json_add','Create Vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 12:36:33','2009-03-17 12:36:33'),('49bf7d4d-5990-46c6-b22a-3491a509ff00','vouchers/json_del','Delete vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 12:37:01','2009-03-17 12:37:01'),('49bfafd8-fcb4-4f9b-85c8-7acca509ff00','batches/json_index','List available batches (for grid) ','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 16:12:40','2009-03-17 16:12:40'),('49c10118-d8e0-4483-a2fd-69fba509ff00','vouchers/only_view_own','only see vouchers created self','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-18 16:11:36','2009-03-18 16:11:36'),('49cfb1ab-6bf0-4bc2-9f5a-21e2a509ff00','vouchers/pdf','Generate PDF files from selected vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:36:43','2009-03-29 19:36:43'),('49cfb1d1-39ec-4b14-908e-21f0a509ff00','vouchers/csv','Export selected vouchers as CSV','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:37:21','2009-03-29 19:37:21'),('49cfb4c0-8418-46c2-9d9b-21e2a509ff00','vouchers/json_add_private','Add extra private attributes to voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:49:52','2009-03-29 19:49:52'),('49cfb4e2-fa7c-4103-a509-21f0a509ff00','vouchers/json_edit_private','Edit private attributes of voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:50:26','2009-03-29 19:50:26'),('49cfb500-7d84-4d51-adac-21a0a509ff00','vouchers/json_del_private','Delete private attributes of voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:50:56','2009-03-29 19:50:56'),('49cfb5ce-01bc-4559-9690-5642a509ff00','batches/pdf','Generate PDF files from selected batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:54:22','2009-03-29 19:54:22'),('49cfb5e5-ce94-4442-a3e3-6b04a509ff00','batches/csv','Export selected batches as CSV','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:54:45','2009-03-29 19:54:45'),('49cfb616-0560-477f-b07d-563fa509ff00','batches/json_del','Delete voucher batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:55:34','2009-03-29 19:55:34'),('49cfb636-b1c4-4f72-b360-171fa509ff00','batches/json_view','View voucher batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:56:06','2009-03-29 19:56:06'),('49e1d876-9718-4ba0-816f-75eba509ff00','radaccts/json_show_active','Show active users','49e1d707-154c-4181-8026-6543a509ff00','2009-04-12 14:03:02','2009-04-12 14:03:02'),('49e1d8aa-152c-40c9-8571-35f4a509ff00','radaccts/json_kick_users_off','Terminate connected users','49e1d707-154c-4181-8026-6543a509ff00','2009-04-12 14:03:54','2009-04-12 14:03:54'),('49e29ed9-d918-4650-ae41-6541a509ff00','nas/json_add','Add NAS devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:09:29','2009-04-13 04:09:57'),('49e29f0f-70c0-4c73-bd2b-6541a509ff00','nas/json_del','Remove NAS devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:10:23','2009-04-13 04:10:23'),('49e29f4c-2e3c-4e2e-ae52-6541a509ff00','nas/json_add_vpn','Add VPN connected NAS device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:11:24','2009-04-13 04:11:24'),('49e29f69-ecc8-4bc1-92d8-6541a509ff00','nas/json_edit','Edit NAS Device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:11:53','2009-04-13 04:11:53'),('49e29f90-f0b8-411e-ad74-6541a509ff00','nas/json_edit_optional','Edit optional attributes of NAS device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:12:32','2009-04-13 04:12:32'),('4a18066d-d360-402c-8164-2f8aa509ff00','permanent_users/json_index','List permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-23 16:21:33','2009-05-23 16:21:33'),('4a18cf79-fa60-44a3-a555-1995a509ff00','permanent_users/json_add','Add permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:39:21','2009-05-24 06:40:02'),('4a18cff3-822c-4b78-bca9-2f88a509ff00','permanent_users/json_del','Remove pernanent users devices','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:41:23','2009-05-24 06:41:23'),('4a18d071-d67c-4079-8d28-1993a509ff00','permanent_users/json_edit','Edit permanent user\'s detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:43:29','2009-05-24 06:43:29'),('4a18d25f-9cfc-427f-b04f-1992a509ff00','permanent_users/csv','CSV export of user detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:51:43','2009-05-24 06:51:43'),('4a18d4e9-ada8-4ef5-b3ed-3239a509ff00','permanent_users/json_test_auth','Test authentication - permanent user','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:02:33','2009-05-24 07:02:33'),('4a18d595-e5c4-45cc-9e90-1994a509ff00','permanent_users/json_send_message','Send message to permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:05:25','2009-05-24 07:05:25'),('4a18d75c-85e8-4bce-80c6-1994a509ff00','permanent_users/json_disable','Activate or disable permanet user\'s accounts','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:13:00','2009-05-24 07:13:00'),('4a18ee98-f6d4-4d93-bcaa-26f2a509ff00','permanent_users/json_password','Change permanent user\'s password','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 08:52:08','2009-05-24 08:52:08'),('4a18f0ba-ff80-40d6-818a-12b1a509ff00','permanent_users/json_notify_save','Change notification detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:01:14','2009-05-24 09:01:14'),('4a18f26d-49dc-4553-bf68-26f2a509ff00','extras/json_time_add','Load user\'s account with extra time','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:08:29','2009-05-24 09:08:29'),('4a18f285-3980-4359-acb9-26f4a509ff00','extras/json_data_add','Load user\'s account with extra data','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:08:53','2009-05-24 09:08:53'),('4a18f395-97a8-4d3a-b761-12a4a509ff00','permanent_users/json_change_profile','Change profile','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:13:25','2009-05-24 09:13:25'),('4a18f3cf-60f8-4cec-8a09-26f1a509ff00','permanent_users/json_add_private','Add private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:14:23','2009-05-24 09:14:23'),('4a18f3f7-0584-40d3-b170-1241a509ff00','permanent_users/json_edit_private','Edit private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:15:03','2009-05-24 09:17:31'),('4a18f415-3eb0-4bb6-85c8-1291a509ff00','permanent_users/json_del_private','Delete private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:15:33','2009-05-24 09:17:17'),('4a1932a9-e81c-4058-bb37-129aa509ff00','permanent_users/only_view_own','Only see users created self','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 13:42:33','2009-05-24 13:42:33'),('4a193830-1b54-4b9b-8858-542ea509ff00','permanent_users/json_del_activity','Delete activity entries','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 14:06:08','2009-05-24 14:06:08'),('4a617c04-a940-4f3e-a020-19c9a509ff00','extras/json_cap_del','Remove Extra Data/Time for User\'s account','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 09:38:44','2009-07-18 09:58:30'),('4a618ae9-3acc-44d5-aecf-4324a509ff00','billing_plans/json_add','Add Billing Plans','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:42:17','2009-07-18 10:42:17'),('4a618b0e-a9bc-45c5-bb2e-431aa509ff00','billing_plans/json_edit','Edit Billing Plan','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:42:54','2009-07-18 10:42:54'),('4a618b3e-76b8-4fff-b772-19c7a509ff00','billing_plans/json_edit_promo','Edit Billing Plan - Promotion part','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:43:42','2009-07-18 10:43:42'),('4a618b63-c3ac-4140-a4c6-19c9a509ff00','billing_plans/json_edit_extra','Edit Billing Plan - Extra Caps part','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:44:19','2009-07-18 10:44:19'),('4a618b80-22c4-498a-ac5e-0a07a509ff00','billing_plans/json_del','Remove Billing Plan','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:44:48','2009-07-18 10:44:48'),('4a619486-6aa8-4511-9b27-19caa509ff00','accnts/json_index','View account detail','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:23:18','2009-07-18 11:23:18'),('4a6194ab-c9cc-45b4-976a-4298a509ff00','accnts/json_add','Create new invoices','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:23:55','2009-07-18 11:23:55'),('4a6194db-920c-4e1b-9470-4324a509ff00','accnts/json_del','Delete invoices (main page)','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:24:43','2009-07-18 11:24:43'),('4a619505-3378-4b35-b642-19c7a509ff00','accnts/json_payment_add','Add payments','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:25:25','2009-07-18 11:25:25'),('4a61952c-5220-41a0-a2e7-19c9a509ff00','accnts/json_del_payment','Delete payments','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:26:04','2009-07-18 11:26:04'),('4a61954f-e000-402b-9018-0a07a509ff00','accnts/json_del_invoice','Delete invoices (detail page)','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:26:39','2009-07-18 11:26:39'),('4a62177d-84a8-40d4-94bf-09fda509ff00','extra_services/json_add','Add extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:42:05','2009-07-18 20:42:05'),('4a6217a2-2608-484a-be64-0a07a509ff00','extra_services/json_del','Delete extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:42:42','2009-07-18 20:42:42'),('4a6217b8-fed8-4ac4-ba3e-4298a509ff00','extra_services/json_edit','Edit extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:43:04','2009-07-18 20:43:04'),('4a6f7860-42ec-4f61-b946-60b5a509ff00','nas/json_index','List NAS Devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-07-29 00:14:56','2009-07-29 00:14:56'),('4b29d6aa-9afc-4568-a64a-1a02a509ff00','credits/json_index','List Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 08:58:50','2009-12-17 09:05:09'),('4b29d6cc-41c4-4341-b71d-1a04a509ff00','credits/json_add','Create Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 08:59:24','2009-12-17 09:05:22'),('4b29d71b-eb28-47ca-9bb9-4cb0a509ff00','credits/json_attach','Assign  Internet Credit to Prepaid users ','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:00:43','2009-12-17 09:04:55'),('4b29d73e-a938-4d73-8641-593ca509ff00','credits/json_view','View Internet Credit','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:01:18','2009-12-17 09:04:40'),('4b29d77b-5c00-4862-a683-1a00a509ff00','credits/json_edit','Modify Internet Credit values','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:02:19','2009-12-17 09:02:19'),('4b29d797-9e5c-401b-bffa-1a01a509ff00','credits/json_del','Remove Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:02:47','2009-12-17 09:02:47'),('4b29d7f4-3600-41b5-a20d-4d55a509ff00','credits/only_view_own','Only see Internet Credits created self','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:04:20','2009-12-17 09:04:20'),('4b5de501-b0b4-4ee2-9b09-53e9a509ff00','realms/json_stats','Stats per Realm','499ef4e3-ff68-4f25-ac59-190ea509ff00','2010-01-25 20:37:53','2010-01-25 20:37:53');
+INSERT INTO `rights` VALUES ('499ef500-c76c-4897-9bde-190da509ff00','realms/json_index','List Realms','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-02-20 20:22:56','2009-02-27 15:03:05'),('49ab942c-f9bc-46ad-b119-19dea509ff00','realms/json_add','Add Realm','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-02 10:09:16','2009-03-02 10:09:16'),('49ab946c-78cc-4b3f-ad02-2755a509ff00','vouchers/json_index','List Vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-02 10:10:20','2009-03-02 10:11:02'),('49ae2bc4-ccd8-4660-81af-2ce7a509ff00','users/json_ap_index','List Users - Access Poroviders','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-04 09:20:36','2009-03-04 09:20:36'),('49ae4e7f-73b8-46c7-864c-7146a509ff00','users/json_ap_add','Add Access Poviders','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-03-04 11:48:47','2009-03-04 11:49:07'),('49ba51f9-26a0-4365-bf83-6ed1a509ff00','templates/json_index','List available templates (for grid)','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:30:49','2009-03-16 15:04:21'),('49ba5218-ddbc-47eb-8711-661ea509ff00','templates/json_index_list','List availabe templates (for select)','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:31:20','2009-03-16 14:54:08'),('49ba522f-0ff8-4ee3-b044-1854a509ff00','templates/json_add','Add templates','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:31:43','2009-03-16 14:54:16'),('49ba5245-2ba4-49d9-b806-1854a509ff00','templates/json_del','Delete templates','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:05','2009-03-16 14:54:28'),('49ba525b-c0ec-43ab-a149-6edea509ff00','templates/json_edit','View template and edit it','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:27','2009-03-17 11:09:11'),('49ba527b-1f3c-4490-ab05-6edea509ff00','templates/json_attr_add','Add attribute to template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:32:59','2009-03-16 14:55:00'),('49ba5293-ab1c-420e-a5d3-6edea509ff00','templates/json_attr_edit','Edit attribute of template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:33:23','2009-03-16 14:55:07'),('49ba52b6-01b8-4905-ac5d-66b6a509ff00','templates/json_attr_delete','Delete attribute from template','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-13 14:33:58','2009-03-16 14:55:14'),('49be4003-6570-4746-a8d3-3926a509ff00','realms/json_index_list','Form Controll Select [All AP\'s Need This]','499ef4e3-ff68-4f25-ac59-190ea509ff00','2009-03-16 14:03:15','2009-03-16 14:03:15'),('49bf5fe6-b858-42e6-b6f9-51e1a509ff00','profiles/json_index','List available profiles (for grid) ','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:31:34','2009-03-17 10:31:34'),('49bf60a9-1c58-49f3-83c3-3491a509ff00','profiles/json_add','Add profiles','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:34:49','2009-03-17 10:34:49'),('49bf6239-a734-4082-a33b-51e2a509ff00','profiles/json_del','Delete profiles','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 10:41:29','2009-03-17 10:41:29'),('49bf66f9-e324-404f-a9f0-3a21a509ff00','profiles/json_attribute_delete','Delete profile attributes','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 11:01:45','2009-03-17 11:01:45'),('49bf68a7-60d4-41e8-b2bb-2073a509ff00','profiles/json_edit','View profile and edit it','49ba51de-e808-423f-a3f5-1609a509ff00','2009-03-17 11:08:55','2009-03-17 11:17:30'),('49cfb442-d66c-4861-aeed-150ea509ff00','vouchers/json_change_profile','Change a voucher\'s profile','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:47:46','2009-03-29 19:48:53'),('49cfb40a-1144-42de-947d-171fa509ff00','vouchers/json_add_batch','Add a voucher batch','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:46:50','2009-03-29 20:45:21'),('49bf7d31-f050-42ae-b2fe-339ba509ff00','vouchers/json_add','Create Vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 12:36:33','2009-03-17 12:36:33'),('49bf7d4d-5990-46c6-b22a-3491a509ff00','vouchers/json_del','Delete vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 12:37:01','2009-03-17 12:37:01'),('49bfafd8-fcb4-4f9b-85c8-7acca509ff00','batches/json_index','List available batches (for grid) ','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-17 16:12:40','2009-03-17 16:12:40'),('49c10118-d8e0-4483-a2fd-69fba509ff00','vouchers/only_view_own','only see vouchers created self','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-18 16:11:36','2009-03-18 16:11:36'),('49cfb1ab-6bf0-4bc2-9f5a-21e2a509ff00','vouchers/pdf','Generate PDF files from selected vouchers','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:36:43','2009-03-29 19:36:43'),('49cfb1d1-39ec-4b14-908e-21f0a509ff00','vouchers/csv','Export selected vouchers as CSV','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:37:21','2009-03-29 19:37:21'),('49cfb4c0-8418-46c2-9d9b-21e2a509ff00','vouchers/json_add_private','Add extra private attributes to voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:49:52','2009-03-29 19:49:52'),('49cfb4e2-fa7c-4103-a509-21f0a509ff00','vouchers/json_edit_private','Edit private attributes of voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:50:26','2009-03-29 19:50:26'),('49cfb500-7d84-4d51-adac-21a0a509ff00','vouchers/json_del_private','Delete private attributes of voucher','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:50:56','2009-03-29 19:50:56'),('49cfb5ce-01bc-4559-9690-5642a509ff00','batches/pdf','Generate PDF files from selected batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:54:22','2009-03-29 19:54:22'),('49cfb5e5-ce94-4442-a3e3-6b04a509ff00','batches/csv','Export selected batches as CSV','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:54:45','2009-03-29 19:54:45'),('49cfb616-0560-477f-b07d-563fa509ff00','batches/json_del','Delete voucher batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:55:34','2009-03-29 19:55:34'),('49cfb636-b1c4-4f72-b360-171fa509ff00','batches/json_view','View voucher batches','49ab9486-879c-4e7b-bffc-19daa509ff00','2009-03-29 19:56:06','2009-03-29 19:56:06'),('49e1d876-9718-4ba0-816f-75eba509ff00','radaccts/json_show_active','Show active users','49e1d707-154c-4181-8026-6543a509ff00','2009-04-12 14:03:02','2009-04-12 14:03:02'),('49e1d8aa-152c-40c9-8571-35f4a509ff00','radaccts/json_kick_users_off','Terminate connected users','49e1d707-154c-4181-8026-6543a509ff00','2009-04-12 14:03:54','2009-04-12 14:03:54'),('49e29ed9-d918-4650-ae41-6541a509ff00','nas/json_add','Add NAS devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:09:29','2009-04-13 04:09:57'),('49e29f0f-70c0-4c73-bd2b-6541a509ff00','nas/json_del','Remove NAS devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:10:23','2009-04-13 04:10:23'),('49e29f4c-2e3c-4e2e-ae52-6541a509ff00','nas/json_add_vpn','Add VPN connected NAS device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:11:24','2009-04-13 04:11:24'),('49e29f69-ecc8-4bc1-92d8-6541a509ff00','nas/json_edit','Edit NAS Device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:11:53','2009-04-13 04:11:53'),('49e29f90-f0b8-411e-ad74-6541a509ff00','nas/json_edit_optional','Edit optional attributes of NAS device','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-04-13 04:12:32','2009-04-13 04:12:32'),('4a18066d-d360-402c-8164-2f8aa509ff00','permanent_users/json_index','List permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-23 16:21:33','2009-05-23 16:21:33'),('4a18cf79-fa60-44a3-a555-1995a509ff00','permanent_users/json_add','Add permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:39:21','2009-05-24 06:40:02'),('4a18cff3-822c-4b78-bca9-2f88a509ff00','permanent_users/json_del','Remove pernanent users devices','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:41:23','2009-05-24 06:41:23'),('4a18d071-d67c-4079-8d28-1993a509ff00','permanent_users/json_edit','Edit permanent user\'s detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:43:29','2009-05-24 06:43:29'),('4a18d25f-9cfc-427f-b04f-1992a509ff00','permanent_users/csv','CSV export of user detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 06:51:43','2009-05-24 06:51:43'),('4a18d4e9-ada8-4ef5-b3ed-3239a509ff00','permanent_users/json_test_auth','Test authentication - permanent user','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:02:33','2009-05-24 07:02:33'),('4a18d595-e5c4-45cc-9e90-1994a509ff00','permanent_users/json_send_message','Send message to permanent users','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:05:25','2009-05-24 07:05:25'),('4a18d75c-85e8-4bce-80c6-1994a509ff00','permanent_users/json_disable','Activate or disable permanet user\'s accounts','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 07:13:00','2009-05-24 07:13:00'),('4a18ee98-f6d4-4d93-bcaa-26f2a509ff00','permanent_users/json_password','Change permanent user\'s password','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 08:52:08','2009-05-24 08:52:08'),('4a18f0ba-ff80-40d6-818a-12b1a509ff00','permanent_users/json_notify_save','Change notification detail','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:01:14','2009-05-24 09:01:14'),('4a18f26d-49dc-4553-bf68-26f2a509ff00','extras/json_time_add','Load user\'s account with extra time','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:08:29','2009-05-24 09:08:29'),('4a18f285-3980-4359-acb9-26f4a509ff00','extras/json_data_add','Load user\'s account with extra data','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:08:53','2009-05-24 09:08:53'),('4a18f395-97a8-4d3a-b761-12a4a509ff00','permanent_users/json_change_profile','Change profile','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:13:25','2009-05-24 09:13:25'),('4a18f3cf-60f8-4cec-8a09-26f1a509ff00','permanent_users/json_add_private','Add private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:14:23','2009-05-24 09:14:23'),('4a18f3f7-0584-40d3-b170-1241a509ff00','permanent_users/json_edit_private','Edit private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:15:03','2009-05-24 09:17:31'),('4a18f415-3eb0-4bb6-85c8-1291a509ff00','permanent_users/json_del_private','Delete private attributes','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 09:15:33','2009-05-24 09:17:17'),('4a1932a9-e81c-4058-bb37-129aa509ff00','permanent_users/only_view_own','Only see users created self','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 13:42:33','2009-05-24 13:42:33'),('4a193830-1b54-4b9b-8858-542ea509ff00','permanent_users/json_del_activity','Delete activity entries','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-05-24 14:06:08','2009-05-24 14:06:08'),('4a617c04-a940-4f3e-a020-19c9a509ff00','extras/json_cap_del','Remove Extra Data/Time for User\'s account','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 09:38:44','2009-07-18 09:58:30'),('4a618ae9-3acc-44d5-aecf-4324a509ff00','billing_plans/json_add','Add Billing Plans','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:42:17','2009-07-18 10:42:17'),('4a618b0e-a9bc-45c5-bb2e-431aa509ff00','billing_plans/json_edit','Edit Billing Plan','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:42:54','2009-07-18 10:42:54'),('4a618b3e-76b8-4fff-b772-19c7a509ff00','billing_plans/json_edit_promo','Edit Billing Plan - Promotion part','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:43:42','2009-07-18 10:43:42'),('4a618b63-c3ac-4140-a4c6-19c9a509ff00','billing_plans/json_edit_extra','Edit Billing Plan - Extra Caps part','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:44:19','2009-07-18 10:44:19'),('4a618b80-22c4-498a-ac5e-0a07a509ff00','billing_plans/json_del','Remove Billing Plan','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 10:44:48','2009-07-18 10:44:48'),('4a619486-6aa8-4511-9b27-19caa509ff00','accnts/json_index','View account detail','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:23:18','2009-07-18 11:23:18'),('4a6194ab-c9cc-45b4-976a-4298a509ff00','accnts/json_add','Create new invoices','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:23:55','2009-07-18 11:23:55'),('4a6194db-920c-4e1b-9470-4324a509ff00','accnts/json_del','Delete invoices (main page)','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:24:43','2009-07-18 11:24:43'),('4a619505-3378-4b35-b642-19c7a509ff00','accnts/json_payment_add','Add payments','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:25:25','2009-07-18 11:25:25'),('4a61952c-5220-41a0-a2e7-19c9a509ff00','accnts/json_del_payment','Delete payments','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:26:04','2009-07-18 11:26:04'),('4a61954f-e000-402b-9018-0a07a509ff00','accnts/json_del_invoice','Delete invoices (detail page)','4a6187d2-264c-412e-9d5f-4298a509ff00','2009-07-18 11:26:39','2009-07-18 11:26:39'),('4a62177d-84a8-40d4-94bf-09fda509ff00','extra_services/json_add','Add extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:42:05','2009-07-18 20:42:05'),('4a6217a2-2608-484a-be64-0a07a509ff00','extra_services/json_del','Delete extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:42:42','2009-07-18 20:42:42'),('4a6217b8-fed8-4ac4-ba3e-4298a509ff00','extra_services/json_edit','Edit extra service','49ae4e89-6518-4ccb-8b81-7146a509ff00','2009-07-18 20:43:04','2009-07-18 20:43:04'),('4a6f7860-42ec-4f61-b946-60b5a509ff00','nas/json_index','List NAS Devices','49e1dfb7-9d4c-4eae-b494-75eba509ff00','2009-07-29 00:14:56','2009-07-29 00:14:56'),('4b29d6aa-9afc-4568-a64a-1a02a509ff00','credits/json_index','List Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 08:58:50','2009-12-17 09:05:09'),('4b29d6cc-41c4-4341-b71d-1a04a509ff00','credits/json_add','Create Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 08:59:24','2009-12-17 09:05:22'),('4b29d71b-eb28-47ca-9bb9-4cb0a509ff00','credits/json_attach','Assign  Internet Credit to Prepaid users ','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:00:43','2009-12-17 09:04:55'),('4b29d73e-a938-4d73-8641-593ca509ff00','credits/json_view','View Internet Credit','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:01:18','2009-12-17 09:04:40'),('4b29d77b-5c00-4862-a683-1a00a509ff00','credits/json_edit','Modify Internet Credit values','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:02:19','2009-12-17 09:02:19'),('4b29d797-9e5c-401b-bffa-1a01a509ff00','credits/json_del','Remove Internet Credits','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:02:47','2009-12-17 09:02:47'),('4b29d7f4-3600-41b5-a20d-4d55a509ff00','credits/only_view_own','Only see Internet Credits created self','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2009-12-17 09:04:20','2009-12-17 09:04:20'),('4b5de501-b0b4-4ee2-9b09-53e9a509ff00','realms/json_stats','Stats per Realm','499ef4e3-ff68-4f25-ac59-190ea509ff00','2010-01-25 20:37:53','2010-01-25 20:37:53'),('4b91e84b-64c4-48fb-b58b-13a4a509ff00','tab/show_profile_attributes','Show profile attributes tab','4b91e5b7-2d80-4e9b-bde6-7047a509ff00','2010-03-06 07:29:47','2010-03-06 07:29:47'),('4b91e887-eb50-4858-8dfb-1987a509ff00','tab/show_private_attributes','Show private attributes tab','4b91e5b7-2d80-4e9b-bde6-7047a509ff00','2010-03-06 07:30:47','2010-03-06 07:30:47'),('4b969fb2-29ec-4158-9c9d-1999a509ff00','update/cap_type','Change cap type','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:21:22','2010-03-09 21:21:22'),('4b969fd6-c014-4b70-bf18-199ca509ff00','update/name','Change Name','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:21:58','2010-03-09 21:21:58'),('4b969ff8-14c0-40ea-b198-308da509ff00','update/surname','Change Surname','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:22:32','2010-03-09 21:22:32'),('4b96a01a-d620-423a-95a2-308ea509ff00','update/address','Change Address','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:23:06','2010-03-09 21:23:06'),('4b96a036-2900-43e8-9c7b-3090a509ff00','update/phone','Change Phone','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:23:34','2010-03-09 21:23:34'),('4b96a052-fe60-4c9a-81cb-308fa509ff00','update/email','Change e-mail','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-09 21:24:02','2010-03-09 21:24:02'),('4b97e0ca-1594-4a40-8625-5202a509ff00','notify/type','Type of notification on usage','4b97e031-6e68-4a5b-84ff-51f7a509ff00','2010-03-10 20:11:22','2010-03-10 20:11:22'),('4b97e10c-492c-43f3-8a8b-198ba509ff00','notify/address1','Main notification address','4b97e031-6e68-4a5b-84ff-51f7a509ff00','2010-03-10 20:12:28','2010-03-10 20:12:28'),('4b97e12e-7eb8-432a-98fa-19aca509ff00','notify/address2','Secondary notification address','4b97e031-6e68-4a5b-84ff-51f7a509ff00','2010-03-10 20:13:02','2010-03-10 20:13:02'),('4b97e16a-0444-4c5c-9bd0-1943a509ff00','notify/start','Percentage to start notification','4b97e031-6e68-4a5b-84ff-51f7a509ff00','2010-03-10 20:14:02','2010-03-10 20:14:02'),('4b97e1a5-21ec-475e-a013-198fa509ff00','notify/increment','Every step after start percent to notify','4b97e031-6e68-4a5b-84ff-51f7a509ff00','2010-03-10 20:15:01','2010-03-10 20:15:01'),('4b985797-4e3c-48a8-9faf-5201a509ff00','usage/add_time','Add Extra time CAP','4b985731-2f68-41c3-bfe8-1943a509ff00','2010-03-11 04:38:15','2010-03-11 04:38:15'),('4b9857b9-66dc-4dbe-ae4a-5c7da509ff00','usage/add_data','Add Extra data CAP','4b985731-2f68-41c3-bfe8-1943a509ff00','2010-03-11 04:38:49','2010-03-11 04:38:49'),('4b994552-4640-4c95-a747-6c90a509ff00','update/profile','Change Profile for user','4b969f70-2ebc-4cfc-b30f-3078a509ff00','2010-03-11 21:32:34','2010-03-11 21:32:34'),('4c5863ae-3984-48e3-adde-0544a509ff00','permanent_users/json_prepaid_list','List Prepaid users','4b29d624-39d0-4a76-a5b4-4d55a509ff00','2010-08-03 20:45:02','2010-08-03 20:45:02');
 /*!40000 ALTER TABLE `rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1110,25 +1137,25 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `rogue_aps`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rogue_aps` (
   `id` char(36) NOT NULL,
   `na_id` char(36) NOT NULL,
-  `ssid` varchar(128) NOT NULL default '',
-  `mac` varchar(128) NOT NULL default '',
-  `mode` varchar(50) NOT NULL default '',
-  `channel` int(2) NOT NULL default '0',
-  `quality` varchar(20) NOT NULL default '',
-  `signal` varchar(5) NOT NULL default '',
-  `noise` varchar(5) NOT NULL default '',
-  `encryption` varchar(20) NOT NULL default '',
-  `state` enum('Known','Unknown') default 'Unknown',
+  `ssid` varchar(128) NOT NULL DEFAULT '',
+  `mac` varchar(128) NOT NULL DEFAULT '',
+  `mode` varchar(50) NOT NULL DEFAULT '',
+  `channel` int(2) NOT NULL DEFAULT '0',
+  `quality` varchar(20) NOT NULL DEFAULT '',
+  `signal` varchar(5) NOT NULL DEFAULT '',
+  `noise` varchar(5) NOT NULL DEFAULT '',
+  `encryption` varchar(20) NOT NULL DEFAULT '',
+  `state` enum('Known','Unknown') DEFAULT 'Unknown',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `rogue_aps`
@@ -1140,24 +1167,50 @@ LOCK TABLES `rogue_aps` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `sections`
+--
+
+DROP TABLE IF EXISTS `sections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sections` (
+  `id` char(36) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sections`
+--
+
+LOCK TABLES `sections` WRITE;
+/*!40000 ALTER TABLE `sections` DISABLE KEYS */;
+INSERT INTO `sections` VALUES ('4b920ee0-03c0-4abf-902a-13a4a509ff00','Technical','2010-03-06 10:14:24','2010-03-06 10:14:24'),('4b920ee9-fcf8-4f55-b0a3-13a4a509ff00','Accounting','2010-03-06 10:14:33','2010-03-06 10:14:33'),('4b920f0a-7264-4c95-a35f-1987a509ff00','General','2010-03-06 10:15:06','2010-03-06 10:15:06'),('4b974708-6cb4-48ef-af9e-3e83a509ff00','Self-service','2010-03-10 09:15:20','2010-03-10 09:15:20');
+/*!40000 ALTER TABLE `sections` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `template_attributes`
 --
 
 DROP TABLE IF EXISTS `template_attributes`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `template_attributes` (
   `id` char(36) NOT NULL,
   `template_id` char(36) NOT NULL,
   `attribute` varchar(128) NOT NULL,
-  `type` enum('Check','Reply') default 'Check',
+  `type` enum('Check','Reply') DEFAULT 'Check',
   `tooltip` varchar(200) NOT NULL,
   `unit` varchar(100) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `template_attributes`
@@ -1174,17 +1227,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `template_realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `template_realms` (
   `id` char(36) NOT NULL,
   `template_id` char(36) NOT NULL,
   `realm_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `template_realms`
@@ -1200,17 +1253,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `templates`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
   `id` char(36) NOT NULL,
-  `name` varchar(128) NOT NULL default '',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`),
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `templates`
@@ -1227,20 +1280,20 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `times`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `times` (
-  `id` bigint(21) NOT NULL auto_increment,
-  `acctsessionid` varchar(64) NOT NULL default '',
-  `username` varchar(64) NOT NULL default '',
-  `time` bigint(20) default NULL,
-  `data` bigint(20) default NULL,
-  `type` enum('Prime','Normal') default 'Normal',
+  `id` bigint(21) NOT NULL AUTO_INCREMENT,
+  `acctsessionid` varchar(64) NOT NULL DEFAULT '',
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `time` bigint(20) DEFAULT NULL,
+  `data` bigint(20) DEFAULT NULL,
+  `type` enum('Prime','Normal') DEFAULT 'Normal',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `times`
@@ -1256,17 +1309,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `user_realms`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_realms` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
   `realm_id` char(36) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_realms`
@@ -1283,18 +1336,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `user_rights`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_rights` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
   `right_id` char(36) NOT NULL,
-  `state` tinyint(1) NOT NULL default '0',
+  `state` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_rights`
@@ -1311,8 +1364,8 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `users`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` char(36) NOT NULL,
   `username` varchar(127) NOT NULL,
@@ -1322,21 +1375,21 @@ CREATE TABLE `users` (
   `address` varchar(200) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `active` tinyint(1) NOT NULL default '0',
-  `cap` enum('soft','hard','local','degrade','prepaid') default 'hard',
-  `data` varchar(50) NOT NULL default 'NA',
-  `time` varchar(50) NOT NULL default 'NA',
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `cap` enum('soft','hard','local','degrade','prepaid') DEFAULT 'hard',
+  `data` varchar(50) NOT NULL DEFAULT 'NA',
+  `time` varchar(50) NOT NULL DEFAULT 'NA',
   `group_id` char(36) NOT NULL,
-  `radcheck_id` int(11) NOT NULL default '0',
-  `profile_id` char(36) NOT NULL default '',
-  `user_id` char(36) NOT NULL default '',
-  `realm_id` char(36) NOT NULL default '',
-  `language_id` char(36) NOT NULL default '',
+  `radcheck_id` int(11) NOT NULL DEFAULT '0',
+  `profile_id` char(36) NOT NULL DEFAULT '',
+  `user_id` char(36) NOT NULL DEFAULT '',
+  `realm_id` char(36) NOT NULL DEFAULT '',
+  `language_id` char(36) NOT NULL DEFAULT '',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
@@ -1353,20 +1406,20 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `vouchers`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vouchers` (
   `id` char(36) NOT NULL,
-  `radcheck_id` int(11) NOT NULL default '0',
-  `profile_id` char(36) NOT NULL default '',
-  `user_id` char(36) NOT NULL default '',
-  `realm_id` char(36) NOT NULL default '',
-  `status` enum('new','used','depleted') default 'new',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `radcheck_id` int(11) NOT NULL DEFAULT '0',
+  `profile_id` char(36) NOT NULL DEFAULT '',
+  `user_id` char(36) NOT NULL DEFAULT '',
+  `realm_id` char(36) NOT NULL DEFAULT '',
+  `status` enum('new','used','depleted') DEFAULT 'new',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `vouchers`
@@ -1383,36 +1436,36 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `wireless_clients`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `wireless_clients` (
-  `id` int(11) NOT NULL auto_increment,
-  `na_id` int(11) NOT NULL default '0',
-  `mac` char(36) NOT NULL default '',
-  `ip` varchar(128) NOT NULL default '',
-  `user` varchar(128) NOT NULL default '',
-  `machine` varchar(128) NOT NULL default '',
-  `ssid` varchar(128) NOT NULL default '',
-  `aid` int(1) default NULL,
-  `chan` int(2) default NULL,
-  `rate` varchar(5) default NULL,
-  `rssi` int(3) default NULL,
-  `dbm` int(4) default NULL,
-  `idle` int(4) default NULL,
-  `txseq` int(4) default NULL,
-  `txfrag` int(4) default NULL,
-  `rxseq` int(4) default NULL,
-  `rxfrag` int(4) default NULL,
-  `caps` varchar(7) default NULL,
-  `erp` int(4) default NULL,
-  `state` int(2) default NULL,
-  `mode` varchar(7) default NULL,
-  `active` enum('yes','no') default 'no',
-  `created` datetime default NULL,
-  `modified` datetime default NULL,
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `na_id` int(11) NOT NULL DEFAULT '0',
+  `mac` char(36) NOT NULL DEFAULT '',
+  `ip` varchar(128) NOT NULL DEFAULT '',
+  `user` varchar(128) NOT NULL DEFAULT '',
+  `machine` varchar(128) NOT NULL DEFAULT '',
+  `ssid` varchar(128) NOT NULL DEFAULT '',
+  `aid` int(1) DEFAULT NULL,
+  `chan` int(2) DEFAULT NULL,
+  `rate` varchar(5) DEFAULT NULL,
+  `rssi` int(3) DEFAULT NULL,
+  `dbm` int(4) DEFAULT NULL,
+  `idle` int(4) DEFAULT NULL,
+  `txseq` int(4) DEFAULT NULL,
+  `txfrag` int(4) DEFAULT NULL,
+  `rxseq` int(4) DEFAULT NULL,
+  `rxfrag` int(4) DEFAULT NULL,
+  `caps` varchar(7) DEFAULT NULL,
+  `erp` int(4) DEFAULT NULL,
+  `state` int(2) DEFAULT NULL,
+  `mode` varchar(7) DEFAULT NULL,
+  `active` enum('yes','no') DEFAULT 'no',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `wireless_clients`
@@ -1432,4 +1485,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-02-16 14:26:57
+-- Dump completed on 2011-09-01 18:06:50
