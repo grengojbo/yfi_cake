@@ -106,5 +106,18 @@ class DevicesController extends AppController {
 
     }
 
+
+    function json_user_portal_actions(){
+
+        $this->layout = 'ajax';
+
+        $json_return['items']             = $this->Dojolayout->actions_for_devices();
+        $json_return['json']['status']      = 'ok';
+        $this->set('json_return',$json_return);
+
+    }
+
+
+
 }
 ?>

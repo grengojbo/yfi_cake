@@ -325,6 +325,11 @@ class PermanentUsersController extends AppController {
         if($this->Rights->LookForRight('tab/show_private_attributes')){
             array_push($json_return['tabs'], array('name' => 'Private Attributes','module' => 'content.PermanentGeneralPrivate','file' => 'PermanentGeneralPrivate',    'class' => 'divTabInTab'));
         }
+        //We can allow a permanent user to add their own devices when they use MAC authentication
+        if($this->Rights->LookForRight('tab/show_devices')){
+            array_push($json_return['tabs'], array('name' => 'Devices','module' => 'content.PermanentGeneralDevices','file' => 'PermanentGeneralDevices',   'class' => 'divTabInTab'));
+        }
+
         array_push($json_return['tabs'], array('name' => 'Activity',        'module' => 'content.PermanentGeneralActivity', 'file' => 'PermanentGeneralActivity',   'class' => 'divTabInTab'));
 
         //--Return the JSON --------------------
@@ -1282,6 +1287,7 @@ class PermanentUsersController extends AppController {
         $json_return['json']['status']      = 'ok';
         $this->set('json_return',$json_return);
     }
+
 
 
     //========================================================================================================================

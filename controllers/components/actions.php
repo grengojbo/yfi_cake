@@ -879,6 +879,21 @@ class ActionsComponent extends Object {
 			array_push($struct,array('name'=> gettext('Add'),      			'type' => 'add', 'action' => 'add'));
 			 array_push($struct,array('name'=> gettext('Delete Selected'),  'type' => 'delete', 'action' => 'del'));
         }
+
+        //--------------------------------------------
+        if($auth_data['Group']['name'] == Configure::read('group.user')){
+            array_push($struct,array('name'=> gettext('Reload List'),      'type' => 'reload', 'action' => 'reload'));
+            
+            if($this->Dojolayout->_look_for_right('devices/json_add')){
+                array_push($struct,array('name'=> gettext('Add'),               'type' => 'add', 'action' => 'add'));
+            }
+            if($this->Dojolayout->_look_for_right('devices/json_del')){
+                array_push($struct,array('name'=> gettext('Delete Selected'),   'type' => 'delete', 'action' => 'del'));
+            }
+        }
+        //----------------------------------------------
+
+
         return $struct;
     }
 
