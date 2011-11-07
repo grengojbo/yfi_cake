@@ -119,6 +119,8 @@ class VouchersController extends AppController {
         foreach($voucher_list as $id){
 
             $qr = $this->Voucher->findById($id);
+           // print_r($qr);
+
             $username       = $qr['Radcheck']['username'];
             $profile        = $qr['Profile']['name'];
             $realm          = $qr['Realm']['name'];
@@ -126,6 +128,20 @@ class VouchersController extends AppController {
             $voucher_detail[$counter]['realm']      = $realm;
             $voucher_detail[$counter]['profile']    = $profile;
             $voucher_detail[$counter]['username']   = $username;
+            $voucher_detail[$counter]['created']    = $qr['Voucher']['created'];
+            $voucher_detail[$counter]['status']     = $qr['Voucher']['status'];
+            if($qr['Voucher']['status'] == 'new'){
+                $voucher_detail[$counter]['first_used'] = 'NA';
+                $voucher_detail[$counter]['data_used']  = 'NA';
+            }else{
+                //Get the sum of the data
+                $data = $this->Radacct->find('first', array( 'fields' => array('SUM(acctinputoctets)+SUM(acctoutputoctets) AS data_usage'), 'conditions' => array('username' => $username)));
+                $voucher_detail[$counter]['data_used']  = $data[0]['data_usage'];
+                //Get the first time they logged in
+                $data = $this->Radacct->find('first', array( 'fields' => array('Radacct.acctstarttime'), 'conditions' => array('Radacct.username' => $username), 'order'=> array('Radacct.acctstarttime ASC')));
+                $voucher_detail[$counter]['first_used'] = $data['Radacct']['acctstarttime'];  
+            }
+
             $counter++;
         }
 
