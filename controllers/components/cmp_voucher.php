@@ -232,7 +232,7 @@ class CmpVoucherComponent extends Object {
         $data_total = 0;
         $time_total = 0;
         $voucher_time_total;
-        $first_login_time;
+        $first_login_time ='';
         $acct = $this->controller->Radacct->find('all',array('conditions' => array('Radacct.username'   => $username)));
 
         if(count($acct) > 0){
