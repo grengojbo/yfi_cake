@@ -1,0 +1,15 @@
+--
+-- Table structure for table `heartbeats`
+--
+
+DROP TABLE IF EXISTS `heartbeats`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `heartbeats` (
+  `id` char(36) NOT NULL,
+  `na_id` char(36) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
