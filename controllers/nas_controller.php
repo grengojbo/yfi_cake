@@ -4,7 +4,7 @@ class NasController extends AppController {
     var $helpers    = array('Javascript');
 
     var $components = array('Session','Rights','Json','Dojolayout','Pptpd','Formatter','SwiftMailer');    //Add the locker component
-    var $uses       = array('Na','NaRealm','Realm','User','Radacct','NaState','Check','Map');
+    var $uses       = array('Na','NaRealm','Realm','User','Radacct','NaState','Check','Map','Heartbeat');
 
     function beforeFilter() {
 
@@ -871,14 +871,48 @@ class NasController extends AppController {
         }else{
             $d['Na']['monitor'] = 0;
         }
-        $d['Na']['type']        = $this->params['form']['type'];
-        $d['Na']['ports']       = $this->params['form']['ports'];
-        $d['Na']['community']   = $this->params['form']['community'];
-        $d['Na']['description'] = $this->params['form']['description'];
-        $d['Na']['lon']         = $this->params['form']['lon'];
-        $d['Na']['lat']         = $this->params['form']['lat'];
-        $this->Na->save($d);    //Updated
-        $json_return['json']['status'] = "ok";
+
+        //This is an enhancement to work through NATed connections
+        //It requires that the communtiy is a valid MAC address in the form 08-00-27-83-EB-FB and that active monitoring is set
+        $json_return['json'] = array();
+        
+        //Clear the heartbeat table from this entry
+        $this->Heartbeat->deleteAll(array('Heartbeat.na_id' => $nas_id));
+
+        if($this->params['form']['type'] == 'CoovaChilli-NAT'){
+            $subject = $this->params['form']['community'];
+            $pattern = '/^([0-9a-fA-F]{2}[-]){5}[0-9a-fA-F]{2}$/i';
+            if(preg_match($pattern, $subject)< 1){
+                $json_return['json']['status'] = "error";
+                $json_return['json']['detail'] = "Missing or wrong format for MAC Address (Community's value used in conjunction with CoovaChilli-NAT)";
+            }else{
+                //We also need to force active monitoring for NATed connections using heartbeat;
+                if($d['Na']['monitor'] == 0){
+                    $json_return['json']['status'] = "error";
+                    $json_return['json']['detail'] = "Active monitor required for CoovaChilli-NAT";
+                }else{
+                    //Ensure that if active monitor is set and that we also write an entry into the heartbeats table (if it does not exist already!)
+                    $count = $this->Heartbeat->find('count',array( 'conditions' => array('Heartbeat.na_id' => $nas_id)));
+                    if($count == 0){
+                        $hb['Heartbeat']['na_id'] = $nas_id;
+                        $this->Heartbeat->save($hb);
+                    }
+                }
+            }
+        }
+
+        //Test if there was no failure, then save
+        if(!array_key_exists('status',$json_return['json'])){    
+            $d['Na']['type']        = $this->params['form']['type'];
+            $d['Na']['ports']       = $this->params['form']['ports'];
+            $d['Na']['community']   = $this->params['form']['community'];
+            $d['Na']['description'] = $this->params['form']['description'];
+            $d['Na']['lon']         = $this->params['form']['lon'];
+            $d['Na']['lat']         = $this->params['form']['lat'];
+            $this->Na->save($d);    //Updated
+            $json_return['json']['status'] = "ok";
+        }
+
         $this->set('json_return',$json_return);
     }
 
