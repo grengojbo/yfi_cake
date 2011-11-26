@@ -17,7 +17,10 @@ class Na extends AppModel {
                     'WirelessClient' => array(
                         'className' => 'WirelessClient',
                         'conditions' => array('WirelessClient.active' => 'yes'),
-                    )
+                    ),
+                    'Heartbeat'   => array(
+                        'className' => 'Heartbeat'
+                    ),
         );
 
      var $belongsTo = array(
