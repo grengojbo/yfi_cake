@@ -15,7 +15,7 @@ $config['pptpd']['server_ip']                       = '10.20.30.1';
 $config['pptpd']['chap_secrets']                    = '/etc/ppp/chap-secrets';
 $config['pptpd']['yfi_nas_base_name']               = 'yfi_nas_';
 $config['monitor']['ping_count']		            = 4;
-$config['nas']['device_types']                      = array('other','CoovaChilli','CoovaChilli-AP','DD-Wrt','Open-Wrt','Mikrotik','Open-Wrt[Ent]','Telkom');
+$config['nas']['device_types']                      = array('other','CoovaChilli','CoovaChilli-AP','CoovaChilli-NAT','DD-Wrt','Open-Wrt','Mikrotik','Open-Wrt[Ent]','Telkom');
 $config['permanent_users']['reset_day']             = 1; //Day of month to reset cap - must also change in redius perl module config file if change here and vice versa.
 
 //The swift mailer email component's settings
@@ -37,6 +37,9 @@ $config['maps']['permanent_users']                  = true;
 
 //Show experimental menus
 $config['experimental']['active']                   = false;
+
+//Consider a heartbeat device dead after so many seconds
+$config['heartbeat']['dead_after']                  = 30;
 
 //
 
