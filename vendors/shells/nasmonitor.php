@@ -34,16 +34,8 @@ class NasmonitorShell extends Shell {
         //--Load configuration variables ----
         Configure::load('yfi');
         //-----------------------------------------
-        /*
-        $this->path = Configure::read('Reprepro.base');
-        $this->subs = array(
-                        'confs' =>  Configure::read('Reprepro.confs'),
-                        'dbs'   =>  Configure::read('Reprepro.dbs'),
-                        'dists' =>  Configure::read('Reprepro.dists'),
-                        'logs'  =>  Configure::read('Reprepro.logs')
-                );
-        $this->filters = 'filters';
-        */
+
+        $this->dead_after    = Configure::read('heartbeat.dead_after');
         //----------------------------------------
     }
     //==============END OF SECTION =======================
@@ -56,26 +48,59 @@ class NasmonitorShell extends Shell {
         App::import('Core', array('View', 'Controller'));
         App::import('Controller', array('Nas'));
         $this->NasController = new NasController();
+        //$this->NasController->loadModel();
         $this->NasController->constructClasses();
 
-        $qr = $this->Na->find('all',array());
+        //First discover the devices which are not heartbeat devices that needs monitoring
+        $qr = $this->NasController->Na->find('all',array('conditions' => array('Na.monitor' => '1','Na.type !=' => 'CoovaChilli-NAT' )));
         foreach($qr as $item){
-            //Check if we need to monitor this one
-            if($item['Na']['monitor'] == 1){
-                //Get the last state
-                $last_state = 'new';
-                if(count($item['NaState']) > 0){
-                    $last_state = $item['NaState'][0]['state'];
+
+            //Get the last state
+            $last_state = 'new';
+            if(count($item['NaState']) > 0){
+                $last_state = $item['NaState'][0]['state'];
+            }
+            $nasname    = $item['Na']['nasname'];
+            $id         = $item['Na']['id'];
+            $this->_test_device($last_state,$nasname,$id);
+        }
+
+        //Discover devices which are heartbeat devices that needs monitoring
+        $qr = $this->NasController->Heartbeat->find('all',array('conditions' => array('Na.monitor' => '1','Na.type' => 'CoovaChilli-NAT' )));
+        foreach($qr as $item){
+
+            print "Consider a NAS device dead after ".$this->dead_after." seconds of no heartbeat\n"; 
+            //If we consider the amount of seconds of the last heartbeat since the epoch and add the dead_after seconds to it, 
+            //It should be more than now, else it has fallen behind and must be marked dead....
+            //!!!!Remember then that it is important that the heartbeat should run more often than this cron script!!!!!
+            
+            //If the created and modified time is equal; the device is dead
+            if($item['Heartbeat']['created'] == $item['Heartbeat']['modified']){
+                $state = 0;     
+            }else{
+                $alive_until = strtotime($item['Heartbeat']['modified'])+$this->dead_after;     //Get the unix stamp for given date
+                if($alive_until > time()){
+                    $state = 1;
+                }else{
+                    $state = 0;
                 }
-                $nasname    = $item['Na']['nasname'];
-                $id         = $item['Na']['id'];
-                $this->_test_device($last_state,$nasname,$id);
-                
-    
             }
 
-        }
-      //  print_r($qr);
+            //Check the last state
+            $sq = $this->NasController->Na->find('first',array('conditions'=> array('Na.id' => $item['Na']['id'])));
+            //Get the last state
+            $last_state = 'new';
+            if(count($sq['NaState']) > 0){
+                $last_state = $sq['NaState'][0]['state'];
+            }
+            //Add an entry to the state table
+            if($last_state != $state){
+                $d['NaState']['id']        = '';
+                $d['NaState']['na_id']     = $item['Na']['id'];
+                $d['NaState']['state']     = $state;
+                $this->NaState->save($d);
+            } 
+        }   
     }
 
 
