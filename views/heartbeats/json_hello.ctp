@@ -3,15 +3,8 @@
 
     if(isset($error)){
         echo $error;
+    }else{
+
+        echo $return_string;
     }
-    /*
-
-    echo "unique_id: iuiouioruiou\n";
-    echo "action: execute\n";
-    echo "/usr/bin/firefox http://www.iol.co.za\n";
-    echo "unique_id: iuiouioruiou\n";
-    echo "action: execute\n";
-    echo "/bin/ls -l -a\n";
-    */
-
 ?>
