@@ -21,6 +21,9 @@ class Na extends AppModel {
                     'Heartbeat'   => array(
                         'className' => 'Heartbeat'
                     ),
+                    'Action'    => array(
+                        'className' => 'Action'
+                    )
         );
 
      var $belongsTo = array(
