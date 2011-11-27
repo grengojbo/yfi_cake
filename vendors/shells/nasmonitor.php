@@ -44,12 +44,22 @@ class NasmonitorShell extends Shell {
 
     function main(){
 
+        //We can tel the monitor program to only test heartbeat devices
+       
         //---Initialization code------------------------------
         App::import('Core', array('View', 'Controller'));
         App::import('Controller', array('Nas'));
         $this->NasController = new NasController();
         //$this->NasController->loadModel();
         $this->NasController->constructClasses();
+
+        if(array_key_exists('only_heartbeat',$this->params)){
+            print("===Only Heartbeat devices===\n");
+            $this->_heartbeat();
+            return;
+        }
+
+
 
         //First discover the devices which are not heartbeat devices that needs monitoring
         $qr = $this->NasController->Na->find('all',array('conditions' => array('Na.monitor' => '1','Na.type !=' => 'CoovaChilli-NAT' )));
@@ -64,6 +74,13 @@ class NasmonitorShell extends Shell {
             $id         = $item['Na']['id'];
             $this->_test_device($last_state,$nasname,$id);
         }
+
+        //Discover heartbeat devices
+        $this->_heartbeat();
+    }
+
+
+    function _heartbeat(){
 
         //Discover devices which are heartbeat devices that needs monitoring
         $qr = $this->NasController->Heartbeat->find('all',array('conditions' => array('Na.monitor' => '1','Na.type' => 'CoovaChilli-NAT' )));
@@ -102,7 +119,6 @@ class NasmonitorShell extends Shell {
             } 
         }   
     }
-
 
     function _test_device($last_state, $nasname,$id){
 
