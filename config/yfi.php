@@ -39,7 +39,7 @@ $config['maps']['permanent_users']                  = true;
 $config['experimental']['active']                   = false;
 
 //Consider a heartbeat device dead after so many seconds
-$config['heartbeat']['dead_after']                  = 30;
+$config['heartbeat']['dead_after']                  = 660; //Eleven minutes
 
 //
 
