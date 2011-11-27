@@ -50,6 +50,10 @@ class NasController extends AppController {
                 $r = $this->Na->find('all',array('conditions' => array('Na.nasname <>' => '127.0.0.1'))); //Get all the NAS devices EXCEPT 127.0.0.1
         }
 
+        if($quick == false){
+            //Run a heartbeat test to see if some devices may have pulsed us...
+            exec("/var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake nasmonitor -only_heartbeat >> /dev/null 2>&1");
+        }
         
 
        // print_r($r);
@@ -820,6 +824,7 @@ class NasController extends AppController {
 
     }
 
+   
     function json_edit(){
 
         $this->layout = 'ajax';
