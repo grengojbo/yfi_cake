@@ -21,6 +21,21 @@ class KickerComponent extends Object {
         $nasportid          = $radacct_entry['nasportid'];
         $framedipaddress    = $radacct_entry['framedipaddress'];
 		$device_mac			= $radacct_entry['callingstationid'];
+        $nas_mac			= $radacct_entry['calledstationid'];
+
+
+        //This is a NAT (dynamic client add-on) where we don't care for the $nas_ip
+        //_____ CoovaChilli-NAT ______________
+        $nat_q_r = $this->controller->Na->find('first',array('conditions' => array('Na.community' => $nas_mac,'Na.type' => 'CoovaChilli-NAT')));
+
+        if($nat_q_r != ''){
+            $nas_id = $nat_q_r['Na']['id'];
+            $d['Action']['na_id'] = $nas_id;
+            $d['Action']['action'] = 'execute';
+            $d['Action']['command'] = "chilli_query logout $device_mac";
+            $this->controller->Action->save($d);
+            return;
+        }
 
         $q_r = $this->controller->Na->findByNasname($nas_ip);
 

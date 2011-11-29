@@ -4,7 +4,7 @@ class RadacctsController extends AppController {
    // var $scaffold;
     var $helpers    = array('Html', 'Form','Javascript' );
     var $components = array('Session','Rights','Json','Dojolayout','Formatter','Kicker');    //Add the locker component
-    var $uses       = array('Radacct','Voucher','Na','User','Device');
+    var $uses       = array('Radacct','Voucher','Na','User','Device','Action');
 
     //------------------------------------------------------------------
     //--- List of rights that can be tweaked ---------------------------
