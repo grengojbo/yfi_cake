@@ -1,0 +1,4 @@
+<?
+    echo $mail_message; 
+
+?>
