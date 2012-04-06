@@ -632,7 +632,7 @@ class ThirdPartiesController extends AppController {
 
         //Create the permanent user
         $new_user_id                        = $this->CmpPermanent->add_permanent($permanent_info);
-        $permanent_info['user_id']          = $new_user_id
+        $permanent_info['user_id']          = $new_user_id;
         $json_return                        = array();
         $json_return['json']['status']      = 'ok';
         $json_return['user']                = $permanent_info;

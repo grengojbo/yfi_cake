@@ -324,7 +324,10 @@ class VouchersController extends AppController {
         if(array_key_exists('expire_on',$this->params['form'])){
             $expire        = $this->params['form']['expire_on'];
             $timestamp     = strtotime($expire);
-            $iso_format    = date('c',$timestamp);
+            //$iso_format    = date('c',$timestamp);
+	    //--Remove timezone--
+	    $iso_format    = date('o-m-d',$timestamp)."T".date('H:i:s',$timestamp);
+
         }
 
         $voucher_value  = $this->_detemine_voucher_name($precede,$realm_name);
@@ -385,7 +388,10 @@ class VouchersController extends AppController {
         if(array_key_exists('expire_on',$this->params['form'])){
             $expire        = $this->params['form']['expire_on'];
             $timestamp     = strtotime($expire);
-            $iso_format    = date('c',$timestamp);
+	    //$iso_format    = date('c',$timestamp);
+            //--Remove timezone--
+            $iso_format    = date('o-m-d',$timestamp)."T".date('H:i:s',$timestamp);
+
         }
 
         //Add a batch 
