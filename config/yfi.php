@@ -46,8 +46,9 @@ $config['experimental']['active']                   = false;
 $config['heartbeat']['dead_after']                  = 660; //Eleven minutes
 
 //The location of the mobile and normal login pages
-$config['dynamic_login']['mobile']                 = '/yfi/mobile.php';
-$config['dynamic_login']['standard']               = '/yfi/standard.php';
+$config['dynamic_login']['mobile']                 = '/coova_json/mobile.php';
+#$config['dynamic_login']['standard']               = '/yfi/standard.php';
+$config['dynamic_login']['standard']               = '/coova_json/hs_land.php';
 
 //The maximum amount of seconds that an active accounting entry will be closed since the last update (removes stale sessions)
 $config['stale_session']['close_after']             = 1200; //Close after 20 minutes without updates
