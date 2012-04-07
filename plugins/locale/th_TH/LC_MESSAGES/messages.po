@@ -1,20 +1,24 @@
-# translation of messages.po to Afrikaans
+# translation of messages.po to Thai
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Dirk vand der Walt <dirkvanderwalt@gmail.com>, 2009.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-17 21:10+0200\n"
-"PO-Revision-Date: 2010-04-22 15:54+0700\n"
-"Last-Translator: Chatchai Wawviriya <chatchaw@tot.co.th>\n"
-"Language-Team: Afrikaans <en@li.org>\n"
+"POT-Creation-Date: 2011-11-29 19:00+0700\n"
+"PO-Revision-Date: 2011-12-03 17:27+0700\n"
+"Last-Translator: Prommart Saelua <info@thaisolution.net>\n"
+"Language-Team: Thai <info@thaisolution.net>\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Thai\n"
+"X-Poedit-Country: THAILAND\n"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:40
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:95
@@ -26,22 +30,22 @@ msgstr "คูปอง"
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:42
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:90
 msgid "Voucher Management"
-msgstr "บริหารจัดการคูปอง"
+msgstr "จัดการคูปอง"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:42
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:92
 msgid "Batch Management"
-msgstr "บริหารจัดการรุ่น/ชุด"
+msgstr "จัดการชุดคูปอง"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:45
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:105
 msgid "Permanent Users"
-msgstr "ผู้ใช้งานถาวร"
+msgstr "ผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:47
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:107
 msgid "User Management"
-msgstr "บริหารจัดการผู้ใช้"
+msgstr "จัดการผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:50
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:112
@@ -51,23 +55,23 @@ msgstr "บัญชี"
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:52
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:114
 msgid "Account Management"
-msgstr "บริหารจัดการบัญชี"
+msgstr "จัดการบัญชี"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:52
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:114
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:245
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:443
 msgid "Billing Plans"
-msgstr " แผนการเรียกเก็บเงิน"
+msgstr "แผนเรียกเก็บเงิน"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:56
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:121
 msgid "Realms & Providers"
-msgstr "อาณาเขต/ผู้ให้บริการ"
+msgstr "เขตพื้นที่/ผู้ให้บริการ"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:58
 msgid "Realm Management"
-msgstr "บริหารจัดการอาณาเขต"
+msgstr "จัดการเขตพื้นที่"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:58
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:123
@@ -79,36 +83,36 @@ msgstr "อุปกรณ์ NAS"
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:58
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:154
 msgid "Access Providers"
-msgstr "ผู้ให้บริการแอคเซส"
+msgstr "ผู้บริหารการเข้าใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:61
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:136
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:195
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:391
 msgid "Profiles"
-msgstr "รูปแบบการใช้งาน"
+msgstr "กลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:63
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:131
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:175
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:371
 msgid "Profile Templates"
-msgstr "ต้นแบบของรูปแบบการใช้งาน"
+msgstr "แม่แบบกลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:63
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:133
 msgid "Specific Profiles"
-msgstr "รูปแบบการใช้งานเฉพาะ"
+msgstr "จัดการกลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:67
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:144
 msgid "Activity/Stats"
-msgstr "กิจกรรม/สถานะ"
+msgstr "ประวัติการใช้/สถานะ"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:69
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:146
 msgid "Activity Viewer"
-msgstr "เปิดดูกิจกรรม"
+msgstr "ผู้กำลังใช้งาน"
 
 #: /var/www/c2/yfi_cake/controllers/components/leftpane.php:158
 msgid "User Detail"
@@ -165,7 +169,7 @@ msgstr "การชำระเงิน"
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:669
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:676
 msgid "Reload List"
-msgstr "เรียกลิสต์มาดูใหม่"
+msgstr "เรียกรายการมาดูใหม่"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:17
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:27
@@ -239,7 +243,7 @@ msgstr "ลบที่เลือก"
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:72
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:82
 msgid "Add Profile"
-msgstr "เพิ่มข้อมูลส่วนตัว"
+msgstr "เพิ่มกลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:123
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:134
@@ -298,12 +302,12 @@ msgstr "เพิ่ม"
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:438
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:443
 msgid "Change Profile"
-msgstr "เปลี่ยนข้อมูลส่วนตัว"
+msgstr "เปลี่ยนกลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:304
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:320
 msgid "Add VPN connected NAS"
-msgstr "เพิ่ม VPN เชื่อมต่อ NAS"
+msgstr "เพิ่ม VPN ที่เชื่อมต่อ NAS"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:360
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:367
@@ -318,7 +322,7 @@ msgstr "เปลี่ยนรหัสผ่าน"
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:385
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:403
 msgid "Activate/Disable Selected"
-msgstr "เปิดใช้งาน/ไม่เปิดใช้งาน ที่เลือก"
+msgstr "เปิดใช้งาน/ไม่เปิดใช้งาน"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:386
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:407
@@ -364,7 +368,7 @@ msgstr "เพิ่มการชำระเงิน"
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:644
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:652
 msgid "Send e-Mail"
-msgstr " ส่งอีเมล์"
+msgstr "ส่งอีเมล"
 
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:578
 #: /var/www/c2/yfi_cake/controllers/components/actions.php:594
@@ -397,12 +401,12 @@ msgstr "คูปอง"
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:73
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:311
 msgid "Batches"
-msgstr "รุ่น/ชุด"
+msgstr "ชุดคูปอง"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:83
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:321
 msgid "Batch"
-msgstr "รุ่น/ชุด"
+msgstr "ชุดคูปอง"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:93
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:331
@@ -416,11 +420,11 @@ msgstr "ผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:114
 msgid "Realms"
-msgstr "อาณาเขต"
+msgstr "เขตพื้นที่"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:123
 msgid "Realm"
-msgstr "อาณาเขต"
+msgstr "เขตพื้นที่"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:143
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:361
@@ -429,7 +433,7 @@ msgstr "อุปกรณ์ NAS"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:164
 msgid "Access Provider"
-msgstr "ผู้ให้บริการแอคเซส"
+msgstr "ผู้บริหารการเข้าใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:185
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:381
@@ -440,12 +444,12 @@ msgstr "แม่แบบ"
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:401
 #: /var/www/c2/yfi_cake/vendors/fpdf/label.php:280
 msgid "Profile"
-msgstr "รูปแบบการใช้งาน"
+msgstr "กลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:215
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:410
 msgid "Activity"
-msgstr "กิจกรรม"
+msgstr "ประวัติการใช้"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:225
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:423
@@ -464,37 +468,37 @@ msgstr "แผน"
 
 #: /var/www/c2/yfi_cake/controllers/components/workspace.php:265
 msgid "Dynamic Firewall"
-msgstr "ไฟร์วอลล์แบบไดนามิก"
+msgstr "Dynamic Firewall"
 
 #: /var/www/c2/yfi_cake/controllers/vouchers_controller.php:1016
 #: /var/www/c2/yfi_cake/controllers/batches_controller.php:357
 msgid "days from first log-in"
-msgstr "วันนับจากวันแรกที่เข้าสู่ระบบ"
+msgstr "วัน นับจากเริ่มใช้งาน"
 
 #: /var/www/c2/yfi_cake/controllers/vouchers_controller.php:1018
 #: /var/www/c2/yfi_cake/controllers/batches_controller.php:359
 msgid "day from first log-in"
-msgstr "วันนับจากวันแรกที่เข้าสู่ระบบ"
+msgstr "วัน นับจากเริ่มใช้งาน"
 
 #: /var/www/c2/yfi_cake/views/vouchers/pdf.ctp:25
 #: /var/www/c2/yfi_cake/views/batches/pdf.ctp:32
 #: /var/www/c2/yfi_cake/vendors/fpdf/label.php:263
 msgid "Internet Access Voucher"
-msgstr "คูปองเข้าใช้อินเตอร์เน็ต"
+msgstr "คูปองอินเตอร์เน็ต"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/generic.php:45
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:41
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:41
 msgid "Page "
-msgstr "หน้า"
+msgstr "หน้า "
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/generic.php:59
 msgid "Profile attributes"
-msgstr "คุณลักษณะรูปแบบการใช้งาน"
+msgstr "Attribute กลุ่มผู้ใช้"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/generic.php:89
 msgid "Profile: "
-msgstr "รูปแบบการใช้งาน :"
+msgstr "กลุ่มผู้ใช้: "
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/generic.php:126
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:96
@@ -528,7 +532,7 @@ msgstr "(โทรสาร)"
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:91
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:119
 msgid "Username"
-msgstr "ชื่อผู้ใช้งาน"
+msgstr "ชื่อผู้ใช้"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/generic.php:231
 #: /var/www/c2/yfi_cake/vendors/fpdf/label.php:279
@@ -547,7 +551,7 @@ msgstr "วันหมดอายุ"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:53
 msgid "Invoice Nr : "
-msgstr "เลขที่ใบกำกับสินค้า/ใบแจ้งหนี้"
+msgstr "เลขที่ใบกำกับสินค้า/ใบแจ้งหนี้ : "
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:85
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:113
@@ -567,12 +571,12 @@ msgstr "นามสกุล"
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:94
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:122
 msgid "Phone"
-msgstr "โทร."
+msgstr "โทรศัพท์"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:95
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:123
 msgid "e-Mail"
-msgstr "อีเมล์"
+msgstr "อีเมล"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:177
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:232
@@ -591,7 +595,7 @@ msgstr "แผนการชำระเงิน"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:222
 msgid "Usage Sumary"
-msgstr "สรุปการใช้"
+msgstr "สรุปการใช้งาน"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:226
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:265
@@ -603,7 +607,7 @@ msgstr "รายการ"
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:266
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:349
 msgid "Value"
-msgstr "มูลค่า"
+msgstr "ค่า"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:260
 msgid "Stats"
@@ -611,7 +615,7 @@ msgstr "สถิติ"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:299
 msgid "Extra Services"
-msgstr "บริการพิเศษ"
+msgstr "บริการเพิ่มเติม"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:304
 msgid "Title"
@@ -625,11 +629,11 @@ msgstr "คำอธิบาย"
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:351
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:194
 msgid "Amount"
-msgstr "จำนวน"
+msgstr "ราคา"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:343
 msgid "Cost Breakdown"
-msgstr "เสียค่าใช้จ่าย"
+msgstr "รายละเอียดค่าใช้จ่าย"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/invoice.php:350
 msgid "Usage"
@@ -637,11 +641,11 @@ msgstr "การใช้"
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:53
 msgid "Receipt Nr : "
-msgstr "เลขที่ใบเสร็จ :"
+msgstr "เลขที่ใบเสร็จ : "
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:81
 msgid "Amount : "
-msgstr "จำนวน : "
+msgstr "ราคา : "
 
 #: /var/www/c2/yfi_cake/vendors/fpdf/receipt.php:193
 msgid "Received"
@@ -655,42 +659,42 @@ msgstr "ใบกำกับสินค้า/ใบแจ้งหนี้"
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:53
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:176
 msgid "Standard Data"
-msgstr "ข้อมูลมาตรฐาน"
+msgstr "ข้อมูลปกติ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:54
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:177
 msgid "Free Data"
-msgstr "ข้อมูลฟรี"
+msgstr "ข้อมูลที่เหลือ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:55
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:178
 msgid "Extra Data"
-msgstr "ข้อมูลพิเศษ"
+msgstr "ข้อมูลเพิ่มเติม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:56
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:179
 msgid "Standard Time"
-msgstr "เวลามาตรฐาน"
+msgstr "เวลาปกติ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:57
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:180
 msgid "Free Time"
-msgstr "เวลาฟรี"
+msgstr "เวลาที่เหลือ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:58
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:181
 msgid "Extra Time"
-msgstr "เวลาพิเศษ"
+msgstr "เวลาเพิ่มเติม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:70
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:192
 msgid "Total Invoiced"
-msgstr "รวมใบกำกับสินค้า/ใบแจ้งหนี้"
+msgstr "ใบกำกับสินค้า/ใบแจ้งหนี้ ทั้งหมด"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:71
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:193
 msgid "Total Paid"
-msgstr "จ่ายรวม"
+msgstr "จ่ายทั้งหมด"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:72
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:194
@@ -700,32 +704,32 @@ msgstr "ค้างชำระ"
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:106
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:228
 msgid "Subscription"
-msgstr "สมัครสมาชิก"
+msgstr "ค่าสมาชิก"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:107
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:229
 msgid "Normal Cost/Byte"
-msgstr "ปกติ ราคา/ไบท์"
+msgstr "ราคา/ไบต์ ปกติ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:108
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:230
 msgid "Extra Cost/Byte"
-msgstr "พิเศษ ราคา/ไบท์"
+msgstr "ราคา/ไบต์ ส่วนที่เพิ่ม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:109
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:231
 msgid "Normal Cost/Second"
-msgstr "ปกติ ราคา/วินาที"
+msgstr "ราคา/วินาที ปกติ"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:110
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:232
 msgid "Extra Cost/Second"
-msgstr "พิเศษ ราคา/วินาที"
+msgstr "ราคา/วินาที ส่วนที่เพิ่ม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:111
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:233
 msgid "Total Usage Discount"
-msgstr "ส่วนลดรวม"
+msgstr "ส่วนลดทั้งหมด"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:113
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:235
@@ -734,11 +738,11 @@ msgstr "ภาษี"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:115
 msgid "Prevoius Outstanding"
-msgstr "ยอดเยี่ยมครั้งก่อน"
+msgstr "ยอดค้างเดิม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:237
 msgid "Previous Outstanding"
-msgstr "ยอดเยี่ยมครั้งก่อน"
+msgstr "ยอดค้างเดิม"
 
 #: /var/www/c2/yfi_cake/controllers/components/pdf.php:261
 msgid "Receipt"
@@ -770,15 +774,15 @@ msgstr "ภาษาเนเธอร์แลนด์"
 
 #: --- Beta 3 extra's
 msgid "NAS Usage"
-msgstr "NAS ใช้งาน"
+msgstr "ข้อมูลการใช้ของ NAS"
 
 #: --- Beta 3 extra's
 msgid "Realm Usage"
-msgstr "อาณาเขต ใช้งาน"
+msgstr "ข้อมูลการใช้ของเขตพื้นที่"
 
 #: --- Beta 3 extra's
 msgid "User Usage"
-msgstr "ผู้ใช้ ใช้งาน"
+msgstr "ประวัติการใช้งานของผู้ใช้"
 
 msgid "Spanish"
 msgstr "ภาษาสเปน"
@@ -787,22 +791,22 @@ msgid "no-one"
 msgstr "ไม่มีใคร"
 
 msgid "Internet Credit"
-msgstr "อินเตอร์เน็ตเครดิต"
+msgstr "เครดิตอินเตอร์เน็ต"
 
 msgid "Attach to user"
-msgstr "แนบไปกับผู้ใช้"
+msgstr "เติมให้ผู้ใช้"
 
 msgid "Prepaid"
-msgstr "ชำระเงินล่วงหน้า"
+msgstr "ระบบเติมเงิน"
 
 msgid "Google Maps"
-msgstr "กูเกิ้ลแม็พ"
+msgstr "Google Maps"
 
 msgid "Preferences"
 msgstr "การตั้งค่า"
 
 msgid "Used"
-msgstr "ใช้แล้ว"
+msgstr "ใช้ไป"
 
 msgid "Available"
 msgstr "ที่เหลือใช้ได้"
@@ -814,5 +818,11 @@ msgid "Auto Setup"
 msgstr "ติดตั้งอัตโนมัติ"
 
 msgid "Access Points"
-msgstr "จุดแอคเซส"
+msgstr "Access Points"
+
+msgid "Add Note"
+msgstr "เพิ่มบันทึกย่อ"
+
+msgid "Reboot AP"
+msgstr "Reboot AP"
 
