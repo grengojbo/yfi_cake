@@ -588,6 +588,7 @@ class ProfilesController extends AppController {
 
                 $d['Radgroupreply']['groupname'] = $profile_name;
                 $d['Radgroupreply']['attribute'] = $attribute;
+                $d['Radgroupreply']['op']        = ':=';
                 $d['Radgroupreply']['value']     = 'Replace this value';
                 $this->Radgroupreply->save($d);
                 $this->Radgroupreply->id         = '';   //Clear the id
