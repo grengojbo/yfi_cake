@@ -835,5 +835,83 @@ class ThirdPartiesController extends AppController {
         $this->set('json_return',$json_return);
     }
 
+    function json_add_device_to_user(){
+
+        //_____ Third Party Hook-up to add device to permanent user ___________________
+        //A sample call will look like this:
+        //http://127.0.0.1/c2/yfi_cake/third_parties/json_add_device_to_user/?key=123456789&username=dvdwalt@ri&device_mac=00-00-27-3B-84-AA&device_description=iPad
+        //________________________________________________________________
+
+        //print_r($this->params['url']);
+
+        $this->layout   = 'ajax'; //To send JSON from the web server
+
+        //___ Some required values -> Change to suit your setup ____
+        $key_master     = '123456789';
+        $access_provider= '3rd_sms';    //The name of the Access Provider that this will be made the creator of
+        //Added Security!
+        $request_from   = $_SERVER["REMOTE_ADDR"];      //Only allow request to come from specified server
+        if($request_from != '127.0.0.1'){
+            $this->set('json_return',$this->Json->permFail());
+            return;
+        }
+        //__________________________________________________________
+
+        //Check if the key that this page is called with is the correct key
+        if(array_key_exists('key',$this->params['url'])){
+            if($this->params['url']['key'] != $key_master){
+                $this->set('json_return',$this->Json->permFail());
+                return;
+            }
+        }else{
+            $this->set('json_return',$this->Json->permFail());
+            return;
+        }
+
+        //Check that the username is present
+        if(!array_key_exists('username',$this->params['url'])){
+            $this->set('json_return',array('username' => 'Required field'));
+            return;
+        }
+
+        //Check that the device_mac is present
+        if(!array_key_exists('device_mac',$this->params['url'])){
+            $this->set('json_return',array('device_mac' => 'Required field'));
+            return;
+        }
+
+        //Check that the device_description is present
+        if(!array_key_exists('device_description',$this->params['url'])){
+            $this->set('json_return',array('device_description' => 'Required field'));
+            return;
+        }
+
+        $username   = $this->params['url']['username'];
+        $mac        = $this->params['url']['device_mac'];
+        $descr      = $this->params['url']['device_description'];
+
+        //load the user
+        $this->loadModel('User');
+        $qr = $this->User->findByUsername($username);
+        if($qr != ''){
+            $user_id = $qr['User']['id'];
+            //Change tha MAC to contain : instead of -
+            $mac = str_replace("-",":",$mac);
+            $this->loadModel('Device');
+            $d = array();
+            $d['Device']['name']        = $mac;
+            $d['Device']['description'] = $descr;
+            $d['Device']['user_id']     = $user_id;
+            $this->Device->save($d);
+        }else{
+            $this->set('json_return',array('User not found' => $username));
+            return;
+        }
+
+        $json_return['json']['status']      = 'ok'; 
+        $this->set('json_return',$json_return);
+    }
+
+
 }
 ?>
