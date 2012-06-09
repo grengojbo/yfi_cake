@@ -7,6 +7,7 @@ class PDF_Generic extends FPDF {
     var $Logo           = 'img/graphics/log.jpg';       //Default Logo
     var $Title          = 'Set The Title';
     var $Language       = 'en';
+    var $testo;
 
     // Constructor
     function PDF_Generic() {
@@ -150,7 +151,9 @@ class PDF_Generic extends FPDF {
         $mid = ($r1 + $r2 ) / 2;
     
         $texte  = iconv('UTF-8', $font_encode,gettext("Profile: ").$profile_name);    
-        $szfont = 12;
+	$testo = $texte;
+	$texte_profile = $texte;
+	$szfont = 12;
         $loop   = 0;
     
         while ( $loop == 0 )
@@ -232,10 +235,10 @@ class PDF_Generic extends FPDF {
         }
 
         //cell
-        if($ap_detail['phone'] != ''){
-            $this->SetFont($font_type_2,$font_format_i,8);
-            $this->Cell($max_address_width,3,$ap_detail['cell'].' '.iconv('UTF-8', $font_encode,gettext('(cell)')),$outline,2);
-        }
+        //if($ap_detail['phone'] != ''){
+        //    $this->SetFont($font_type_2,$font_format_i,8);
+        //    $this->Cell($max_address_width,3,$ap_detail['cell'].' '.iconv('UTF-8', $font_encode,gettext('(cell)')),$outline,2);
+        //}
 
          //fax
         if($ap_detail['phone'] != ''){
@@ -252,24 +255,24 @@ class PDF_Generic extends FPDF {
 
 
     //This will loop throug the vouchers, creating them
-    function addVouchers($voucher_data)
+    function addVouchers($voucher_data,$profile_name)
     {
         //Initial positioning
         $this->left_col = 1;
         $this->SetY(75);
         $this->Ln();
 
-      //  print_r($voucher_data);
+        //print_r($voucher_data);
 
         foreach(array_keys($voucher_data) as $voucher_key){
 
-            $this->addVoucher($voucher_key,$voucher_data[$voucher_key]);
+            $this->addVoucher($voucher_key,$voucher_data[$voucher_key],$profile_name);
             $this->left_col = !($this->left_col);
         }
     }
 
     //Voucher detail window
-    function addVoucher($username,$voucher)
+    function addVoucher($username,$voucher,$profile_name)
     {
 
          //--Language Specifics--
@@ -286,8 +289,8 @@ class PDF_Generic extends FPDF {
         }
         //-- END Language Specifics --
 
-        $text_size      = 6;    //Up this value to increase the text inside the voucher
-        $cell_height    = 3;    //Up this value to increase the space between the lines in the voucher
+        $text_size      = 10;    //Up this value to increase the text inside the voucher
+        $cell_height    = 5;    //Up this value to increase the space between the lines in the voucher
         //Experiment
         if($this->GetY() > 240){
             $this->AddPage();
@@ -305,7 +308,7 @@ class PDF_Generic extends FPDF {
 
         $r2  = $r1 + 88;
         $y1  = $y_curr;
-        $y2  = 20 ;         //Up this value to increase the size of the woucher's frame
+        $y2  = 35 ;         //Up this value to increase the size of the woucher's frame
         $mid = $y1 + ($y2 / 2);
         $this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 3.5, 'D');
         $this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1 );
@@ -339,23 +342,39 @@ class PDF_Generic extends FPDF {
             $this->SetFont( $font_type, $font_format_b, $text_size);
             $this->Cell(30,$cell_height, iconv('UTF-8', $font_encode,$voucher['days_valid']), 0, 2, "L");
         }
+	
+	//Profile
+
+	$this->SetFont( $font_type, $font_format_i, $text_size);
+	$this->SetX($x_p);
+	$this->Cell(22,$cell_height,iconv('UTF-8', $font_encode,gettext("Profile: ")) , 0, 0, "L");
+	$this->SetFont( $font_type, $font_format_b, $text_size);
+	$this->Cell(30,$cell_height, iconv('UTF-8', $font_encode,gettext($profile_name)), 0, 2, "L");
 
         //---Expiry Date---
-         $this->SetFont( $font_type, $font_format_i, $text_size);
+	$this->SetFont( $font_type, $font_format_i, $text_size);
         $this->SetX($x_p);
         $this->Cell(22,$cell_height,iconv('UTF-8', $font_encode,gettext("Expiry date")) , 0, 0, "L");
+	
+	if(array_key_exists('expiry_date',$voucher)){
 
-        $this->SetFont( $font_type, $font_format_b, $text_size);
-        $this->Cell(30,$cell_height, $voucher['expiry_date'], 0, 2, "L");
+        	$this->SetFont( $font_type, $font_format_b, $text_size);
+        	$this->Cell(30,$cell_height, $voucher['expiry_date'], 0, 2, "L");
+	}else{
+		
+		$this->SetFont( $font_type, $font_format_b, $text_size);
+                $this->Cell(30,$cell_height, iconv('UTF-8', $font_encode,gettext("Never Expire")), 0, 2, "L");
+	}
 
         $this->Ln();
         $this->Image(WWW_ROOT.DS.$this->Logo,$r1+3,$y_curr+5,15,12);
 
         if(!($this->left_col)){
-            $this->SetY( $y_curr+25);   //Up this value to increase the size of the woucher's frame (in relation to the top one)
+            $this->SetY( $y_curr+40);   //Up this value to increase the size of the woucher's frame (in relation to the top one)
         }else{
             $this->SetY( $y_curr);
-        }
+	}
+
     }
 
 
