@@ -90,4 +90,14 @@ CREATE TABLE `photos` (
 --
 alter table nas add column `realm_id` char(36) NOT NULL;
 
+--
+-- Add the Italian language 
+--
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES ('4fd2d35a-ef54-452b-ba6d-0f83a509ff00', 'Italian','it_IT','2011-08-14 15:45:21','2011-08-14 15:45:21');
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 
