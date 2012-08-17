@@ -31,7 +31,12 @@ class LoginPagesController extends AppController {
 
     function json_login_info($nas_name){
 
-        $this->layout = 'ajax';
+        $this->layout   = 'ajax';
+
+        $callback       = false;
+        if(array_key_exists('callback',$this->params['url'])){
+           $callback = $this->params['url']['callback'];
+        }
 
         //Get the primary realm this nas belongs to
         $r = $this->Na->find('first',array('conditions' => array('Na.shortname' => "$nas_name")));
@@ -60,6 +65,7 @@ class LoginPagesController extends AppController {
 
         $json_return['json']['status']  = "ok";
         $this->set('json_return',$json_return);
+        $this->set('callback',$callback);
     }
 
 }

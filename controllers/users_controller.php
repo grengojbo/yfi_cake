@@ -280,7 +280,7 @@ class UsersController extends AppController {
             if($counter == 0){
                 $realms = $this->_RealmName($item);
             }else{
-                $realms = $realms." <br> ".$this->_RealmName($item);
+                $realms = $realms." <br /> ".$this->_RealmName($item);
             }
             $counter++;
         }
@@ -418,7 +418,7 @@ class UsersController extends AppController {
             if($counter == 0){
                 $realms = $this->_RealmName($item);
             }else{
-                $realms = $realms." <br> ".$this->_RealmName($item);
+                $realms = $realms." <br /> ".$this->_RealmName($item);
             }
             $counter++;
         }
@@ -528,7 +528,7 @@ class UsersController extends AppController {
 
             $this_realm     = $item['Realm']['name'];
             if($counter > 0){
-                $realms_string   = $realms_string.'<br> '.$this_realm;
+                $realms_string   = $realms_string.' <br /> '.$this_realm;
             }else{
                 $realms_string = $this_realm;
             }
