@@ -531,6 +531,16 @@ class ThirdPartiesController extends AppController {
                 $this->set('json_return',$json_return);
                 return;
             }
+
+            //If user has a @realm in the value we will remove it
+            if(preg_match("/.+@.{1,}$/",$this->params['url']['username'])){
+                $string = $this->params['url']['username'];
+                $pattern = "/@.{1,}$/";
+                $replacement = '';
+                $this->params['url']['username']= preg_replace($pattern, $replacement, $string);
+            }
+           // $this->params['url']['username'] = 'koos';
+
         }else{
             $json_return['error']   = array('username' => 'Required field');
             $this->set('json_return',$json_return);
