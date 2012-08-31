@@ -17,10 +17,11 @@ class CcTransactionsController extends AppController {
     }
 
     function submit_transaction(){
+        //http://127.0.0.1/c2/yfi_cake/cc_transactions/submit_transaction
 
         $this->layout   = 'ajax'; //To send your own content
         //We start by finding out who try to post, we will only allow form known defined IP addresses.
-        $allow_from = array('127.0.0.1','66.185.185.5');
+        $allow_from = array('127.0.0.1','66.185.185.5','192.168.1.107');
 
         $request_from   = $_SERVER["REMOTE_ADDR"];
 
@@ -70,6 +71,19 @@ class CcTransactionsController extends AppController {
         $json_return['success']     = false;
         $json_return['transaction'] = array();
 
+        //----Dummy Data---------
+        $json_return['transaction'] = array(
+            'x_auth_code'   => 'QCM5NU',
+            'x_trans_id'    => '2175459845',
+            'x_amount'      => '10.99',
+            'x_card_type'   => 'Discover',
+            'x_response_code' => 1,
+            'x_response_reason_code' => 1,
+            'x_response_reason_text' => 'This transaction has been approved.',
+        );
+
+        //--- End Dummy Data ----
+/*
         if(array_key_exists('id',$this->params['url'])){
             $id      = $this->params['url']['id'];
             $q_r     = $this->CcTransaction->findById($id);
@@ -77,7 +91,7 @@ class CcTransactionsController extends AppController {
             //Required fields to feedback
             $rf = array('x_auth_code',
                         'x_trans_id',
-                        'x_type',
+                        'x_card_type',
                         'x_amount',
                         'x_response_code',
                         'x_response_reason_code',
@@ -93,8 +107,12 @@ class CcTransactionsController extends AppController {
                     $json_return['transaction'][$name] = $item['value'];
                 }
             }
+
             $json_return['success']     = true;
         }
+*/
+
+        $json_return['success']     = true;
 
         $this->set('json_return',$json_return);
         $callback   = $this->params['url']['callback'];

@@ -31,6 +31,20 @@ class JsonpUtilitiesController extends AppController {
             if($q_r === 1){
                 $json_return = array('success' => true);  
             }
+            
+            //See if we need to return the UID..
+            if(array_key_exists('returnUid',$this->params['url'])){
+                $q_r = $this->User->find('first',array('conditions' => array('User.username' => $username)));
+                $json_return['user_id']= $q_r['User']['id'];
+            }
+
+            //See if we need to return the UID..
+            if(array_key_exists('returnEmail',$this->params['url'])){
+                $q_r = $this->User->find('first',array('conditions' => array('User.username' => $username)));
+                $json_return['user_email']= $q_r['User']['email'];
+            }
+
+
         }
         $this->set('json_return',$json_return);
 
@@ -63,5 +77,29 @@ class JsonpUtilitiesController extends AppController {
         $this->set('json_pad_with',$callback);
     }
 
+     function ccHash(){
+
+        $x_login    = '5D53Kb7Vam';
+        $trans_key  = '69K7f5c5XVGLVa73'; //Keep secret!!!!
+
+        $this->layout = 'ajax';
+        $json_return = array();
+        $json_return['success'] = true;   //Fail it by default
+        $json_return['result']  = array();
+        $t = time();
+        
+        $x_amount = $this->params['url']['x_amount'];
+       
+        $hash = hash_hmac("md5","$x_login^$t^$t^$x_amount^",$trans_key); 
+
+        $json_return['result']['x_fp_timestamp'] = $t;
+        $json_return['result']['x_fp_hash']      = $hash;
+
+
+        $this->set('json_return',$json_return);
+        $callback   = $this->params['url']['callback'];
+        $this->set('json_pad_with',$callback);
+
+    }
 }
 ?>
