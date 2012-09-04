@@ -133,6 +133,10 @@ class DojolayoutComponent extends Object {
         return $this->Actions->actions_for_accnt_payments();
     }
 
+    function actions_for_cc_transactions(){
+        return $this->Actions->actions_for_cc_transactions();
+    }
+
     function actions_for_extra_services(){
         return $this->Actions->actions_for_extra_services();
     }

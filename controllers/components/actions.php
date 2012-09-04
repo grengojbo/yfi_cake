@@ -703,6 +703,19 @@ class ActionsComponent extends Object {
         return $struct;
     }
 
+    function actions_for_cc_transactions(){
+        $auth_data  = $this->Session->read('AuthInfo');
+        $struct     =   array();
+        Configure::load('yfi');
+        if($auth_data['Group']['name'] == Configure::read('group.admin')){
+            array_push($struct,array('name'=> gettext('Reload List'),      'type' => 'reload', 'action' => 'reload'));
+            array_push($struct,array('name'=> gettext('Edit Selected'),    'type' => 'edit',   'action' => 'edit'));
+            array_push($struct,array('name'=> gettext('Add'),              'type' => 'add',    'action' => 'add'));
+            array_push($struct,array('name'=> gettext('Delete Selected'),  'type' => 'delete', 'action' => 'del'));
+        }
+        return $struct;
+    }
+
      function actions_for_extra_services(){
         $auth_data = $this->Session->read('AuthInfo');
         $struct     =   array();

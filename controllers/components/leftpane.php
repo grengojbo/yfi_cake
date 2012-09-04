@@ -53,7 +53,11 @@ class LeftpaneComponent extends Object {
 
            $struct[gettext('Accounting')]  = array(
                                             'img' => 'accounts.png',
-                                            'links' => array(gettext('Account Management')       => '/actions/Accounts',gettext('Billing Plans') => '/actions/Plans')
+                                            'links' => array(
+                                                gettext('Account Management')       => '/actions/Accounts',
+                                                gettext('Billing Plans')            => '/actions/Plans',
+                                                gettext('Credit Card Transactions') => '/actions/CreditCard',
+                                            )
                                         );
 
             if(Configure::read('experimental.active') == true){

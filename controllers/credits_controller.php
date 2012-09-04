@@ -5,7 +5,7 @@ class CreditsController extends AppController {
     var $helpers    = array('Javascript');
 
     var $components = array('Session','Dojolayout','Rights','Json','CmpPermanent');    //Add the locker component
-    var $uses       = array('Credit','User','Radacct','Radcheck','Radgroupcheck','Radusergroup');
+    var $uses       = array('Credit','User','Radacct','Radcheck','Radgroupcheck','Radusergroup','Extra');
 
     var $scaffold;
 
