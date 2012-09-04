@@ -794,7 +794,7 @@ class VouchersController extends AppController {
         return $password;
     }
 
-     function _add_entry($model,$username,$attribute,$value,$op = '=='){
+     function _add_entry($model,$username,$attribute,$value,$op = ':='){
 
         $count = 0;
         $new_id;
