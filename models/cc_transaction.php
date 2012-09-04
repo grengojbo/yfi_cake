@@ -4,8 +4,8 @@ class CcTransaction extends AppModel {
 
     var $hasMany = array(
                     'TransactionDetail' => array(
-                    'className' => 'TransactionDetail',
-                    'order' => 'TransactionDetail.name ASC'
+                    'className'         => 'TransactionDetail',
+                    'order'             => 'TransactionDetail.name ASC'
                     )
         );
 }
