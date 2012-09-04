@@ -876,7 +876,7 @@ CREATE TABLE `radcheck` (
 
 LOCK TABLES `radcheck` WRITE;
 /*!40000 ALTER TABLE `radcheck` DISABLE KEYS */;
-INSERT INTO `radcheck` VALUES (14778,'dvdwalt@ri','Cleartext-Password','==','dvdwalt@ri'),(15022,'00001@ri','Cleartext-Password','==','d8q9F0fP'),(15023,'00001@ri','Yfi-Voucher','==','1-00-00-00');
+INSERT INTO `radcheck` VALUES (14778,'dvdwalt@ri','Cleartext-Password',':=','dvdwalt@ri'),(15022,'00001@ri','Cleartext-Password',':=','d8q9F0fP'),(15023,'00001@ri','Yfi-Voucher',':=','1-00-00-00');
 /*!40000 ALTER TABLE `radcheck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -904,7 +904,7 @@ CREATE TABLE `radgroupcheck` (
 
 LOCK TABLES `radgroupcheck` WRITE;
 /*!40000 ALTER TABLE `radgroupcheck` DISABLE KEYS */;
-INSERT INTO `radgroupcheck` VALUES (49,'Voucher 10M CAP','ChilliSpot-Max-All-Octets','==','10485760'),(50,'Permanent 1h/day 7d/month','Yfi-Data','==','41943040'),(51,'Permanent 1h/day 7d/month','Yfi-Time','==','25200'),(52,'Permanent 1h/day 7d/month','Max-Daily-Session','==','3600'),(53,'Permanent 1h/day 7d/month','ChilliSpot-Max-Daily-Octets','==','10485760'),(45,'Permanent 250M CAP','Yfi-Data','==','262144000'),(44,'Permanent 10Days CAP','Yfi-Time','==','864000');
+INSERT INTO `radgroupcheck` VALUES (49,'Voucher 10M CAP','ChilliSpot-Max-All-Octets',':=','10485760'),(50,'Permanent 1h/day 7d/month','Yfi-Data',':=','41943040'),(51,'Permanent 1h/day 7d/month','Yfi-Time',':=','25200'),(52,'Permanent 1h/day 7d/month','Max-Daily-Session',':=','3600'),(53,'Permanent 1h/day 7d/month','ChilliSpot-Max-Daily-Octets',':=','10485760'),(45,'Permanent 250M CAP','Yfi-Data',':=','262144000'),(44,'Permanent 10Days CAP','Yfi-Time',':=','864000');
 /*!40000 ALTER TABLE `radgroupcheck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -986,7 +986,7 @@ CREATE TABLE `radreply` (
 
 LOCK TABLES `radreply` WRITE;
 /*!40000 ALTER TABLE `radreply` DISABLE KEYS */;
-INSERT INTO `radreply` VALUES (1124,'00001@ri','WISPr-Session-Terminate-Time','==','2010-07-01T00:00:00+02:00');
+INSERT INTO `radreply` VALUES (1124,'00001@ri','WISPr-Session-Terminate-Time',':=','2010-07-01T00:00:00+02:00');
 /*!40000 ALTER TABLE `radreply` ENABLE KEYS */;
 UNLOCK TABLES;
 
