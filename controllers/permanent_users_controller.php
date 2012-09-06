@@ -141,6 +141,8 @@ class PermanentUsersController extends AppController {
         //Check if there is perhaps not already such a user
         $radcheck_id   = $this->_add_entry('Radcheck',$username,'Cleartext-Password',$this->params['form']['password']);
 
+        
+
         $json_return = array();
         if($radcheck_id != ''){
 
@@ -169,6 +171,16 @@ class PermanentUsersController extends AppController {
 
             $this->User->save($d);
             $user_id = $this->User->id;
+
+            //Add the expire_on date as a check value
+            //The value of Expiration according to docs should be in format "23 Sept 2004" but the dictionary indicate
+            //It as type date which requires a unix timestamp. (We would rather use the doc's format for ease of read
+            $pieces = explode("-", $this->params['form']['expire_on']);
+            $y = $pieces[0];
+            $m = $pieces[1];
+            $d = $pieces[2];
+            $this->_add_entry('Radcheck',$username,'Expiration',mktime(0, 0, 0, $m, $d, $y));
+
             $json_return['json']['status']      = 'ok';
         }else{
             $json_return['json']['status']      = 'duplicates';
@@ -227,6 +239,17 @@ class PermanentUsersController extends AppController {
 
         $q_r    = $this->User->findById($userId);
 
+        //Add-on to expire a user's account....
+        $username = $q_r['User']['username'];
+        $exp_q  = $this->Radcheck->find('first', array('conditions'=>array('username' => $username,'attribute' => 'Expiration')));
+        //See if an expiry attribute is specified
+        if($exp_q != ''){
+            $expire = $exp_q['Radcheck']['value'];            
+        }else{
+            //Expire 1/1/2017
+            $expire = mktime(0, 0, 0, 1, 1, 2017);
+        }
+
         $json_return['user']['id']          = $q_r['User']['id'];
         $json_return['user']['name']        = $q_r['User']['name'];
         $json_return['user']['surname']     = $q_r['User']['surname'];
@@ -236,8 +259,9 @@ class PermanentUsersController extends AppController {
         $json_return['user']['cap']         = $q_r['User']['cap'];
         $json_return['user']['language_id'] = $q_r['User']['language_id'];
         $json_return['user']['language']    = $q_r['Language']['name'];
-         $json_return['user']['profile_id'] = $q_r['User']['profile_id'];
+        $json_return['user']['profile_id']  = $q_r['User']['profile_id'];
         $json_return['user']['profile']     = $q_r['Profile']['name'];
+        $json_return['user']['expire_on']   = $expire;
 
 
         //9-3-10 Add Rights to check is a user can do the following
@@ -409,6 +433,28 @@ class PermanentUsersController extends AppController {
         $d['User']['language_id']  = $this->params['form']['language'];
 
         $this->User->save($d);
+
+        $pieces = explode("-", $this->params['form']['expire_on']);
+            $y = $pieces[0];
+            $m = $pieces[1];
+            $d = $pieces[2];
+
+        //Update the expiry date
+        $q_r = $this->User->findById($user_id);
+        $username = $q_r['User']['username']; 
+        $exp_q  = $this->Radcheck->find('first', 
+                    array('conditions'=>array('username' => $username,'attribute' => 'Expiration'))
+                );
+
+        //See if an expiry attribute is specified
+        if($exp_q != ''){
+            $expire = $exp_q['Radcheck']['value']; 
+            $exp_q['Radcheck']['value'] = mktime(0, 0, 0, $m, $d, $y);
+            $this->Radcheck->save($exp_q);          
+        }else{
+            //Expire 1/1/2017
+            $this->_add_entry('Radcheck',$username,'Expiration',mktime(0, 0, 0, $m, $d, $y));
+        }
 
         //---Prepare the JSON--------------------
         $json_return = array();
