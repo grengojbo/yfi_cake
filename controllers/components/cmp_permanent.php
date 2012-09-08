@@ -125,7 +125,8 @@ class CmpPermanentComponent extends Object {
         }
     }
 
-    function _usage_prepaid($id,$single= null,$format_time=null){
+  //  function _usage_prepaid($id,$single= null,$format_time=null){
+    function _usage_prepaid($id,$format_time= false){
 
         //This method will take the time when the user was created, and calculate the SUM of data as well as the SUM of time in radacct
 
@@ -156,6 +157,7 @@ class CmpPermanentComponent extends Object {
         if($q_r['Radgroupcheck']['value']  != ''){
             $yfi_time   = $q_r['Radgroupcheck']['value'];
         }
+        
         //Check for a personal override
         $q_r        = $this->controller->Radcheck->find('first',array('conditions' => array('Radcheck.username' => $username, 'Radcheck.attribute' => 'Yfi-Time')));
         if($q_r['Radcheck']['value']     != ''){
@@ -165,7 +167,6 @@ class CmpPermanentComponent extends Object {
         //Get the sum of Internet Credits
         $q_r        = $this->controller->Credit->find('first', array('fields'=>array('SUM(Credit.data) AS data','SUM(Credit.time) AS time'),'conditions' => array('UsedBy.id' => $id)));
 
-       // print_r($q_r);
         ($yfi_data == 'NA')||($yfi_data   = $yfi_data + $q_r[0]['data']);
         ($yfi_time == 'NA')||($yfi_time   = $yfi_time + $q_r[0]['time']);
 
@@ -196,7 +197,11 @@ class CmpPermanentComponent extends Object {
             $time_avail = 'NA';
         }else{
 
-            ($format_time)&&($time_avail = $this->Formatter->formatted_seconds($yfi_time - $total_time)); 
+            if($format_time == true){
+                $time_avail = $this->Formatter->formatted_seconds($yfi_time - $total_time);
+            }else{
+                $time_avail = $yfi_time - $total_time;
+            }
         }
 
         if($yfi_data == 'NA'){
@@ -205,7 +210,9 @@ class CmpPermanentComponent extends Object {
             $data_avail = $yfi_data - $total_data;
         }
 
-        ($format_time)&&($total_time =$this->Formatter->formatted_seconds($total_time));
+        if($format_time == true){
+            $total_time =$this->Formatter->formatted_seconds($total_time);
+        }
 
         $item = array(
                                 'id'            => 1,
