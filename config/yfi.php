@@ -53,6 +53,9 @@ $config['dynamic_login']['standard']               = '/coova_json/hs_land.php';
 //The maximum amount of seconds that an active accounting entry will be closed since the last update (removes stale sessions)
 $config['stale_session']['close_after']             = 1200; //Close after 20 minutes without updates
 
+//The default expiry date value for permanent users (when not specified)
+$config['permanent_user']['expire_on']             = '2017-1-1'; //Year month day
+
 
 //
 
