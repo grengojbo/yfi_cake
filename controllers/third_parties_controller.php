@@ -505,7 +505,7 @@ class ThirdPartiesController extends AppController {
         //Added Security
         $request_from   = $_SERVER["REMOTE_ADDR"];      //Only allow request to come from specified server
         if($request_from != '127.0.0.1'){
-            $json_return['error']   = $this->Json->permFail();
+            $json_return['error']   = array('type' => 'Permission','detail' =>$this->Json->permFail());
             $this->set('json_return',$json_return);
             return;
         }
@@ -514,12 +514,12 @@ class ThirdPartiesController extends AppController {
         //Check if the key that this page is called with is the correct key
         if(array_key_exists('key',$this->params['url'])){
             if($this->params['url']['key'] != $key_master){
-                $json_return['error']   = $this->Json->permFail();
+                $json_return['error']   = array('type' => 'Permission','detail' =>$this->Json->permFail());
                 $this->set('json_return',$json_return);
                 return;
             }
         }else{
-            $json_return['error']   = $this->Json->permFail();
+            $json_return['error']   = array('type' => 'Permission','detail' =>$this->Json->permFail());
             $this->set('json_return',$json_return);
             return;
         }
@@ -527,7 +527,7 @@ class ThirdPartiesController extends AppController {
         //Check that username is correct
         if(array_key_exists('username',$this->params['url'])){
             if(!preg_match("/.+/",$this->params['url']['username'])){
-                $json_return['error']   = array('username' => 'Empty values not allowed');
+                $json_return['error']   = array('type'=>'username','detail' => 'Empty values not allowed');
                 $this->set('json_return',$json_return);
                 return;
             }
@@ -542,7 +542,7 @@ class ThirdPartiesController extends AppController {
            // $this->params['url']['username'] = 'koos';
 
         }else{
-            $json_return['error']   = array('username' => 'Required field');
+            $json_return['error']   = array('type'=>'username','detail' => 'Required field');
             $this->set('json_return',$json_return);
             return;
         }
@@ -550,12 +550,12 @@ class ThirdPartiesController extends AppController {
         //Check that password is correct
         if(array_key_exists('password',$this->params['url'])){
             if(!preg_match("/.+/",$this->params['url']['password'])){
-                $json_return['error']   = array('password' => 'Empty values not allowed');
+                $json_return['error']   = array('type' => 'password', 'detail' => 'Empty values not allowed');
                 $this->set('json_return',$json_return);
                 return;
             }
         }else{
-            $json_return['error']   = array('password' => 'Required field');
+            $json_return['error']   = array('type' => 'password', 'detail' => 'Required field');
             $this->set('json_return',$json_return);
             return;
         }
@@ -563,12 +563,12 @@ class ThirdPartiesController extends AppController {
         //Check that profile is correct
         if(array_key_exists('profile',$this->params['url'])){
             if(!preg_match("/.+/",$this->params['url']['profile'])){
-                $json_return['error']   = array('profile' => 'Empty values not allowed');
+                $json_return['error']   = array('type' => 'profile', 'detail' => 'Empty values not allowed');
                 $this->set('json_return',$json_return);
                 return;
             }
         }else{
-            $json_return['error']   = array('profile' => 'Required field');
+            $json_return['error']   = array('type' => 'profile', 'detail' => 'Required field');
             $this->set('json_return',$json_return);
             return;
         }
@@ -576,12 +576,12 @@ class ThirdPartiesController extends AppController {
         //Check that realm is correct
         if(array_key_exists('profile',$this->params['url'])){
             if(!preg_match("/.+/",$this->params['url']['realm'])){
-                $json_return['error']   = array('realm' => 'Empty values not allowed');
+                $json_return['error']   = array('type' => 'realm','detail' => 'Empty values not allowed');
                 $this->set('json_return',$json_return);
                 return;
             }
         }else{
-            $json_return['error']   = array('realm' => 'Required field');
+            $json_return['error']   = array('type' => 'realm', 'detail' => 'Required field');
             $this->set('json_return',$json_return);
             return;
         }
@@ -590,12 +590,12 @@ class ThirdPartiesController extends AppController {
         if(array_key_exists('cap',$this->params['url'])){
             if(!preg_match("/hard|soft|prepaid/",$this->params['url']['cap'])){
                 
-                $json_return['error']   = array('cap' => 'Cap should be hard, soft or prepaid');
+                $json_return['error']   = array('type' => 'cap', 'detail'  => 'Cap should be hard, soft or prepaid');
                 $this->set('json_return',$json_return);
                 return;
             }
         }else{
-            $json_return['error']   = array('cap' => 'Required field');
+            $json_return['error']   = array('type' => 'cap', 'detail' => 'Required field');
             $this->set('json_return',$json_return);
             return;
         }
@@ -608,7 +608,7 @@ class ThirdPartiesController extends AppController {
         $q_r    = $this->User->find('first',array('fields' => array('User.id'),'conditions' => array('User.username' => $access_provider),'recursive' => 0));
         if($q_r == ''){
 
-            $json_return['error']   = array('Access Provider Name' => 'Not in database');
+            $json_return['error']   = array('type' => 'Access Provider Name','detail' => 'Not in database');
             $this->set('json_return',$json_return);
             return;
         }else{
@@ -621,7 +621,7 @@ class ThirdPartiesController extends AppController {
         $q_r    = $this->Profile->find('first', array('fields'=> array('Profile.id'),'conditions' => array('Profile.name' => $this->params['url']['profile']), 'recursive' => 0));
         if($q_r == ''){
 
-            $json_return['error']   = array('Profile Name' => 'Not in database');
+            $json_return['error']   = array('type' =>'Profile Name', 'detail' => 'Not in database');
             $this->set('json_return',$json_return);
             return;
            
@@ -634,7 +634,7 @@ class ThirdPartiesController extends AppController {
         $this->loadModel('Realm');
         $q_r    = $this->Realm->find('first', array('fields'=> array('Realm.id','Realm.append_string_to_user'),'conditions' => array('Realm.name' => $this->params['url']['realm']), 'recursive' => 0));
         if($q_r == ''){
-            $json_return['error']   = array('Realm Name' => 'Not in database');
+            $json_return['error']   = array('type' => 'Realm Name', 'detail' => 'Not in database');
             $this->set('json_return',$json_return);
             return;
         }else{
@@ -646,8 +646,12 @@ class ThirdPartiesController extends AppController {
         $permanent_info['password']     = $this->params['url']['password'];
         $permanent_info['cap']          = $this->params['url']['cap'];
 
+        //Get a default value for expire_on
+        Configure::load('yfi');
+        $permanent_info['expire_on']     = Configure::read('permanent_user.expire_on');;
+
         //Optional add-ons
-        $optional_fields = array("name","surname","email","phone");
+        $optional_fields = array("name","surname","email","phone",'expire_on');
         foreach($optional_fields as $field){
             if(array_key_exists($field,$this->params['url'])){
                 //Only if the field contains something

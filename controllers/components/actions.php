@@ -709,9 +709,7 @@ class ActionsComponent extends Object {
         Configure::load('yfi');
         if($auth_data['Group']['name'] == Configure::read('group.admin')){
             array_push($struct,array('name'=> gettext('Reload List'),      'type' => 'reload', 'action' => 'reload'));
-            array_push($struct,array('name'=> gettext('Edit Selected'),    'type' => 'edit',   'action' => 'edit'));
-            array_push($struct,array('name'=> gettext('Add'),              'type' => 'add',    'action' => 'add'));
-            array_push($struct,array('name'=> gettext('Delete Selected'),  'type' => 'delete', 'action' => 'del'));
+            array_push($struct,array('name'=> gettext('View Selected'),    'type' => 'view',   'action' => 'view'));
         }
         return $struct;
     }

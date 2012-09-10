@@ -337,6 +337,18 @@ class WorkspaceComponent extends Object {
                                         'style'             => 'accountTab'
                             ));
 
+            //Credit Card Transaction view
+            array_push($struct, array(  'eventToSubscribe'  => '/actions/CreditCardView',
+                                        'tabToCreate'       => 'contentWorkspaceCreditCardView',
+                                        'tabTitle'          => gettext('Credit Card Transaction'),
+                                        'closable'          =>  true,
+                                        'includeId'         =>  true,
+                                        'module'            => 'content.CreditCardView',
+                                        'file'              => 'CreditCardView',
+                                        'style'             => 'accountTab'
+                            ));
+
+
             //Firewall
             /*
             array_push($struct, array(  'eventToSubscribe'  => '/actions/Firewall',

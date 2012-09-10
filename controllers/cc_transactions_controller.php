@@ -284,6 +284,32 @@ class CcTransactionsController extends AppController {
     }
 
 
+    function json_view($id=null){
+
+          $this->layout = 'ajax';
+
+        //---Prepare the JSON--------------------
+        $json_return = array();
+        $json_return['json']['status']    = 'ok'; 
+        $json_return['label']             = 'name';
+        $json_return['identifier']        = 'id';
+        $json_return['items']             = array();                        
+
+        $q_r = $this->TransactionDetail->find('all',array('conditions' => array('TransactionDetail.cc_transaction_id' => $id)));
+        foreach($q_r as $i){
+            $n = $i['TransactionDetail']['name'];
+            $v = $i['TransactionDetail']['value'];
+            $i = $i['TransactionDetail']['id'];
+            array_push($json_return['items'] , array('id' => $i, 'name' => $n, 'value' => $v));
+        }
+         //--Return the JSON --------------------
+        $this->set('json_return',$json_return);
+        //--------------------------------------
+        
+
+    }
+
+
     function addInternetCredit(){
 
 
