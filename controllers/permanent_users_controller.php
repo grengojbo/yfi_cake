@@ -1,8 +1,16 @@
 <?
 class PermanentUsersController extends AppController {
     var $name       = 'PermanentUsers';
-    var $uses       = array('User','Group', 'UserRealm','Realm','Radcheck','Radreply','Profile','Radusergroup','Radacct','Extra','Radgroupcheck','NotificationDetail','Radacct','Na','Device','Credit');
-    var $components = array('Session','Dojolayout','Rights','Json','Formatter','SwiftMailer','Kicker','CmpPermanent','CmpNote');    //Add the locker component
+    var $uses       = array(
+                        'User',     'Group',    'UserRealm',    'Realm',
+                        'Radcheck', 'Radreply', 'Profile',      'Radusergroup',
+                        'Radacct',  'Extra',    'Radgroupcheck','NotificationDetail',
+                        'Radacct',  'Na',       'Device',       'Credit',
+                        'ExpiryChange'
+                    );
+    var $components = array(
+                        'Session','Dojolayout','Rights','Json',
+                        'Formatter','SwiftMailer','Kicker','CmpPermanent','CmpNote');    //Add the locker component
 
    // var $scaffold;
 
@@ -448,9 +456,20 @@ class PermanentUsersController extends AppController {
 
         //See if an expiry attribute is specified
         if($exp_q != ''){
-            $expire = $exp_q['Radcheck']['value']; 
-            $exp_q['Radcheck']['value'] = mktime(0, 0, 0, $m, $d, $y);
-            $this->Radcheck->save($exp_q);          
+            //check if the value changed
+            $old_exp = $exp_q['Radcheck']['value'];
+            $new_exp = mktime(0, 0, 0, $m, $d, $y);
+            if($old_exp != $new_exp){
+                $exp_q['Radcheck']['value'] = mktime(0, 0, 0, $m, $d, $y);
+                $this->Radcheck->save($exp_q);
+                //Record this change....
+                $e_ch['ExpiryChange']['old_value']      = $old_exp;
+                $e_ch['ExpiryChange']['new_value']      = $new_exp;
+                $e_ch['ExpiryChange']['user_id']        = $user_id;
+                $e_ch['ExpiryChange']['initiator_id']   = $this->Auth->user('id');
+                $this->ExpiryChange->save($e_ch);
+            }
+          
         }else{
             //Expire 1/1/2017
             $this->_add_entry('Radcheck',$username,'Expiration',mktime(0, 0, 0, $m, $d, $y));

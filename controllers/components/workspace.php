@@ -124,6 +124,17 @@ class WorkspaceComponent extends Object {
                                         'style'             => 'creditTab'
                             ));
 
+            //Expiry Date Changes
+            array_push($struct, array(  'eventToSubscribe'  => '/actions/ExpiryDates',
+                                        'tabToCreate'       => 'contentWorkspaceExpiryDates',
+                                        'tabTitle'          => gettext('Expiry Date Changes'),
+                                        'closable'          =>  true,
+                                        'includeId'         =>  true,
+                                        'module'            => 'content.ExpiryDates',
+                                        'file'              => 'ExpiryDates',
+                                        'style'             => 'userTab'
+                            ));
+
 
 
             //Realms Manage

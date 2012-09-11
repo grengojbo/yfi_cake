@@ -48,7 +48,11 @@ class LeftpaneComponent extends Object {
 
             $struct[gettext('Permanent Users')]  = array(
                                             'img' => 'user.jpg',
-                                            'links' => array(gettext('User Management')       => '/actions/UsersManage', gettext('Internet Credit')       => '/actions/Credits')
+                                            'links' => array(
+                                                gettext('User Management')       => '/actions/UsersManage', 
+                                                gettext('Internet Credit')       => '/actions/Credits',
+                                                gettext('Expiry Date Changes')   => '/actions/ExpiryDates'
+                                            )
                                         );
 
            $struct[gettext('Accounting')]  = array(

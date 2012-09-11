@@ -4,18 +4,13 @@ class CcTransactionsController extends AppController {
 
     var $helpers    = array('Javascript');
 
-    var $components = array('Session','Dojolayout','Rights','Json','CmpPermanent');    //Add the locker component
+    var $components = array('Session','Dojolayout','Rights','Json');    //Add the locker component
     var $uses       = array(
                         'CcTransaction',
                         'TransactionDetail',
-                        'Realm',
-                        'Credit',
                         'User',
-                        'Radacct',
-                        'Radusergroup',
                         'Radcheck',
-                        'Radgroupcheck',
-                        'Extra'
+                        'Realm'
                     );
 
     var $scaffold;
@@ -98,7 +93,7 @@ class CcTransactionsController extends AppController {
             }
         }
         if($required_present){
-            $this->addInternetCredit();
+            $this->adjustExpiration();
         }
     }
 
@@ -310,7 +305,7 @@ class CcTransactionsController extends AppController {
     }
 
 
-    function addInternetCredit(){
+    function adjustExpiration(){
 
 
 
@@ -319,24 +314,6 @@ class CcTransactionsController extends AppController {
 
         //Find the user's detail for the x_cust_id
         $q_r            = $this->User->findByUsername($_POST['x_cust_id']);
-
-        $attach_to_id   = $q_r['User']['id'];
-        $realm_id       = $q_r['Realm']['id'];
-        $expires        = '2020-01-01 00:00:00';
-        $data           = 0;
-        $time           = 864000;
-
-        $d                                  = array();
-        $d['Credit']['id']            		= '';
-        $d['Credit']['user_id']       		= $creator_id;
-        $d['Credit']['used_by_id']          = $attach_to_id;
-        $d['Credit']['realm_id']          	= $realm_id;
-		$d['Credit']['expires']          	= $expires;
-        $d['Credit']['data']   				= $data;
-		$d['Credit']['time']   				= $time;
-        $this->Credit->save($d);
-
-        $this->CmpPermanent->update_user_usage($attach_to_id);
     }
 
 
