@@ -10,12 +10,18 @@ class CcTransactionsController extends AppController {
                         'TransactionDetail',
                         'User',
                         'Radcheck',
-                        'Realm'
+                        'Realm',
+                        'ExpiryChange'
                     );
 
     var $scaffold;
 
-    var $required_fields = array('x_cust_id', 'x_amount', 'x_description', 'x_response_code');
+    var $required_fields = array(
+            'x_cust_id',        //e.g dvdwalt@ri
+            'x_amount',         //e.g 20.00
+            'x_description',    //e.g. fast_20
+            'x_response_code'   //Must be one
+        );
 
     function beforeFilter() {
        $this->Auth->allow(
@@ -93,7 +99,7 @@ class CcTransactionsController extends AppController {
             }
         }
         if($required_present){
-            $this->adjustExpiration();
+            $this->adjustExpiration($transaction_id);
         }
     }
 
@@ -305,15 +311,70 @@ class CcTransactionsController extends AppController {
     }
 
 
-    function adjustExpiration(){
+    function adjustExpiration($cc_trans_id){
 
+        $response_c =   $_POST['x_response_code'];
 
+        if($response_c != 1){   //Failure return without doing anything
+            return;
+        }
 
-        $creator        = $this->User->findByUsername('CreditCardProvider');
-        $creator_id     = $creator['User']['id'];
+        //First we will get all the values of the required fields
+        $amount     =   $_POST['x_amount'];
+        $plan       =   $_POST['x_description'];
+        $username   =   $_POST['x_cust_id'];
+        $time       =   false;
+        
+        $initiator  = $this->User->findByUsername('CreditCardProvider');
+        $ini_id     = $initiator['User']['id'];
 
         //Find the user's detail for the x_cust_id
-        $q_r            = $this->User->findByUsername($_POST['x_cust_id']);
+        $q_r        = $this->User->findByUsername($username);
+        $user_id    = $q_r['User']['id'];
+        
+        //See if there is a valid plan by combining the plan and amount in a lookup check
+        Configure::load('yfi');
+        $costing = Configure::read('costing');
+        foreach($costing as $i){
+            if(($i['plan'] == $plan)&&($i['cost'] == $amount)){
+                //Now we can get the time to add...
+                $time = $i['time'];
+            }
+        }
+
+        if($time != false){ //Found a valid combination
+            $q_r = $this->Radcheck->find('first',
+                    array('conditions' => 
+                        array(
+                            'username'  => $username,
+                            'attribute' => 'Expiration'
+            )));
+            $current_exp = $q_r['Radcheck']['value'];
+            $old_exp     = $current_exp;
+            //If it was in the past then start today
+            $now = time();
+            if($current_exp < $now){
+                $current_exp = $now;
+            }
+
+            //Add the time value
+            $new_exp = $current_exp + $time;
+            $q_r['Radcheck']['value'] = $new_exp;
+            $this->Radcheck->save($q_r);
+
+            //Add an entry for the expiry_changes
+            //Record this change....
+            $e_ch = array();
+            $e_ch['ExpiryChange']['old_value']          = $old_exp;
+            $e_ch['ExpiryChange']['new_value']          = $new_exp;
+            $e_ch['ExpiryChange']['user_id']            = $user_id;
+            $e_ch['ExpiryChange']['initiator_id']       = $ini_id;
+            $e_ch['ExpiryChange']['cc_transaction_id']  = $cc_trans_id;
+            $this->ExpiryChange->save($e_ch);
+
+        }
+
+
     }
 
 

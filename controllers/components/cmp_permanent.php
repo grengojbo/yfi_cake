@@ -74,16 +74,11 @@ class CmpPermanentComponent extends Object {
         $this->controller->User->save($d);
         $user_id = $this->controller->User->id;
 
-        //Add the expire_on date as a check value
-        $pieces = explode("-", $permanent_info['expire_on']);
-        $y = $pieces[0];
-        $m = $pieces[1];
-        $d = $pieces[2];
-        $expire = mktime(0, 0, 0, $m, $d, $y);
+        //Add the expire_on date as a check value //We will already send it as a UNUX timestamp
         $exp['Radcheck']['username']    = $full_user;
         $exp['Radcheck']['attribute']   = 'Expiration';
         $exp['Radcheck']['op']          = ':=';
-        $exp['Radcheck']['value']       = $expire;
+        $exp['Radcheck']['value']       = $permanent_info['expire_on'];
         $this->controller->Radcheck->save($exp);
 
         return $user_id;

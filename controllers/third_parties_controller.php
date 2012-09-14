@@ -646,9 +646,28 @@ class ThirdPartiesController extends AppController {
         $permanent_info['password']     = $this->params['url']['password'];
         $permanent_info['cap']          = $this->params['url']['cap'];
 
-        //Get a default value for expire_on
+        //-- EXPIRE -- 
+        //=====Get a default value for expire_on (We can add a IF clause to overwrite this (eg expire an account in an hour)
         Configure::load('yfi');
-        $permanent_info['expire_on']     = Configure::read('permanent_user.expire_on');;
+        $exp_human = Configure::read('permanent_user.expire_on');
+        $pieces     = explode("-",$exp_human);
+        $y          = $pieces[0];
+        $m          = $pieces[1];
+        $d          = $pieces[2];
+        $exp_unix   = mktime(0, 0, 0, $m, $d, $y);
+        $permanent_info['expire_on']    = $exp_unix;
+
+        //--Fast users that register get an hour free---
+        Configure::load('yfi');
+        $fastProfiles = Configure::read('profiles.fast');
+        if(in_array($this->params['url']['profile'],$fastProfiles)){    
+                    $permanent_info['expire_on']= time()+3600;
+        }
+        //--- END Fast get an hour free---
+
+
+
+        //-- END EXPIRE --
 
         //Optional add-ons
         $optional_fields = array("name","surname","email","phone",'expire_on');

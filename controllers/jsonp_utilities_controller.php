@@ -2,12 +2,9 @@
 class JsonpUtilitiesController extends AppController {
     var $name       = 'JsonpUtilities';
     var $helpers    = array('Javascript');
-    var $uses       = array('User');
-    var $components = array('SwiftMailer');    //Add the locker component
+    var $uses       = array('User','Radusergroup','ExpiryChange');
+    var $components = array('SwiftMailer','CmpPermanent');    //Add the locker component
     var $scaffold;
-
-    var $freeProfiles = array('Permanet Free Internet');
-    var $fastProfiles = array('Permanent Fast Intenet 2M');
 
     function beforeFilter() {
        $this->Auth->allow('*');
@@ -57,12 +54,16 @@ class JsonpUtilitiesController extends AppController {
 
                 $json_return['profile_type']= false;    //Default is false
 
+                Configure::load('yfi');
+                $freeProfiles = Configure::read('profiles.free');
+                $fastProfiles = Configure::read('profiles.fast');
+
                 $profile = $q_r['Profile']['name'];
-                if(in_array($profile,$this->freeProfiles)){
+                if(in_array($profile,$freeProfiles)){
                     $json_return['profile_type']= 'free';
                 }
 
-                if(in_array($profile,$this->fastProfiles)){
+                if(in_array($profile,$fastProfiles)){
                     $json_return['profile_type']= 'fast';
                 }
             }
@@ -131,7 +132,95 @@ class JsonpUtilitiesController extends AppController {
         $this->set('json_return',$json_return);
         $callback   = $this->params['url']['callback'];
         $this->set('json_pad_with',$callback);
+    }
 
+    function freeToFast(){
+    
+        $this->layout = 'ajax';
+        $json_return = array();
+        $json_return['success'] = true;   //Fail it by default
+        
+
+        $un = $this->params['url']['username'];
+        $q_r    = $this->User->find('first',array('conditions' => array('User.username' => $un)));
+
+        $json_return['username']  = $q_r['User']['username'];
+        $json_return['email']     = $q_r['User']['email'];
+        $json_return['id']        = $q_r['User']['id'];
+
+        $this->changeToFast($json_return['id'],$un);
+        $e_q = $this->User->Radcheck->find('first',
+            array('conditions' => 
+                        array(  'Radcheck.username' => $un,
+                                'attribute'         => 'Expiration')
+        ));
+
+        //Do the expire thing (now plus one hour...)
+        $new_exp = time()+ 3600;
+        $initiator  = $this->User->findByUsername('CreditCardProvider');
+        $ini_id     = $initiator['User']['id'];
+
+        //Update the expiry date
+        $exp_q  = $this->User->Radcheck->find('first', 
+                    array('conditions'=>array('username' => $un,'attribute' => 'Expiration'))
+                );
+
+        //See if an expiry attribute is specified
+        if($exp_q != ''){
+            //check if the value changed
+            $old_exp = $exp_q['Radcheck']['value'];
+            $exp_q['Radcheck']['value'] = $new_exp;
+            $this->User->Radcheck->save($exp_q);
+            //Record this change....
+            $e_ch['ExpiryChange']['old_value']      = $old_exp;
+            $e_ch['ExpiryChange']['new_value']      = $new_exp;
+            $e_ch['ExpiryChange']['user_id']        = $json_return['id'];
+            $e_ch['ExpiryChange']['initiator_id']   = $ini_id;
+            $this->ExpiryChange->save($e_ch);          
+        }else{
+            //Expire 1/1/2017
+            $this->_add_entry('Radcheck',$username,'Expiration',$new_exp);
+        }
+
+        $json_return['expire']= $new_exp;
+
+        $this->set('json_return',$json_return);
+        $callback   = $this->params['url']['callback'];
+        $this->set('json_pad_with',$callback);
+    }
+
+    function changeToFast($user_id,$username){
+
+        Configure::load('yfi');
+        $upgradeName = Configure::read('profiles.upgrade_to');
+
+        $profile    = $this->User->Profile->findByName($upgradeName);
+        $profile_id = $profile['Profile']['id']; 
+
+        $this->Radusergroup->removeUser($username);
+
+        //Add the new profile binding
+        $this->_add_radusergroup($username,$upgradeName);
+
+        //Update the user with the new profile id
+        $this->User->id = $user_id;
+        $this->User->saveField('profile_id', $profile_id);
+
+       // $this->CmpPermanent->update_user_usage($user_id);
+
+        $json_return['json']['status']      = 'ok';
+        $this->set('json_return',$json_return);
+
+    }
+
+    function _add_radusergroup($username,$groupname){
+
+        $this->Radusergroup->id =false;
+        $rc = array();
+        $rc["Radusergroup"]['username']   = $username;
+        $rc["Radusergroup"]['groupname']  = $groupname;
+        $rc["Radusergroup"]['priority']   = '1';
+        $this->Radusergroup->save($rc);
     }
 }
 ?>
