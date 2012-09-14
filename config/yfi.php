@@ -56,6 +56,19 @@ $config['stale_session']['close_after']             = 1200; //Close after 20 min
 //The default expiry date value for permanent users (when not specified)
 $config['permanent_user']['expire_on']             = '2017-1-1'; //Year month day
 
+//Some costing plans and time they buy: (move later to DB) plan and cost combination has to be unique
+$config['costing']      = array(   
+    array('cost' => '15.00', 'plan' => 'fast_10', 'time' => 864000),
+    array('cost' => '20.00', 'plan' => 'fast_30', 'time' => 2592000),
+    array('cost' => '35.00', 'plan' => 'fast_60', 'time' => 5184000)
+    );
+
+//List which profiles are free and which are fast
+$config['profiles']['free'] = array('Permanent Free Internet');
+$config['profiles']['fast'] = array('Permanent Fast Internet 2M');
+
+$config['profiles']['upgrade_to'] = 'Permanent Fast Internet 2M';
+
 
 //
 
