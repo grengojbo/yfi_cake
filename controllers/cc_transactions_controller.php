@@ -47,7 +47,7 @@ class CcTransactionsController extends AppController {
 
         $this->layout   = 'ajax'; //To send your own content
         //We start by finding out who try to post, we will only allow form known defined IP addresses.
-        $allow_from = array('127.0.0.1','66.185.185.5','192.168.1.107');
+        $allow_from = array('127.0.0.1','66.185.185.5','192.168.1.112');
 
         $request_from   = $_SERVER["REMOTE_ADDR"];
 
@@ -112,7 +112,7 @@ class CcTransactionsController extends AppController {
         $json_return                = array();   //Fail it by default
         $json_return['success']     = false;
         $json_return['transaction'] = array();
-/*
+
         //----Dummy Data---------
         $json_return['transaction'] = array(
             'x_auth_code'   => 'QCM5NU',
@@ -123,9 +123,9 @@ class CcTransactionsController extends AppController {
             'x_response_reason_code' => 1,
             'x_response_reason_text' => 'This transaction has been approved.',
         );
-*/
-        //--- End Dummy Data ----
 
+        //--- End Dummy Data ----
+/*
         if(array_key_exists('id',$this->params['url'])){
             $id      = $this->params['url']['id'];
             $q_r     = $this->CcTransaction->findById($id);
@@ -152,7 +152,7 @@ class CcTransactionsController extends AppController {
 
             $json_return['success']     = true;
         }
-
+*/
         $json_return['success']     = true;
 
         $this->set('json_return',$json_return);
