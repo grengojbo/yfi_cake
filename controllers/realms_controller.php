@@ -451,6 +451,7 @@ class RealmsController extends AppController {
 
         //Filter out the /var/www
         $directory = preg_replace("/\/var\/www/","", $directory);
+        $directory = preg_replace("/\/usr\/share\/nginx\/www/","", $directory);
 
         $json_return['photo']['id']         = $this->Photo->id;
         $json_return['photo']['title']      = $title;
@@ -500,6 +501,7 @@ class RealmsController extends AppController {
 
         //Filter out the /var/www
         $directory = preg_replace("/\/var\/www/","", $directory);
+        $directory = preg_replace("/\/usr\/share\/nginx\/www/","", $directory);
 
         $json_return['photo']['id']         = $photo_id;
         $json_return['photo']['title']      = $title;
@@ -533,6 +535,7 @@ class RealmsController extends AppController {
         $directory  = Configure::read('realm.icon_directory');
         //Filter out the /var/www
         $directory = preg_replace("/\/var\/www/","", $directory);
+        $directory = preg_replace("/\/usr\/share\/nginx\/www/","", $directory);
 
         $count = 0;
         foreach($r as $entry){
