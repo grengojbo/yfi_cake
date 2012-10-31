@@ -44,6 +44,7 @@ class LoginPagesController extends AppController {
         $directory  = Configure::read('realm.icon_directory');
         //Filter out the /var/www
         $directory = preg_replace("/\/var\/www/","", $directory);
+        $directory = preg_replace("/\/usr\/share\/nginx\/www/","", $directory);
 
         //Get the photo info for the realm
         $p = $this->Realm->find('first',array('conditions' => array('Realm.id' => $r['Realm']['id'])));
