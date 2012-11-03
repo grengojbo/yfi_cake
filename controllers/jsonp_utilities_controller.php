@@ -113,7 +113,7 @@ class JsonpUtilitiesController extends AppController {
      function ccHash(){
 
         $x_login    = '5D53Kb7Vam';
-        $trans_key  = '69K7f5c5XVGLVa73'; //Keep secret!!!!
+        $trans_key  = '233v5Sr3Mr4MWQBg'; //Keep secret!!!!
 
         $this->layout = 'ajax';
         $json_return = array();

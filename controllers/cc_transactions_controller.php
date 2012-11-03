@@ -11,7 +11,8 @@ class CcTransactionsController extends AppController {
                         'User',
                         'Radcheck',
                         'Realm',
-                        'ExpiryChange'
+                        'ExpiryChange',
+                        'Payment'
                     );
 
     var $scaffold;
@@ -112,7 +113,7 @@ class CcTransactionsController extends AppController {
         $json_return                = array();   //Fail it by default
         $json_return['success']     = false;
         $json_return['transaction'] = array();
-
+/*
         //----Dummy Data---------
         $json_return['transaction'] = array(
             'x_auth_code'   => 'QCM5NU',
@@ -125,7 +126,8 @@ class CcTransactionsController extends AppController {
         );
 
         //--- End Dummy Data ----
-/*
+*/
+
         if(array_key_exists('id',$this->params['url'])){
             $id      = $this->params['url']['id'];
             $q_r     = $this->CcTransaction->findById($id);
@@ -152,7 +154,7 @@ class CcTransactionsController extends AppController {
 
             $json_return['success']     = true;
         }
-*/
+
         $json_return['success']     = true;
 
         $this->set('json_return',$json_return);
@@ -372,9 +374,16 @@ class CcTransactionsController extends AppController {
             $e_ch['ExpiryChange']['cc_transaction_id']  = $cc_trans_id;
             $this->ExpiryChange->save($e_ch);
 
+            //Add an entry into the Payments table
+            $this->addPayment($user_id,$amount)
+
         }
+    }
 
-
+    function addPayment($user_id, $amount){
+        $d['Payment']['user_id']    = $user_id;
+        $d['Payment']['amount']     = $amount;
+        $this->Payment->save($d);
     }
 
 
