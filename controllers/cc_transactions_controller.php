@@ -375,7 +375,7 @@ class CcTransactionsController extends AppController {
             $this->ExpiryChange->save($e_ch);
 
             //Add an entry into the Payments table
-            $this->addPayment($user_id,$amount)
+            $this->addPayment($user_id,$amount);
 
         }
     }
