@@ -27,7 +27,8 @@ class ThirdPartiesController extends AppController {
                 'json_voucher_name',
                 'json_nat_action',
                 'json_add_internet_credit',
-                'json_delete_permanent'
+                'json_delete_permanent',
+                'json_add_device_to_user'
         );
     }
 
