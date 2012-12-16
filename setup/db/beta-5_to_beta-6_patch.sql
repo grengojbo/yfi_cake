@@ -95,7 +95,7 @@ alter table nas add column `realm_id` char(36) NOT NULL;
 --
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES ('4fd2d35a-ef54-452b-ba6d-0f83a509ff00', 'Italian','it_IT','2011-08-14 15:45:21','2011-08-14 15:45:21');
+INSERT INTO `languages` VALUES ('4fd2d35a-ef54-452b-ba6d-0f83a509ff00', 'Italian','it_IT','2011-08-14 15:45:21','2011-08-14 15:45:21'),('50cdc1cc-ac1c-4d1e-8bb9-41a4a509ff00','Persian','fa_IR','2012-12-16 14:42:52','2012-12-16 14:59:40');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
