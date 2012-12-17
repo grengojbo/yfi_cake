@@ -308,7 +308,7 @@ CREATE TABLE `checks` (
 
 LOCK TABLES `checks` WRITE;
 /*!40000 ALTER TABLE `checks` DISABLE KEYS */;
-INSERT INTO `checks` VALUES ('49e494b2-336c-4b46-abfe-4ea8a509ff00','radacct_last_id','93','2009-04-14 15:50:42','2012-12-16 14:25:02'),('49e4e67c-ff94-40cf-83b1-6672a509ff00','radius_restart','1','2009-04-14 21:39:40','2012-12-16 14:25:07'),('4a29f7d7-fa74-462e-b44c-03c8a509ff00','notify_check','1','2009-06-06 07:00:07','2012-12-16 21:15:04');
+INSERT INTO `checks` VALUES ('49e494b2-336c-4b46-abfe-4ea8a509ff00','radacct_last_id','93','2009-04-14 15:50:42','2012-12-16 14:25:02'),('49e4e67c-ff94-40cf-83b1-6672a509ff00','radius_restart','1','2009-04-14 21:39:40','2012-12-16 14:25:07'),('4a29f7d7-fa74-462e-b44c-03c8a509ff00','notify_check','1','2009-06-06 07:00:07','2012-12-17 16:10:04');
 /*!40000 ALTER TABLE `checks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1004,7 +1004,7 @@ CREATE TABLE `radcheck` (
   `value` varchar(253) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `username` (`username`(32))
-) ENGINE=MyISAM AUTO_INCREMENT=15029 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15031 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1013,7 +1013,7 @@ CREATE TABLE `radcheck` (
 
 LOCK TABLES `radcheck` WRITE;
 /*!40000 ALTER TABLE `radcheck` DISABLE KEYS */;
-INSERT INTO `radcheck` VALUES (14778,'dvdwalt@ri','Cleartext-Password',':=','dvdwalt@ri'),(15022,'00001@ri','Cleartext-Password',':=','d8q9F0fP'),(15023,'00001@ri','Yfi-Voucher',':=','1-00-00-00');
+INSERT INTO `radcheck` VALUES (14778,'dvdwalt@ri','Cleartext-Password',':=','dvdwalt@ri'),(15022,'00001@ri','Cleartext-Password',':=','d8q9F0fP'),(15023,'00001@ri','Yfi-Voucher',':=','1-00-00-00'),(15029,'00002@ri','Cleartext-Password',':=','nGk68vHm'),(15030,'00002@ri','Yfi-Voucher',':=','1-00-00-00');
 /*!40000 ALTER TABLE `radcheck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1148,7 +1148,7 @@ CREATE TABLE `radusergroup` (
 
 LOCK TABLES `radusergroup` WRITE;
 /*!40000 ALTER TABLE `radusergroup` DISABLE KEYS */;
-INSERT INTO `radusergroup` VALUES ('dvdwalt@ri','Permanent 250M CAP',1),('00001@ri','Voucher 10M CAP',1);
+INSERT INTO `radusergroup` VALUES ('dvdwalt@ri','Permanent 250M CAP',1),('00001@ri','Voucher 10M CAP',1),('00002@ri','Voucher 10M CAP',1);
 /*!40000 ALTER TABLE `radusergroup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1566,7 +1566,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('49d09f65-9b48-4c1e-baed-194ea509ff00','ap','6ca571061bd663816d81f119b99d78c6b6015272','Pieter','Viljoen','123 Lynwood road\nLynwood\n1234','012-880-1234','pviljoen@residence-inn.co.za',1,'hard','NA','NA','499ef455-acf4-469e-991b-2f51a509ff00',0,'','','','4a80e849-5300-46b5-9b64-4ba1a509ff00','2009-03-30 12:31:01','2009-12-31 03:53:03'),('49d09fb4-f23c-4b30-9a50-2b0ba509ff00','root','017879fe8523f697c58ee598f95843252c6ac147','Administrator','Administrator','','','',1,'hard','NA','NA','499ef44e-42e8-4615-8d51-2f51a509ff00',0,'','','','50cdc1cc-ac1c-4d1e-8bb9-41a4a509ff00','2009-03-30 12:32:20','2012-12-16 15:03:32'),('4a0b0cb6-9718-4221-886b-3706a509ff00','dvdwalt@ri','87af6f583e3b19849c2d6b607ea9c8e3bba621fc','Dirk','van der Walt','15 Mimosa Street\nBrumeria\n0184\nPretoria','012-804-8080','dirkvanderwalt@gmail.com',1,'hard','0.00','NA','499ef45a-dc24-42b1-8d99-2f51a509ff00',14778,'4a62f9c4-25a8-45bc-ab56-1c84a509ff00','49d09fb4-f23c-4b30-9a50-2b0ba509ff00','49d09ec6-5480-45d4-a5ae-2b0ea509ff00','4a80e867-24d4-4824-8270-3e74a509ff00','2009-05-13 20:08:54','2009-10-01 09:19:31'),('4a6f4cde-3f3c-4abe-84ba-7a68a509ff00','accounts','8249695bc86ca246b5c68911b13d27ace3caf855','Bean','Counter','123 Bank Street\nPretoria\n0001','012-880-1234','accounts@residence-inn.co.za',1,'hard','NA','NA','499ef455-acf4-469e-991b-2f51a509ff00',0,'','','','4a80e849-5300-46b5-9b64-4ba1a509ff00','2009-07-28 21:09:18','2009-12-31 03:53:26');
+INSERT INTO `users` VALUES ('49d09f65-9b48-4c1e-baed-194ea509ff00','ap','6ca571061bd663816d81f119b99d78c6b6015272','Pieter','Viljoen','123 Lynwood road\nLynwood\n1234','012-880-1234','pviljoen@residence-inn.co.za',1,'hard','NA','NA','499ef455-acf4-469e-991b-2f51a509ff00',0,'','','','4a80e849-5300-46b5-9b64-4ba1a509ff00','2009-03-30 12:31:01','2009-12-31 03:53:03'),('49d09fb4-f23c-4b30-9a50-2b0ba509ff00','root','017879fe8523f697c58ee598f95843252c6ac147','Administrator','Administrator','','','',1,'hard','NA','NA','499ef44e-42e8-4615-8d51-2f51a509ff00',0,'','','','4a80e849-5300-46b5-9b64-4ba1a509ff00','2009-03-30 12:32:20','2012-12-17 16:09:01'),('4a0b0cb6-9718-4221-886b-3706a509ff00','dvdwalt@ri','87af6f583e3b19849c2d6b607ea9c8e3bba621fc','Dirk','van der Walt','15 Mimosa Street\nBrumeria\n0184\nPretoria','012-804-8080','dirkvanderwalt@gmail.com',1,'hard','0.00','NA','499ef45a-dc24-42b1-8d99-2f51a509ff00',14778,'4a62f9c4-25a8-45bc-ab56-1c84a509ff00','49d09fb4-f23c-4b30-9a50-2b0ba509ff00','49d09ec6-5480-45d4-a5ae-2b0ea509ff00','4a80e867-24d4-4824-8270-3e74a509ff00','2009-05-13 20:08:54','2012-12-17 15:43:11'),('4a6f4cde-3f3c-4abe-84ba-7a68a509ff00','accounts','8249695bc86ca246b5c68911b13d27ace3caf855','Bean','Counter','123 Bank Street\nPretoria\n0001','012-880-1234','accounts@residence-inn.co.za',1,'hard','NA','NA','499ef455-acf4-469e-991b-2f51a509ff00',0,'','','','4a80e849-5300-46b5-9b64-4ba1a509ff00','2009-07-28 21:09:18','2009-12-31 03:53:26');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1596,7 +1596,7 @@ CREATE TABLE `vouchers` (
 
 LOCK TABLES `vouchers` WRITE;
 /*!40000 ALTER TABLE `vouchers` DISABLE KEYS */;
-INSERT INTO `vouchers` VALUES ('4a6322d3-9fe8-4baf-a93a-48a0a509ff00',15022,'4a62fd7a-6068-42fd-aaae-1c72a509ff00','49d09fb4-f23c-4b30-9a50-2b0ba509ff00','49d09ec6-5480-45d4-a5ae-2b0ea509ff00','new','2009-07-19 15:42:43','2009-07-19 15:42:43');
+INSERT INTO `vouchers` VALUES ('4a6322d3-9fe8-4baf-a93a-48a0a509ff00',15022,'4a62fd7a-6068-42fd-aaae-1c72a509ff00','49d09fb4-f23c-4b30-9a50-2b0ba509ff00','49d09ec6-5480-45d4-a5ae-2b0ea509ff00','new','2009-07-19 15:42:43','2009-07-19 15:42:43'),('50cf2012-d64c-491a-9b5b-538aa509ff00',15029,'4a62fd7a-6068-42fd-aaae-1c72a509ff00','49d09fb4-f23c-4b30-9a50-2b0ba509ff00','49d09ec6-5480-45d4-a5ae-2b0ea509ff00','new','2012-12-17 15:37:22','2012-12-17 15:37:22');
 /*!40000 ALTER TABLE `vouchers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1654,4 +1654,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-12-16 21:17:57
+-- Dump completed on 2012-12-17 16:10:15
