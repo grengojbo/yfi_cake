@@ -28,7 +28,9 @@ class SwiftMailerComponent extends Object {
         $message = Swift_Message::newInstance($this->transport);
         $message->setSubject($subject);
         $message->setFrom(array($from));
-        $message->setTo(&$to);
+        //$message->setTo(&$to); //Remove the call time reference
+        //http://sourceforge.net/p/hotcakes/discussion/728132/thread/6d26d090/?limit=25#25a4
+        $message->setTo($to); //Remove the call time reference
         $message->setBody($body);
         $result = $mailer->batchSend($message);
 
@@ -44,7 +46,9 @@ class SwiftMailerComponent extends Object {
         $message->attach($attachment);
         $message->setSubject($subject);
         $message->setFrom(array($from));
-        $message->setTo(&$to);
+        //$message->setTo(&$to); //Remove the call time reference
+        //http://sourceforge.net/p/hotcakes/discussion/728132/thread/6d26d090/?limit=25#25a4
+        $message->setTo($to);
         $message->setBody($body);
         $result = $mailer->send($message);
     }
