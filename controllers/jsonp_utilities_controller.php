@@ -213,6 +213,32 @@ class JsonpUtilitiesController extends AppController {
 
     }
 
+
+    //This serves as a work-around to get the start time of a user if the Captive Portal was started without an up to date date
+    ////http://127.0.0.1/c2/yfi_cake/jsonp_utilities/get_start_time/dvdwalt@ri?callback=callback
+    function get_start_time($username){
+        $this->layout   = 'ajax'; 
+        $this->Radacct  = ClassRegistry::init('Radacct');
+        $q_r = $this->Radacct->find('first',array(
+            'conditions' => array('Radacct.username' => $username,'Radacct.acctstoptime' => null),
+            'fields'    => array('unix_timestamp(acctstarttime) as start_time'),
+
+        ));
+        if($q_r != ''){
+            $start_time = $q_r[0]['start_time'];
+
+        }else{
+            //Make it in the future...
+            $start_time = 1488200805;
+        }
+        $json_return['json']['start_time']  = $start_time;
+        $json_return['json']['status']      = 'ok';
+
+        $this->set('json_return',$json_return);
+        $callback   = $this->params['url']['callback'];
+        $this->set('json_pad_with',$callback);
+    }
+
     function _add_radusergroup($username,$groupname){
 
         $this->Radusergroup->id =false;
