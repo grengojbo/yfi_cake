@@ -73,8 +73,8 @@ class RadacctsController extends AppController {
             if(!$quick){
                 $username   = $item['Radacct']['username'];
                 $realm      = $item['Radacct']['realm'];
-                $voucher_id = $this->_voucher_id_find($username);
-                $user_id    = $this->_user_id_find($username);
+             //   $voucher_id = $this->_voucher_id_find($username);
+             //   $user_id    = $this->_user_id_find($username);
                 $nasip      = $item['Radacct']['nasipaddress'];
             }
             $start      = $item['Radacct']['acctstarttime'];
@@ -96,8 +96,8 @@ class RadacctsController extends AppController {
             }else{
                 array_push($json_return['items'],array(
                                                         'id'            => $id,
-                                                        'voucher_id'    => $voucher_id,
-                                                        'user_id'       => $user_id,
+                                                    //    'voucher_id'    => $voucher_id,
+                                                    //    'user_id'       => $user_id,
                                                         'realm'         => $realm,
                                                         'nas'           => $nasip,
                                                         'ip'            => $ip, 
@@ -114,6 +114,25 @@ class RadacctsController extends AppController {
         $this->set('json_return',$json_return);
     }
 
+
+    function json_return_type_and_id($username){
+
+        $this->layout = 'ajax';
+        $voucher_id = $this->_voucher_id_find($username);
+        if($voucher_id){
+            $json_return['json']['type'] = "voucher";
+            $json_return['json']['id']   = $voucher_id;
+        }
+
+        $user_id    = $this->_user_id_find($username);
+        if($user_id){
+            $json_return['json']['type'] = "user";
+            $json_return['json']['id']   = $user_id;
+        }
+
+        $json_return['json']['status'] = "ok";
+        $this->set('json_return',$json_return);
+    }
 
      function json_stats(){
 

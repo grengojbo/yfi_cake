@@ -357,12 +357,13 @@ class ActionsComponent extends Object {
         Configure::load('yfi');
 
         if($auth_data['Group']['name'] == Configure::read('group.admin')){
+            array_push($struct,array('name'=> gettext('Reload List'),      'type' => 'reload', 'action' => 'reload'));
             array_push($struct,array('name'=> gettext('Kick User Off'),    'type' => 'kick',   'action' => 'kick'));
             array_push($struct,array('name'=> gettext('Edit Selected'),    'type' => 'edit',   'action' => 'edit'));
         }
 
         if($auth_data['Group']['name'] == Configure::read('group.ap')){
-
+            array_push($struct,array('name'=> gettext('Reload List'),      'type' => 'reload', 'action' => 'reload'));
             if($this->Dojolayout->_look_for_right('radaccts/json_kick_users_off')){
                 array_push($struct,array('name'=> gettext('Kick User Off'),    'type' => 'kick',   'action' => 'kick'));
             }
