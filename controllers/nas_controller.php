@@ -32,6 +32,7 @@ class NasController extends AppController {
     function json_index($quick=false){  //For the dojo Grid
        
         $this->layout = 'ajax';
+        
 
         //---Prepare the JSON--------------------
         $json_return = array();
@@ -43,7 +44,16 @@ class NasController extends AppController {
 
         //---------------------------------------------------------------------
         $auth_data = $this->Session->read('AuthInfo');
-        Configure::load('yfi'); 
+        Configure::load('yfi');
+
+        //Quick does not need all the relationships
+        if($quick){
+            $this->Na->contain('NaState');
+        }else{
+            $this->Na->contain(array('NaState','User'));
+        }
+ 
+        
         if($auth_data['Group']['name'] == Configure::read('group.admin')){
                 $r = $this->Na->find('all',array()); //Get all the NAS devices
         }else{
@@ -54,8 +64,6 @@ class NasController extends AppController {
   	        //Run a heartbeat test to see if some devices may have pulsed us...
  	  	    exec("/var/www/c2/cake/console/cake -app /var/www/c2/yfi_cake nasmonitor -only_heartbeat >> /dev/null 2>&1");
  	    }
-
-       // print_r($r);
 
         //Loop through it and check the user's rights decide whether to display or not
         foreach($r as $entry){
@@ -1035,6 +1043,7 @@ class NasController extends AppController {
 
 
         //Get a list of NAS devices for this user
+        $this->Nas->contain();
         $r = $this->Na->find('all',array()); //Get all the NAS devices
         //Loop through it and check the user's rights decide whether to display or not
         $restart_flag = false;
@@ -1078,11 +1087,9 @@ class NasController extends AppController {
                 }
             }
         }
-
         $json_return['restart_wait']    = $restart_flag;
         $json_return['json']['status']  = "ok";
         $this->set('json_return',$json_return);
-
     }
 
     function json_delete_avail(){
