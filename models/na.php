@@ -2,6 +2,8 @@
 
 class Na extends AppModel {
 
+    public $actsAs      = array('Containable');
+
      var $hasMany = array(
                     'NaRealm' => array(
                     'className' => 'NaRealm'
