@@ -40,7 +40,7 @@ $config['geocode']['url']                           = 'http://maps.googleapis.co
 $config['geocode']['country_code']                  = 'ZA';
 
 //Show experimental menus
-$config['experimental']['active']                   = false;
+$config['experimental']['active']                   = true;
 
 //Consider a heartbeat device dead after so many seconds
 $config['heartbeat']['dead_after']                  = 660; //Eleven minutes
