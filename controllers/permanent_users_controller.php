@@ -73,6 +73,7 @@ class PermanentUsersController extends AppController {
 
         $items = array();
 
+        $this->User->contain('Group','Profile','Creator','Realm');
         $list   = $this->User->find('all',array(
                                                     'conditions' => $conditions
                                                     )
@@ -83,7 +84,7 @@ class PermanentUsersController extends AppController {
 
         //Now we filted only the required page
         if(($start != '')&($count != '')){
-
+             $this->User->contain('Group','Profile','Creator','Realm');
              $list   = $this->User->find('all',array(
                                                     'conditions'    => $conditions,
                                                     'limit'         => $count,
