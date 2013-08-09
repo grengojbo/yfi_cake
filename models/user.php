@@ -2,6 +2,8 @@
 class User extends AppModel {
     var $name = 'User';
 
+    public $actsAs = array('Containable');
+
     var $belongsTo = array(
         'Group' => array(
                     'className' => 'Group',
